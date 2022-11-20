@@ -20,12 +20,10 @@ const CustomApp = ({ Component, pageProps }) => {
   };
   return (
     <QueryClientProvider client={getClient()}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <Layout>
-          <GlobalStyle />
-          <Component {...pageProps} />
-        </Layout>
-      </Hydrate>
+      <Layout>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </Layout>
     </QueryClientProvider>
   );
 };
