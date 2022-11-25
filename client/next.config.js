@@ -23,14 +23,14 @@ module.exports = {
   async rewrites() {
     return [
       // source: 내가 지정할 주소
-      {
-        source: "/api/abc",
-        destination: LOCAL_HOST,
-      },
-      {
-        source: "/api/abc/:id",
-        destination: LOCAL_HOST,
-      },
+      // {
+      //   source: "/api/abc",
+      //   destination: LOCAL_HOST,
+      // },
+      // {
+      //   source: "/api/abc/:id",
+      //   destination: LOCAL_HOST,
+      // },
     ];
   },
   // next.js에서 sass옵션
