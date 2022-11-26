@@ -10,7 +10,13 @@ export const GlobalStyle = createGlobalStyle`
     ::-webkit-scrollbar {
         display: none;
     }
+    ul{ list-style:none; padding:0; margin: 0; };
+
     html{
+        box-sizing: border-box;
+        outline:none;
+        border:none;
+        margin:0;
         font-size: 11px;
         -webkit-text-size-adjust: none;
         font-family: -apple-system,BlinkMacSystemFont,helvetica,Apple SD Gothic Neo,sans-serif;       

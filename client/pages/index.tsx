@@ -10,7 +10,7 @@ import HomeSection from "../components/sections/home/section";
 const Home: NextPage = () => {
   return (
     <>
-      <Head title={"홈페이지"} />
+      <Head title={"감성적인 의류 쇼핑몰 CAFFEINE"} />
       {/* <HomeSection mainEvent={undefined} normalEvent={undefined} /> */}
     </>
   );

@@ -4,6 +4,9 @@ const path = require("path");
 const LOCAL_HOST = process.env.LOCAL_HOST;
 
 module.exports = {
+  compiler: {
+    styledComponents: true,
+  },
   reactStrictMode: true,
   async redirects() {
     return [
