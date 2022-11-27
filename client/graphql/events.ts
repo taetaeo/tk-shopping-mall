@@ -1,7 +1,7 @@
 import { gql } from "graphql-tag";
 
 export const GET_EVENTS = gql`
-  query GET_PRODUCTS {
+  query GET_EVENTS {
     events {
       id
       image_main
@@ -14,7 +14,7 @@ export const GET_EVENTS = gql`
 `;
 
 export const GET_EVENT = gql`
-  query GET_PRODUCT($id: ID!) {
+  query GET_EVENT($id: ID!) {
     event(id: $id) {
       id
       image_main
