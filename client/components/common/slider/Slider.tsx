@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import SlideButton from "./SliderButton";
+import SlideButton from "./sliderButton";
 
-import SlideIItems from "./SliderItems";
+import SlideIItems from "./sliderItems";
 import { SlideProps, position, direction } from "../../../types/ui/slider";
 import { DIRECTION, POSITION } from "../../../utils/constants/common";
 import Icons from "../../base/icons";

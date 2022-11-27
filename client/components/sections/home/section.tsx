@@ -1,8 +1,8 @@
 import React, { FC, useEffect } from "react";
 import styled from "styled-components";
-import Item from "../item";
+import Item from "./item";
 // import { MainEvent, NormalEvent } from "../../../../types/data/mockData";
-import Slider from "../../../common/slider";
+import Slider from "../../common/slider";
 
 type Props = {
   mainEvent: any;

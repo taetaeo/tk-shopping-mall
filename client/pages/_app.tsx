@@ -2,24 +2,14 @@ import React, { useRef } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Hydrate } from "react-query/hydration";
 import Layout from "../components/layouts";
+import { getClient } from "../service";
 import { GlobalStyle } from "../styles/globalStyles";
 
 const CustomApp = ({ Component, pageProps }) => {
-  const clientRef = useRef(null);
-  const getClient = () => {
-    if (!clientRef.current)
-      clientRef.current = new QueryClient({
-        defaultOptions: {
-          queries: {
-            //  refetchInterval : 10000,
-            refetchOnWindowFocus: false,
-          },
-        },
-      });
-    return clientRef.current;
-  };
+  const queryClient = getClient();
+
   return (
-    <QueryClientProvider client={getClient()}>
+    <QueryClientProvider client={queryClient}>
       <Layout>
         <GlobalStyle />
         <Component {...pageProps} />
