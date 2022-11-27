@@ -25,10 +25,10 @@ export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
 ) => {
   const mainEventQueryFn = () => graphQLFetcher(GET_EVENT);
-  const res = useQueries({
-    queryKey: QueryKeys.event,
-    queryFn: mainEventQueryFn,
-  });
+  // const res = useQueries({
+  //   queryKey: QueryKeys.event,
+  //   queryFn: mainEventQueryFn,
+  // });
 
   // const [{ messages: smsgs }, { users }] = await Promise.all([
   //   graphQLFetcher(GET_EVENT),

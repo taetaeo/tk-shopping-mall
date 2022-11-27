@@ -3,12 +3,11 @@ import { QueryClient } from "react-query";
 
 // Create a client
 const getClient = (() => {
-  const clientRef = useRef(null);
-
+  let client: QueryClient | null = null;
   return () => {
-    if (!clientRef.current)
+    if (!client)
       // 캐시 정책
-      clientRef.current = new QueryClient({
+      client = new QueryClient({
         defaultOptions: {
           queries: {
             cacheTime: Infinity,
@@ -19,7 +18,7 @@ const getClient = (() => {
           },
         },
       });
-    return clientRef.current;
+    return client;
   };
 })();
 export default getClient;

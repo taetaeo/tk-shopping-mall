@@ -13,11 +13,13 @@ dist-ssr
 *.local
 .env
 .env.*
+.next
+/.next/
 
 # client
-client/.next
-client/node_modules
+client/.next/
+client/node_modules/
 
 # server
-server/node_modules
+server/node_modules/
 
