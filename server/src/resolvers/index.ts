@@ -1,3 +1,3 @@
 import eventResolver from "./event";
-
-export default [eventResolver];
+import productResolver from "./products";
+export default [eventResolver, productResolver];

@@ -7,6 +7,7 @@ export type Resolver = {
       context: {
         db: {
           events: Events;
+          products: any;
         };
       },
       info: any
