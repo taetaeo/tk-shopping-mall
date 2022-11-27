@@ -1,6 +1,6 @@
 import { gql } from "graphql-tag";
 
-export const GET_EVENTS = gql`
+export const GET_PRODUCTS = gql`
   query GET_PRODUCTS {
     products {
       id
@@ -16,7 +16,7 @@ export const GET_EVENTS = gql`
   }
 `;
 
-export const GET_EVENT = gql`
+export const GET_PRODUCT = gql`
   query GET_PRODUCT($id: ID!) {
     product(id: $id) {
       id
