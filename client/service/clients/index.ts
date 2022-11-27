@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { QueryClient } from "react-query";
 
 // Create a client

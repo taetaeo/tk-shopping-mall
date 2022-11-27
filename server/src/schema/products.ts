@@ -21,6 +21,7 @@ const productSchema = gql`
   extend type Query {
     products: [Product!]
     product(id: ID!): Product!
+    selectedProducts(category_lg: String!): [Product!]
   }
 `;
 

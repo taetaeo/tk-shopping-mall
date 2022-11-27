@@ -1,17 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useQuery } from "react-query";
 import type {
   NextPage,
-  GetStaticPropsContext,
-  InferGetStaticPropsType,
-  GetStaticProps,
+  GetServerSideProps,
+  GetServerSidePropsContext,
 } from "next";
+
 import Head from "../components/base/head";
 import HomeSection from "../components/sections/home";
-import { graphQLFetcher, QueryKeys } from "../service";
-import { GET_EVENT, GET_EVENTS } from "../graphql";
-import { useQueries, useQuery } from "react-query";
+import { graphQLFetcher } from "../service";
+import { GET_EVENTS } from "../graphql";
 
-const Home: NextPage = () => {
+const Home: NextPage = ({ events }: any) => {
+  console.log(events);
   return (
     <>
       <Head title={"감성적인 의류 쇼핑몰 CAFFEINE"} />
@@ -21,24 +22,22 @@ const Home: NextPage = () => {
 };
 export default Home;
 
-export const getStaticProps: GetStaticProps = async (
-  context: GetStaticPropsContext
+export const getServerSideProps: GetServerSideProps = async (
+  context: GetServerSidePropsContext
 ) => {
-  const mainEventQueryFn = () => graphQLFetcher(GET_EVENT);
-  // const res = useQueries({
-  //   queryKey: QueryKeys.event,
-  //   queryFn: mainEventQueryFn,
+  // const QueryFn = () => graphQLFetcher(GET_EVENTS);
+  // const { data: products } = await useQuery(QueryKeys.products, QueryFn, {
+  //   cacheTime: 0,
+  //   staleTime: 1000,
   // });
 
-  // const [{ messages: smsgs }, { users }] = await Promise.all([
-  //   graphQLFetcher(GET_EVENT),
+  // const [{ events }, { products }] = await Promise.all([
   //   graphQLFetcher(GET_EVENTS),
+  //   graphQLFetcher(GET_PRODUCTS),
   // ]);
 
+  const events = await graphQLFetcher(GET_EVENTS);
   return {
-    props: {
-      // mainEvent,
-      // normalEvent,
-    },
+    props: { events },
   };
 };

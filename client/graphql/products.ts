@@ -10,8 +10,12 @@ export const GET_PRODUCTS = gql`
       origin_price
       discount
       new
-      category
       createdAt
+      category {
+        category_lg
+        category_md
+        category_sm
+      }
     }
   }
 `;
@@ -26,8 +30,31 @@ export const GET_PRODUCT = gql`
       origin_price
       discount
       new
-      category
       createdAt
+      category {
+        category_lg
+        category_md
+        category_sm
+      }
+    }
+  }
+`;
+export const GET_SELECTED_PRODUCT = gql`
+  query GET_SELECTED_PRODUCT($category_lg: String!) {
+    selectedProducts(category_lg: $category_lg) {
+      id
+      brand
+      name
+      image_url
+      origin_price
+      discount
+      new
+      createdAt
+      category {
+        category_lg
+        category_md
+        category_sm
+      }
     }
   }
 `;

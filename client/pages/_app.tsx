@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
+import React from "react";
+import { QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { Hydrate } from "react-query/hydration";
 import { Layout } from "../components/layouts";
 import { getClient } from "../service";
@@ -10,10 +11,12 @@ const CustomApp = ({ Component, pageProps }) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Layout>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </Layout>
+      <Hydrate state={pageProps?.dehydratedState}>
+        <Layout>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </Layout>
+      </Hydrate>
     </QueryClientProvider>
   );
 };
