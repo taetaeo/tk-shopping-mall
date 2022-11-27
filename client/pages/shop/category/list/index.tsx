@@ -10,8 +10,8 @@ import { useQuery } from "react-query";
 const List: NextPage = ({ products }: any): JSX.Element => {
   const router = useRouter();
   const QueryFn = () =>
-    graphQLFetcher(GET_SELECTED_PRODUCT, { category_lg: "men" });
-  const { data } = useQuery([QueryKeys.products, "men"], QueryFn);
+    graphQLFetcher(GET_SELECTED_PRODUCT, { category_lg: "women" });
+  const { data } = useQuery([QueryKeys.products, "women"], QueryFn);
   console.log(products, data);
   return (
     <>
