@@ -21,7 +21,6 @@ const productSchema = gql`
     image_url: String!
     origin_price: Int!
     discount: Int!
-    new: Boolean!
     category: Category!
     createdAt: Float!
   }
@@ -37,6 +36,18 @@ const productSchema = gql`
       category_md: String
       category_sm: String
     ): [Product!]
+  }
+  extend type Mutation {
+    addProduct(
+      brand: String!
+      name: String!
+      image_url: String!
+      origin_price: Int!
+      discount: Int!
+      category_lg: String!
+      category_md: String!
+      category_sm: String!
+    ): Product!
   }
 `;
 

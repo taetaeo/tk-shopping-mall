@@ -75,5 +75,42 @@ const productResolver: Resolver = {
       return data;
     },
   },
+
+  Mutation: {
+    addProduct: async (
+      parent,
+      {
+        brand,
+        name,
+        image_url,
+        origin_price,
+        discount,
+        category_lg,
+        category_md,
+        category_sm,
+      }
+    ) => {
+      const newProduct = {
+        brand,
+        name,
+        image_url,
+        origin_price,
+        discount,
+        category: {
+          category_lg,
+          category_md,
+          category_sm,
+        },
+        createdAt: serverTimestamp(),
+      };
+
+      const result = await addDoc(collection(db, "products"), newProduct);
+      const querySnapshot = await getDoc(result);
+      return {
+        ...querySnapshot.data(),
+        id: querySnapshot.id,
+      };
+    },
+  },
 };
 export default productResolver;
