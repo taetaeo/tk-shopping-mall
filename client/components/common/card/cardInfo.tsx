@@ -9,34 +9,37 @@ const { LIKE_EMPTY, COMMENT } = ICONS_NAME;
 const DEFAULT_SIZE = "18";
 
 type Props = {
+  brand: string;
   title: string;
   price: number;
   discount: number;
 };
 const CardInfo: FC<Props> = (props: Props): JSX.Element => {
-  const { title, price, discount } = props;
+  const { brand, title, price, discount } = props;
   return (
     <StyledInfo>
+      <Brand>{brand}</Brand>
       <Title>{title}</Title>
-      <PriceContainer>
+      <OriginPrice>
         <Price>{price}</Price>
-        <Discount>{discount}%</Discount>
+      </OriginPrice>
+      <PriceContainer>
+        <Discount>{discount} %</Discount>
         <DiscountPrice>{price * (discount % 100) || 0}</DiscountPrice>
       </PriceContainer>
-      <FunctionContainer>
+      {/* <FunctionContainer>
         <Likes>
           {Icons({ size: DEFAULT_SIZE, name: LIKE_EMPTY, color: "#888" })}
-          5000
         </Likes>
         <Comment>
           {Icons({ size: DEFAULT_SIZE, name: COMMENT, color: "#888" })}
-          182
         </Comment>
-      </FunctionContainer>
+      </FunctionContainer> */}
     </StyledInfo>
   );
 };
 export default CardInfo;
+
 const StyledInfo = styled.div`
   text-align: left;
   width: 100%;
@@ -44,29 +47,50 @@ const StyledInfo = styled.div`
   flex-direction: column;
   margin: auto;
 `;
-
-const Title = styled.h1`
+const Text = styled.h1`
   width: 100%;
   color: #292a32;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.4rem;
+  font-weight: 700;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-top: 1rem;
+`;
+const Brand = styled(Text)`
+  text-decoration: underline;
+`;
+const Title = styled(Text)`
+  width: 100%;
+  color: #292a32;
+  font-size: 1.2rem;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 1rem;
 `;
 
 const FunctionContainer = styled.div`
   display: flex;
-  margin: 0.1rem 0;
+  margin-top: 1rem;
+  font-size: 1.2rem;
 `;
-
+const OriginPrice = styled.div`
+  display: flex;
+  flex-direction: row;
+  color: rgb(212, 212, 212);
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-top: 1rem;
+`;
 const PriceContainer = styled.div`
   display: flex;
   flex-direction: row;
-  color: #74747b;
-  font-size: 1rem;
-  font-weight: 400;
-  margin: 0.1rem 0;
+  color: #ff4800;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 1rem;
 `;
 
 const Likes = styled(CardItem)``;

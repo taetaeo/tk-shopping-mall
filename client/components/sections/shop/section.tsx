@@ -70,9 +70,9 @@ const ProductsContainer = styled.section`
   max-width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  row-gap: 1rem;
+  row-gap: 5rem;
   column-gap: 2rem;
-  margin: 1rem auto;
+  margin-top: 1rem;
 
   @media screen and (min-width: 768px) and (max-width: 1500px) {
     grid-template-columns: repeat(3, 1fr);

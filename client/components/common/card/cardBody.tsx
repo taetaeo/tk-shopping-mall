@@ -17,12 +17,11 @@ const CardBody: FC<Props> = (props: Props): JSX.Element => {
 export default CardBody;
 const StyledBody = styled.div<{ sizeStyle: FlattenSimpleInterpolation }>`
   ${(p) => p.sizeStyle}
-
   width: var(--card-width, 180px);
-  height: 100%;
 `;
 const Image = styled.img`
   width: 100%;
+  height: 385px;
   object-fit: cover;
   border-radius: 4px;
 `;

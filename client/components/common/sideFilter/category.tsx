@@ -10,7 +10,7 @@ import {
 import { menItems, womenItems, myPageItems } from "./items";
 import { Button } from "../../base";
 
-const { SMALL } = SIZE;
+const { SMALL, MIDDLE } = SIZE;
 const { DEFAULT_LIGHT } = VARIANTS_NAME;
 const { M_TITLE } = SIDE_CATEGORY_MEN;
 const { W_TITLE } = SIDE_CATEGORY_WOMEN;
@@ -62,11 +62,12 @@ const Category = (props: Props) => {
               <a>
                 <Button
                   disabled={false}
-                  size={SMALL}
+                  size={MIDDLE}
                   variant={DEFAULT_LIGHT}
-                  children={item.name}
                   onClick={() => handleGetData(item.get)}
-                />
+                >
+                  <h1>{item.name}</h1>
+                </Button>
               </a>
             </Link>
           </ListItem>

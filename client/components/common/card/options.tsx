@@ -41,6 +41,6 @@ export const CardItem = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
   padding-right: 1rem;
 `;

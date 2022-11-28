@@ -12,6 +12,7 @@ type CardType = {
   id: number;
   size: "sm" | "md" | "lg";
   direction: "column" | "row";
+  brand: string;
   title: string;
   image_url: string;
   discount: number;
@@ -21,8 +22,17 @@ type CardType = {
 
 const { ROUTE_PATH_DETAIL } = ROUTE_PATH;
 const Card: FC<CardType> = (props: CardType): JSX.Element => {
-  const { id, size, title, image_url, price, discount, direction, children } =
-    props;
+  const {
+    id,
+    size,
+    brand,
+    title,
+    image_url,
+    price,
+    discount,
+    direction,
+    children,
+  } = props;
   const sizeStyle = SIZES[size];
   const directionStyle = DIRECTION[direction];
   return (
@@ -32,7 +42,7 @@ const Card: FC<CardType> = (props: CardType): JSX.Element => {
           <CardBody sizeStyle={sizeStyle} image_url={image_url} />
         </a>
       </DetailLink>
-      <CardInfo title={title} price={price} discount={discount} />
+      <CardInfo title={title} price={price} discount={discount} brand={brand} />
     </StyledCard>
   );
 };
