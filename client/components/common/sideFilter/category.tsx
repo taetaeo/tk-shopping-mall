@@ -58,7 +58,7 @@ const Category = (props: Props) => {
       {ListOutFn(pathName)?.map(
         (item: menItems | womenItems, index: React.Key) => (
           <ListItem key={index}>
-            <Link href={item.route}>
+            <Link href={item.route} legacyBehavior>
               <a>
                 <Button
                   disabled={false}

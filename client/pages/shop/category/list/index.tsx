@@ -6,6 +6,7 @@ import NotFound from "../../../404";
 import { graphQLFetcher, QueryKeys } from "../../../../service";
 import { GET_PRODUCTS, GET_SELECTED_PRODUCT } from "../../../../graphql";
 import { useQuery } from "react-query";
+import { ShopSection } from "../../../../components/sections";
 
 const List: NextPage = ({ products }: any): JSX.Element => {
   const router = useRouter();
@@ -15,7 +16,7 @@ const List: NextPage = ({ products }: any): JSX.Element => {
   console.log(products, data);
   return (
     <>
-      <div>asdasdasd</div>
+      <ShopSection query={router.query}></ShopSection>
     </>
   );
 };
