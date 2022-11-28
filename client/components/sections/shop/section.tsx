@@ -1,5 +1,6 @@
 import React, { Children, FC, ReactNode } from "react";
 import styled from "styled-components";
+import Filter from "../../common/filter";
 import SideFilter from "../../common/sideFilter";
 
 const all_new_options: any = ["m_new", "m_all", "w_all", "w_new"];
@@ -17,13 +18,16 @@ const ShopSection: FC<Props> = (props: Props): JSX.Element => {
   const { category_large_code } = query;
   const filterOptions = all_new_options.includes(category_large_code);
   const LIST = String(category_large_code).split("_")[0];
-
+  console.log("filterOptions", filterOptions);
   return (
     <Main>
       <LeftSection>
         <SideFilter pathName={LIST} />
       </LeftSection>
       <RightSection>
+        {!!!filterOptions && (
+          <Filter list={LIST} category={category_large_code} />
+        )}
         <ProductsContainer>{children}</ProductsContainer>
       </RightSection>
     </Main>
@@ -39,16 +43,19 @@ const Main = styled.main`
   min-height: 420px;
   padding-left: 2rem;
   padding-right: 2rem;
+  box-sizing: border-box;
 `;
 const LeftSection = styled.section`
   width: 10%;
+  top: 0;
   min-height: 420px;
 `;
 const RightSection = styled.section`
   width: 90%;
-  min-height: 420px;
+  top: 0;
   display: grid;
-  margin: auto;
+  /* min-height: 420px; */
+  /* margin: auto; */
   grid-template-areas:
     "filter"
     "product";

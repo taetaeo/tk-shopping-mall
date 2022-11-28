@@ -78,14 +78,21 @@ const Category = (props: Props) => {
 
 export default Category;
 
-const CategoryList = styled.ul``;
+const CategoryList = styled.ul`
+  box-sizing: border-box;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+`;
 const CategoryTitle = styled.h3`
   width: 100%;
-  padding: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
   :after {
     content: "";
     display: block;
-    width: 8rem;
+    width: 80%;
     border-bottom: 5px solid rgb(0, 0, 0);
     margin-top: 1rem;
   }
