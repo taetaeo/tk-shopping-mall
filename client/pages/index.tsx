@@ -12,7 +12,6 @@ import { graphQLFetcher } from "../service";
 import { GET_EVENTS } from "../graphql";
 
 const Home: NextPage = ({ events }: any) => {
-  console.log(events);
   return (
     <>
       <Head title={"감성적인 의류 쇼핑몰 CAFFEINE"} />

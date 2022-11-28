@@ -9,21 +9,19 @@ import { useQuery } from "react-query";
 import { ShopSection } from "../../../../components/sections";
 import { Head } from "../../../../components/base";
 
-const List: NextPage = ({ products, seoTitle }: any): JSX.Element => {
-  const title = seoTitle === "men" ? "남성의류" : "여성의류";
+const List: NextPage = ({ products, codeOptions }: any): JSX.Element => {
+  const seoTitle = codeOptions === "men" ? "남성의류" : "여성의류";
 
   const router = useRouter();
-  const QueryFn = () =>
-    graphQLFetcher(GET_SELECTED_PRODUCT, { category_lg: "women" });
-  const { data } = useQuery([QueryKeys.products, "women"], QueryFn);
+  // const QueryFn = () =>
+  //   graphQLFetcher(GET_SELECTED_PRODUCT, { category_lg: "women" });
+  // const { data } = useQuery([QueryKeys.products, "women"], QueryFn);
 
-  console.log({ products });
-  console.log({ data });
-
+  console.log(products.selectedProducts);
   return (
     <>
-      <Head title={`${title} | 감성적인 의류 쇼핑몰 CAFFEINE`} />
-      <ShopSection query={router.query}></ShopSection>
+      <Head title={`${seoTitle} | 감성적인 의류 쇼핑몰 CAFFEINE`} />
+      <ShopSection query={router.query} products={products.selectedProducts} />
     </>
   );
 };
@@ -36,20 +34,34 @@ export const getServerSideProps = async (
   const {
     query: { category_large_code, category_medium_code },
   } = context;
-  const [genderCode, productsCode] = String(category_large_code).split("_");
-  const seoTitle = genderCode === "m" ? "men" : "women";
 
+  let codeOptions, genderCode, productsCode, detailCode, products;
+  [genderCode, productsCode] = String(category_large_code).split("_");
+  [, , detailCode] = String(category_medium_code).split("_");
+
+  codeOptions = genderCode === "m" ? "men" : "women";
   const allCondition = productsCode === "all";
   const newCondition = productsCode === "new";
   const elseCondition = !allCondition && !newCondition;
 
-  const products = await graphQLFetcher(GET_PRODUCTS);
-  // const selectProduct = await graphQLFetcher(GET_SELECTED_PRODUCT);
+  if (allCondition || newCondition) {
+    // all or new
+    products = await graphQLFetcher(GET_SELECTED_PRODUCT, {
+      category_lg: codeOptions,
+    });
+  } else if (elseCondition) {
+    // Not all or new
+    products = await graphQLFetcher(GET_SELECTED_PRODUCT, {
+      category_lg: codeOptions,
+      category_md: productsCode,
+      category_sm: detailCode,
+    });
+  }
 
   return {
     props: {
       products,
-      seoTitle,
+      codeOptions,
     },
   };
 };

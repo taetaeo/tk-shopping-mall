@@ -34,7 +34,7 @@ const Category = (props: Props) => {
   const { pathName } = props;
   let data: any;
   const title = pathName === "m" ? M_TITLE : pathName === "w" ? W_TITLE : null;
-  // console.log(pathName);
+
   const ListOutFn = (pathname: string | string[] | undefined): ListOutFn => {
     if (pathname === "m") return menItems;
     if (pathname === "w") return womenItems;

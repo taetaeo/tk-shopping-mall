@@ -1,7 +1,7 @@
 import React, { Children, FC, ReactNode } from "react";
 import styled from "styled-components";
-import Filter from "../../common/filter";
-import SideFilter from "../../common/sideFilter";
+import { Filter, SideFilter } from "../../common";
+import List from "./list";
 
 const all_new_options: any = ["m_new", "m_all", "w_all", "w_new"];
 
@@ -10,15 +10,17 @@ type Query = {
 };
 type Props = {
   query: Query;
+  products: any;
   children?: ReactNode;
 };
 
 const ShopSection: FC<Props> = (props: Props): JSX.Element => {
-  const { query, children } = props;
+  const { query, products, children } = props;
   const { category_large_code } = query;
   const filterOptions = all_new_options.includes(category_large_code);
   const LIST = String(category_large_code).split("_")[0];
-  console.log("filterOptions", filterOptions);
+  // console.log("filterOptions", filterOptions);
+
   return (
     <Main>
       <LeftSection>
@@ -28,7 +30,9 @@ const ShopSection: FC<Props> = (props: Props): JSX.Element => {
         {!!!filterOptions && (
           <Filter list={LIST} category={category_large_code} />
         )}
-        <ProductsContainer>{children}</ProductsContainer>
+        <ProductsContainer>
+          <List products={products} />
+        </ProductsContainer>
       </RightSection>
     </Main>
   );
