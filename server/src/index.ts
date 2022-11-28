@@ -13,6 +13,7 @@ const APOLLO_STUDIO = "https://studio.apollographql.com";
     resolvers: resolvers,
     context: {
       db: {
+        products: readDB(DBField.PRODUCTS),
         eventItems: readDB(DBField.EVENT),
       },
     },

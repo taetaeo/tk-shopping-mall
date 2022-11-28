@@ -1,6 +1,5 @@
-import { Resolver } from "./type";
-import { DBField, writeDB } from "../dbController";
-import { Events } from "./type";
+import { Products, Resolver } from "./type";
+import { DBField, writeDB, readDB } from "../dbController";
 import { db } from "../../firebase";
 import {
   collection,
@@ -16,13 +15,13 @@ import {
   limit,
 } from "firebase/firestore";
 
-// 기본 형식
-// (parent, args, context, info)=>{}
+const getJSON = () => readDB(DBField.PRODUCTS);
+const setJSON = (data: Products) => writeDB(DBField.PRODUCTS, data);
 
-const setJSON = (data: Events) => writeDB(DBField.EVENT, data);
 const PAGE_SIZE = 15;
 
 const productResolver: Resolver = {
+  // 기본 형식 : (parent, args, context, info)=>{}
   Query: {
     products: async (parent, arg) => {
       const products = collection(db, "products");
@@ -35,6 +34,8 @@ const productResolver: Resolver = {
           ...d,
         });
       });
+      // const newData: any = data;
+      // setJSON(newData);
       return data;
     },
     product: async (parent, { id }) => {
@@ -103,9 +104,14 @@ const productResolver: Resolver = {
         },
         createdAt: serverTimestamp(),
       };
-
       const result = await addDoc(collection(db, "products"), newProduct);
       const querySnapshot = await getDoc(result);
+
+      // db폴더 JSON데이터 업데이트
+      const jsonData = getJSON();
+      jsonData.unshift({ id: querySnapshot.id, ...querySnapshot.data() });
+      setJSON(jsonData);
+
       return {
         ...querySnapshot.data(),
         id: querySnapshot.id,

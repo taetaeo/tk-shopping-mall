@@ -7,7 +7,7 @@ export type Resolver = {
       context: {
         db: {
           events: Events;
-          products: any;
+          products: Products;
         };
       },
       info: any
@@ -22,3 +22,20 @@ export type Event = {
   image_thumb: string;
 };
 export type Events = Event[];
+
+export type Category = {
+  category_lg: string;
+  category_md: string;
+  category_sm: string;
+};
+export type Product = {
+  id: string;
+  brand: string;
+  name: string;
+  image_url: string;
+  origin_price: number;
+  discount: number;
+  category: Category;
+  createdAt?: number;
+};
+export type Products = Product[];

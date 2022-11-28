@@ -2,13 +2,15 @@ import fs from "fs";
 import { resolve } from "path";
 
 export enum DBField {
-  EVENT = "events"
+  EVENT = "events",
+  PRODUCTS = "products",
 }
 
 const basePath = resolve(); // __dirname
 
 const fileNames = {
   [DBField.EVENT]: resolve(basePath, "./src/db/events.json"),
+  [DBField.PRODUCTS]: resolve(basePath, "./src/db/products.json"),
 };
 
 export const readDB = (target: DBField) => {
