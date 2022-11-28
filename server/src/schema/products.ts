@@ -21,7 +21,11 @@ const productSchema = gql`
   extend type Query {
     products: [Product!]
     product(id: ID!): Product!
-    selectedProducts(category_lg: String!): [Product!]
+    selectedProducts(
+      category_lg: String!
+      category_md: String
+      category_sm: String
+    ): [Product!]
   }
 `;
 

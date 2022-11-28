@@ -44,15 +44,29 @@ const productResolver: Resolver = {
         id: querySnapshot.id,
       };
     },
-    selectedProducts: async (parent, { category_lg }) => {
+    selectedProducts: async (
+      parent,
+      { category_lg, category_md = "", category_sm = "" }
+    ) => {
       const products = collection(db, "products");
       const queryOptions = [orderBy("createdAt", "desc")];
-      if (category_lg === "men") {
-        queryOptions.unshift(where("category.category_lg", "==", "men"));
+      if (!category_md && !category_sm)
+        queryOptions.unshift(
+          where("category.category_lg", "==", category_lg)
+        ); // category_lg에 따라 men or women 분리
+      else if (category_lg && category_md && category_sm) {
+        queryOptions.unshift(where("category.category_sm", "==", category_sm)); // category_sm에 따라 long, short 등 분리
+        queryOptions.unshift(where("category.category_md", "==", category_md)); // category_md에 따라 top, bottom, outer 등 분리
+        queryOptions.unshift(where("category.category_lg", "==", category_lg)); // category_lg에 따라 men or women 분리
+      } else if (category_lg && category_md) {
+        queryOptions.unshift(where("category.category_md", "==", category_md)); // category_md에 따라 top, bottom, outer 등 분리
+        queryOptions.unshift(where("category.category_lg", "==", category_lg)); // category_lg에 따라 men or women 분리
       }
-      if (category_lg === "women") {
-        queryOptions.unshift(where("category.category_lg", "==", "women"));
-      }
+
+      console.log(
+        "--------------------queryoptions-------------",
+        queryOptions
+      );
       const q = query(products, ...queryOptions, limit(PAGE_SIZE));
       const querySnapshot = await getDocs(q);
       const data: DocumentData[] = [];
