@@ -107,7 +107,9 @@ const Item: FC<Props> = (props: Props): JSX.Element => {
         <Brand>{brand}</Brand>
         <CategoryBox>
           <Cate>{category.category_lg}</Cate>
+          {Icons({ size: "20", name: "RIGHT_DIRECTIONS" })}
           <Cate>{category.category_md}</Cate>
+          {Icons({ size: "20", name: "RIGHT_DIRECTIONS" })}
           <Cate>{category.category_sm}</Cate>
         </CategoryBox>
       </TopInfo>
@@ -124,7 +126,7 @@ const Item: FC<Props> = (props: Props): JSX.Element => {
           </TitleContainer>
           <PriceContainer>
             <Price>{origin_price} 원</Price>
-            <Discount>{discount}%</Discount>
+            <Discount>- {discount}%</Discount>
             <DiscountPrice>
               {origin_price - origin_price * (discount / 100) || 0} 원
             </DiscountPrice>
@@ -201,6 +203,9 @@ const CategoryBox = styled.ul`
 const Cate = styled.li`
   margin-inline: 1rem;
   font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 const LeftInfo = styled(Info)``;
 const RightInfo = styled(Info)`
@@ -247,6 +252,10 @@ const SelectContainer = styled.div`
   margin-top: 3rem;
   select {
     margin-top: 1rem;
+    :focus {
+      background-color: none;
+      border: 1px solid #000;
+    }
   }
 `;
 const Button = styled.button`
@@ -264,6 +273,9 @@ const UpdateInput = styled.input`
   padding: 2rem;
   border: 1px solid #000;
   border-radius: 12px;
+  :focus {
+    background-color: none;
+  }
 `;
 const TotalPrice = styled.div`
   width: 100%;
@@ -333,4 +345,6 @@ const Price = styled(Inner)`
 `;
 const Discount = styled(Inner)``;
 const DiscountPrice = styled(Inner)``;
-const OrderPrice = styled(Inner)``;
+const OrderPrice = styled(Inner)`
+  font-size: 1.2rem;
+`;

@@ -8,7 +8,7 @@ import { BiCommentDetail } from "react-icons/bi";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-
+import { BsChevronCompactRight } from "react-icons/bs";
 type IconType = {
   name: string;
   size: string;
@@ -23,6 +23,7 @@ type ICONS_ITEMS_TYPE = {
   LIKE_COLOR: JSX.Element;
   USER: JSX.Element;
   COMMENT: JSX.Element;
+  RIGHT_DIRECTIONS: JSX.Element;
 };
 
 const Icons: FC<IconType> = (props: IconType): JSX.Element => {
@@ -41,6 +42,7 @@ const Icons: FC<IconType> = (props: IconType): JSX.Element => {
     USER: <FaUser size={size} color={color} />,
     COMMENT: <BiCommentDetail size={size} color={color} />,
     SEARCH: <FaSearch size={size} color={color} />,
+    RIGHT_DIRECTIONS: <BsChevronCompactRight size={size} color={color} />,
   };
   const styledIcon = ICONS_ITEMS[name];
 
