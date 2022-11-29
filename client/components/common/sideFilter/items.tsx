@@ -26,6 +26,7 @@ const {
 const {
   ROUTE_PATH_LIST,
   ROUTE_PATH_CATEGORY_LARGE_CODE,
+  ROUTE_PATH_CATEGORY_MEDIUM_CODE,
   ROUTE_PATH_MY_PAGE,
   ROUTE_PATH_MYPAGE_LIKES,
   ROUTE_PATH_MYPAGE_ORDERS,
@@ -96,12 +97,12 @@ export const womenItems = [
   },
   {
     name: W_ONE_PIECE,
-    route: `${ROUTE_PATH_LIST}?${ROUTE_PATH_CATEGORY_LARGE_CODE}=w_one_piece`,
+    route: `${ROUTE_PATH_LIST}?${ROUTE_PATH_CATEGORY_LARGE_CODE}=w_one-piece`,
     get: "w_one_piece",
   },
   {
     name: W_KNIT_INNER,
-    route: `${ROUTE_PATH_LIST}?${ROUTE_PATH_CATEGORY_LARGE_CODE}=w_knit_inner`,
+    route: `${ROUTE_PATH_LIST}?${ROUTE_PATH_CATEGORY_LARGE_CODE}=w_knit-inner`,
     get: "w_knit_inner",
   },
   {

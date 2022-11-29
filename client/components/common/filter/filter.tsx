@@ -14,7 +14,7 @@ type FilerType = {
 };
 const Filter: FC<FilerType> = (props: FilerType): JSX.Element => {
   const { list, category, detail } = props;
-
+  console.log({ category });
   const menOptions = MEN_FILTER.find(
     (filterItem) => category === filterItem.name
   );
@@ -22,7 +22,7 @@ const Filter: FC<FilerType> = (props: FilerType): JSX.Element => {
     (filterItem) => category === filterItem.name
   );
   const filterOptions = list === "m" ? menOptions : womenOptions;
-
+  console.log("filterOptions", filterOptions);
   const handleSelect = (e: any) => {
     // console.log(e.target.value);
   };

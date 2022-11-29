@@ -25,8 +25,6 @@ const { DEFAULT } = VARIANTS_NAME;
 
 const Gnb: React.FC = () => {
   const router = useRouter();
-  const { pathname, isReady } = router;
-
   const menuItems = [
     { name: HOME, route: ROUTE_PATH_HOME },
     {
@@ -41,7 +39,6 @@ const Gnb: React.FC = () => {
     { name: EVENT, route: ROUTE_PATH_EVENT },
     { name: QNA, route: ROUTE_PATH_QNA },
   ];
-  console.log(router);
   return (
     <MenuList>
       {menuItems.map((item, index) => (

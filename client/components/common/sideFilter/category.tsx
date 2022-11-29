@@ -42,16 +42,6 @@ const Category = (props: Props) => {
     else return null;
   };
 
-  const handleGetData = async (get: string) => {
-    // 여기서 인수인 get에 따라서, 다르게 데이터를 패칭하도록 한다.
-    // 그렇다면, 페이지의 serverSideProps는 어떻게?
-    [genderCode, productsCode] = String(get).split("_");
-    const codeOptions = genderCode === "m" ? "men" : "women";
-    const allCondition = productsCode === "all";
-    const newCondition = productsCode === "new";
-    const elseCondition = !allCondition && !newCondition;
-  };
-
   return (
     <CategoryList>
       <CategoryTitle>{title}</CategoryTitle>
@@ -60,12 +50,7 @@ const Category = (props: Props) => {
           <ListItem key={index}>
             <Link href={item.route} legacyBehavior>
               <a>
-                <Button
-                  disabled={false}
-                  size={MIDDLE}
-                  variant={DEFAULT_LIGHT}
-                  onClick={() => handleGetData(item.get)}
-                >
+                <Button disabled={false} size={MIDDLE} variant={DEFAULT_LIGHT}>
                   <h1>{item.name}</h1>
                 </Button>
               </a>

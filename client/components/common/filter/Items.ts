@@ -16,8 +16,8 @@ export const FILTER_WOMEN = {
   W_TOP: "w_top",
   W_BOTTOM: "w_bottom",
   W_OUTER: "w_outer",
-  W_ONE_PIECE: "w_one_piece",
-  W_KNIT_INNER: "w_knit_inner",
+  W_ONE_PIECE: "w_one-piece",
+  W_KNIT_INNER: "w_knit-inner",
   W_SKIRT: "w_skirt",
   W_SETUP: "w_setup",
   W_INNER: "w_inner",
@@ -86,7 +86,10 @@ export const MEN_FILTER: FilterItemType[] = [
   {
     name: M_TOP,
     item: [
-      { url: `${MTCD_URL}m_top_all`, name: "전체" },
+      {
+        url: `${ROUTE_PATH_LIST}?${ROUTE_PATH_CATEGORY_LARGE_CODE}=${M_TOP}`,
+        name: "전체",
+      },
       { url: `${MTCD_URL}m_top_sweat`, name: "스웨트" },
       { url: `${MTCD_URL}m_top_long`, name: "긴팔티" },
       { url: `${MTCD_URL}m_top_short`, name: "반팔티" },
@@ -100,7 +103,10 @@ export const MEN_FILTER: FilterItemType[] = [
   {
     name: M_BOTTOM,
     item: [
-      { url: `${MBCD_URL}m_bottom_all`, name: "전체" },
+      {
+        url: `${ROUTE_PATH_LIST}?&${ROUTE_PATH_CATEGORY_LARGE_CODE}=${M_BOTTOM}`,
+        name: "전체",
+      },
       { url: `${MBCD_URL}m_bottom_denim`, name: "데님" },
       { url: `${MBCD_URL}m_bottom_width`, name: "와이드" },
       { url: `${MBCD_URL}m_bottom_cotton`, name: "코튼" },
@@ -114,7 +120,10 @@ export const MEN_FILTER: FilterItemType[] = [
   {
     name: M_INNER,
     item: [
-      { url: `${MICD_URL}m_inner_all`, name: "전체" },
+      {
+        url: `${ROUTE_PATH_LIST}?&${ROUTE_PATH_CATEGORY_LARGE_CODE}=${M_INNER}`,
+        name: "전체",
+      },
       { url: `${MICD_URL}m_inner_underwear`, name: "언더웨어" },
       { url: `${MICD_URL}m_inner_pajamas`, name: "파자마" },
       { url: `${MICD_URL}m_inner_undershirt`, name: "언더셔츠" },
@@ -123,7 +132,10 @@ export const MEN_FILTER: FilterItemType[] = [
   {
     name: M_OUTER,
     item: [
-      { url: `${MOCD_URL}m_outer_all`, name: "전체" },
+      {
+        url: `${ROUTE_PATH_LIST}?&${ROUTE_PATH_CATEGORY_LARGE_CODE}=${M_OUTER}`,
+        name: "전체",
+      },
       { url: `${MOCD_URL}m_outer_coach`, name: "코치자켓" },
       { url: `${MOCD_URL}m_outer_cardigan`, name: "가디건" },
       { url: `${MOCD_URL}m_outer_winter-coat`, name: "겨울코트" },
@@ -141,7 +153,10 @@ export const MEN_FILTER: FilterItemType[] = [
   {
     name: M_SETUP,
     item: [
-      { url: `${MSUCD_URL}m_setup_all`, name: "전체" },
+      {
+        url: `${ROUTE_PATH_LIST}?&${ROUTE_PATH_CATEGORY_LARGE_CODE}=${M_SETUP}`,
+        name: "전체",
+      },
       { url: `${MSUCD_URL}m_setup_classic`, name: "클래식" },
       { url: `${MSUCD_URL}m_setup_casual`, name: "캐쥬얼" },
     ],
@@ -160,7 +175,10 @@ export const WOMEN_FILTER: FilterItemType[] = [
   {
     name: W_TOP,
     item: [
-      { url: `${WTCD_URL}w_top_all`, name: "전체" },
+      {
+        url: `${ROUTE_PATH_LIST}?${ROUTE_PATH_CATEGORY_LARGE_CODE}=${W_TOP}`,
+        name: "전체",
+      },
       { url: `${WTCD_URL}w_top_sweat`, name: "스웨트" },
       { url: `${WTCD_URL}w_top_long`, name: "긴팔티" },
       { url: `${WTCD_URL}w_top_short`, name: "반팔티" },
@@ -174,7 +192,10 @@ export const WOMEN_FILTER: FilterItemType[] = [
   {
     name: W_BOTTOM,
     item: [
-      { url: `${WBCD_URL}w_bottom_all`, name: "전체" },
+      {
+        url: `${ROUTE_PATH_LIST}?${ROUTE_PATH_CATEGORY_LARGE_CODE}=${W_BOTTOM}`,
+        name: "전체",
+      },
       { url: `${WBCD_URL}w_bottom_denim`, name: "데님" },
       { url: `${WBCD_URL}w_bottom_width`, name: "와이드" },
       { url: `${WBCD_URL}w_bottom_cotton`, name: "코튼" },
@@ -189,7 +210,10 @@ export const WOMEN_FILTER: FilterItemType[] = [
   {
     name: W_INNER,
     item: [
-      { url: `${WICD_URL}w_inner_all`, name: "전체" },
+      {
+        url: `${ROUTE_PATH_LIST}?${ROUTE_PATH_CATEGORY_LARGE_CODE}=${W_INNER}`,
+        name: "전체",
+      },
       { url: `${WICD_URL}w_inner_set`, name: "세트" },
       { url: `${WICD_URL}w_inner_underwear`, name: "팬티" },
       { url: `${WICD_URL}w_inner_bra`, name: "브라" },
@@ -198,28 +222,37 @@ export const WOMEN_FILTER: FilterItemType[] = [
   {
     name: W_ONE_PIECE,
     item: [
-      { url: `${WOPCD_URL}w_one_piece_all`, name: "전체" },
-      { url: `${WOPCD_URL}w_one_piece_long`, name: "롱" },
-      { url: `${WOPCD_URL}w_one_piece_mini`, name: "미니" },
-      { url: `${WOPCD_URL}w_one_piece_denim`, name: "데님" },
-      { url: `${WOPCD_URL}w_one_piece_jumpsuit`, name: "점프수트" },
+      {
+        url: `${ROUTE_PATH_LIST}?${ROUTE_PATH_CATEGORY_LARGE_CODE}=${W_ONE_PIECE}`,
+        name: "전체",
+      },
+      { url: `${WOPCD_URL}w_one-piece_long`, name: "롱" },
+      { url: `${WOPCD_URL}w_one-piece_mini`, name: "미니" },
+      { url: `${WOPCD_URL}w_one-piece_denim`, name: "데님" },
+      { url: `${WOPCD_URL}w_one-piece_jumpsuit`, name: "점프수트" },
     ],
   },
   {
     name: W_KNIT_INNER,
     item: [
-      { url: `${WKICD_URL}w_knit_inner_all`, name: "전체" },
-      { url: `${WKICD_URL}w_knit_inner_cardigan`, name: "가디건" },
-      { url: `${WKICD_URL}w_knit_inner_Crew-Neck`, name: "크루넥" },
-      { url: `${WKICD_URL}w_knit_inner_v-neck`, name: "브이넥" },
-      { url: `${WKICD_URL}w_knit_inner_turtleneck`, name: "테틀넥" },
-      { url: `${WKICD_URL}w_knit_inner_cashmere`, name: "캐시미어" },
+      {
+        url: `${ROUTE_PATH_LIST}?${ROUTE_PATH_CATEGORY_LARGE_CODE}=${W_KNIT_INNER}`,
+        name: "전체",
+      },
+      { url: `${WKICD_URL}w_knit-inner_cardigan`, name: "가디건" },
+      { url: `${WKICD_URL}w_knit-inner_Crew-Neck`, name: "크루넥" },
+      { url: `${WKICD_URL}w_knit-inner_v-neck`, name: "브이넥" },
+      { url: `${WKICD_URL}w_knit-inner_turtleneck`, name: "테틀넥" },
+      { url: `${WKICD_URL}w_knit-inner_cashmere`, name: "캐시미어" },
     ],
   },
   {
     name: W_SETUP,
     item: [
-      { url: `${WSUCD_URL}w_setup_all`, name: "전체" },
+      {
+        url: `${ROUTE_PATH_LIST}?${ROUTE_PATH_CATEGORY_LARGE_CODE}=${W_OUTER}`,
+        name: "전체",
+      },
       { url: `${WSUCD_URL}w_setup_classic`, name: "클래식" },
       { url: `${WSUCD_URL}W_setup_casual`, name: "캐쥬얼" },
     ],
@@ -227,7 +260,10 @@ export const WOMEN_FILTER: FilterItemType[] = [
   {
     name: W_OUTER,
     item: [
-      { url: `${WOCD_URL}w_outer_all`, name: "전체" },
+      {
+        url: `${ROUTE_PATH_LIST}?${ROUTE_PATH_CATEGORY_LARGE_CODE}=${W_SETUP}`,
+        name: "전체",
+      },
       { url: `${WOCD_URL}w_outer_coach`, name: "코치자켓" },
       { url: `${WOCD_URL}w_outer_cardigan`, name: "가디건" },
       { url: `${WOCD_URL}w_outer_winter-coat`, name: "겨울코트" },
@@ -245,7 +281,10 @@ export const WOMEN_FILTER: FilterItemType[] = [
   {
     name: W_SKIRT,
     item: [
-      { url: `${WSKCD_URL}w_skirt_all`, name: "전체" },
+      {
+        url: `${ROUTE_PATH_LIST}?${ROUTE_PATH_CATEGORY_LARGE_CODE}=${W_SKIRT}`,
+        name: "전체",
+      },
       { url: `${WSKCD_URL}w_skirt_mini`, name: "롱" },
       { url: `${WSKCD_URL}w_skirt_long`, name: "롱" },
       { url: `${WSKCD_URL}w_skirt_denim`, name: "데님" },

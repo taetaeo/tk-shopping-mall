@@ -5,23 +5,19 @@ import styled from "styled-components";
 import { GET_SELECTED_PRODUCT } from "../../../graphql";
 import { useInterSection } from "../../../hook";
 import { graphQLFetcher, QueryKeys } from "../../../service";
+import { Product } from "../../../types";
 import { Filter, SideFilter } from "../../common";
 import List from "./list";
 
-const all_new_options: any = ["m_new", "m_all", "w_all", "w_new"];
+const all_new_options: string[] = ["m_new", "m_all", "w_all", "w_new"];
 
-type Query = {
-  [key: string]: string | string[] | undefined;
-};
 type Props = {
-  query: Query;
-  products: any;
-
+  products: Product[];
   children?: ReactNode;
 };
 
 const ShopSection: FC<Props> = (props: Props): JSX.Element => {
-  const { query, products, children } = props;
+  const { products, children } = props;
 
   // query에 나오는 카테고리
   const {
@@ -31,17 +27,14 @@ const ShopSection: FC<Props> = (props: Props): JSX.Element => {
   const categoryLG = gender === "m" ? "men" : "women";
   const [, , categorySM] = String(category_medium_code).split("_");
 
-  const filterOptions = all_new_options.includes(category_large_code);
-  const LIST = String(category_large_code).split("_")[0];
+  const filterOptions = all_new_options.includes(String(category_large_code));
+
+  const [newProduct, setProducts] = useState<any>([products]);
 
   // 무한스크롤에 필요한 변수
   const fetchMoreRef = useRef<HTMLDivElement>(null);
   const intersecting = useInterSection(fetchMoreRef);
-
-  const [newProduct, setProducts] = useState([{ products }]);
-  const productsArray: ReactNode[] = [];
-
-  console.log(categoryLG, categoryMD, categorySM);
+  console.log("***********", categoryLG, categoryMD, categorySM);
 
   const queryFn = ({ pageParam = "" }) =>
     graphQLFetcher(GET_SELECTED_PRODUCT, {
@@ -51,8 +44,6 @@ const ShopSection: FC<Props> = (props: Props): JSX.Element => {
       category_sm: categorySM,
     });
   const queryOption = (lastPage, allPage) => {
-    console.log({ lastPage });
-    console.log({ allPage });
     return lastPage.selectedProducts.at(-1)?.id;
   };
   const {
@@ -63,11 +54,15 @@ const ShopSection: FC<Props> = (props: Props): JSX.Element => {
     isSuccess,
     isFetchingNextPage,
     status,
-  } = useInfiniteQuery(QueryKeys.products, queryFn, {
-    getNextPageParam: queryOption,
-  });
+  } = useInfiniteQuery(
+    [QueryKeys.products, categoryLG, categoryMD, categorySM],
+    queryFn,
+    {
+      getNextPageParam: queryOption,
+    }
+  );
 
-  // 화면 맨 마지막에 도달할 시,
+  // 화면 맨 마지막에 도달할 시, 다음 id값을 기준으로 데이터패칭
   useEffect(() => {
     if (!intersecting || !isSuccess || !hasNextPage || isFetchingNextPage) {
       return;
@@ -76,25 +71,28 @@ const ShopSection: FC<Props> = (props: Props): JSX.Element => {
   }, [intersecting]);
 
   useEffect(() => {
+    setProducts([products]);
+  }, [products]);
+  useEffect(() => {
     if (!data?.pages) return;
-    // const data.params = [{messages:[....]},{messages:[....]}] => [{messages:[....]}]
-    // const mergedMsgs = data.pages.flatMap((depth) => depth.messages);
     setProducts(data?.pages);
   }, [data?.pages]);
+
+  console.log("-----------2----------", newProduct);
 
   return (
     <Main>
       <LeftSection>
-        <SideFilter pathName={LIST} />
+        <SideFilter pathName={gender} />
       </LeftSection>
       <RightSection>
         {!!!filterOptions && (
-          <Filter list={LIST} category={category_large_code} />
+          <Filter list={gender} category={category_large_code} />
         )}
         <ProductsContainer>
           <List products={newProduct} />
-          <FetchMore ref={fetchMoreRef}></FetchMore>
         </ProductsContainer>
+        <FetchMore className="fetchMore" ref={fetchMoreRef}></FetchMore>
       </RightSection>
     </Main>
   );
@@ -130,6 +128,7 @@ const RightSection = styled.section`
 const ProductsContainer = styled.section`
   grid-area: "product";
   max-width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   row-gap: 5rem;
@@ -149,6 +148,6 @@ const ProductsContainer = styled.section`
 const FetchMore = styled.div`
   border-color: transparent;
   height: 1px;
-  margin-bottom: 1px;
   padding-bottom: 1px;
+  margin-bottom: 5rem;
 `;
