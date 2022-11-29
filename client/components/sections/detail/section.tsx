@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
-import InfoBox from "./infoBox";
+import Item from "./item";
 import BottomInfo from "./bottomInfo";
 
 import { Category } from "../../../types";
@@ -19,10 +19,11 @@ type Props = {
 const DetailSection: FC<any> = (props: any): JSX.Element => {
   const { id, brand, name, image_url, origin_price, discount, category } =
     props;
+
   return (
     <Main>
       <DetailContainer>
-        <InfoBox {...props} />
+        <Item {...props} />
         <BottomInfo />
       </DetailContainer>
     </Main>

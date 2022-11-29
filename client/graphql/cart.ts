@@ -23,8 +23,8 @@ export const GET_CARTS = gql`
   }
 `;
 export const ADD_CART = gql`
-  Mutation ADD_CART($id:ID!, $count:Int){
-    addCart(productId:$id, count:$count){
+  mutation ADD_CART($id: ID!, $count: Int) {
+    addCart(productId: $id, count: $count) {
       id
       amount
       product {
@@ -43,5 +43,4 @@ export const ADD_CART = gql`
       }
     }
   }
-
 `;

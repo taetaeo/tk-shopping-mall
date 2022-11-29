@@ -1,10 +1,14 @@
-import React, { FC, ReactNode } from "react";
-import { useRouter } from "next/router";
+import React, { FC, ReactNode, useState } from "react";
 import styled from "styled-components";
-import { ICONS_NAME } from "../../../utils/constants";
-import { Button, Select, Icons } from "../../base";
-import { Category, Product } from "../../../types";
+import { Select, Icons } from "../../base";
+
+import { useRouter } from "next/router";
+import { useMutation } from "react-query";
+import { ADD_CART } from "../../../graphql";
 import { graphQLFetcher } from "../../../service";
+
+import { Category, Product } from "../../../types";
+import { ICONS_NAME } from "../../../utils/constants";
 
 export type size = "default" | "sm" | "md" | "lg" | "xs";
 export type border =
@@ -22,13 +26,6 @@ export type variant =
   | "default_light";
 
 const { LIKE_EMPTY } = ICONS_NAME;
-
-type ButtonItemsType = {
-  name: string;
-  size: size;
-  variant: variant;
-  onClick: (event: React.MouseEvent<HTMLElement>) => void;
-};
 
 type LIST_TYPE = {
   value: string;
@@ -51,12 +48,22 @@ type Props = {
   category: Category;
 };
 
-const InfoBox: FC<Props> = (props: Props): JSX.Element => {
+const Item: FC<Props> = (props: Props): JSX.Element => {
   const { id, brand, name, image_url, origin_price, discount, category } =
     props;
   const router = useRouter();
-  // const mutationFn = (id: string) => graphQLFetcher(ADD_CART, { id });
-  // const { mutate: addCart } = useMutation(mutationFn);
+  const [count, setCount] = useState(1);
+
+  const mutationFn = ({ id, count }: { id: string; count: number }) =>
+    graphQLFetcher(ADD_CART, { id, count });
+  const { mutate: addCart } = useMutation(mutationFn);
+
+  const handleCart = async (id: string, count: number) => {
+    await confirm("선택하신 상품을 장바구니에 담으시겠습니까");
+    await addCart({ id, count });
+    router.push("/");
+    //router.push("/cart");
+  };
 
   const handleOrder = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -64,29 +71,15 @@ const InfoBox: FC<Props> = (props: Props): JSX.Element => {
     router.push("/mypage/orders");
   };
 
-  const handleCart = (event: React.MouseEvent<HTMLElement>) => {
-    event.preventDefault();
-    confirm("선택하신 상품을 장바구니에 담으시겠습니까");
-    router.push("/cart");
-  };
-
   const SIZE_LIST: LIST_TYPE[] = [
     { value: "사이즈1" },
     { value: "사이즈2" },
     { value: "사이즈3" },
-    { value: "사이즈4" },
-    { value: "사이즈5" },
-    { value: "사이즈6" },
-    { value: "사이즈7" },
   ];
   const COLOR_LIST: LIST_TYPE[] = [
     { value: "빨강" },
     { value: "초록" },
     { value: "주황" },
-    { value: "파랑" },
-    { value: "남색" },
-    { value: "보라색" },
-    { value: "노랑색" },
   ];
   const selectItems: SelectItemsType[] = [
     { children: SIZE_LIST, size: "md", disabled: false, border: "black_thick" },
@@ -95,20 +88,6 @@ const InfoBox: FC<Props> = (props: Props): JSX.Element => {
       size: "md",
       disabled: false,
       border: "black_thick",
-    },
-  ];
-  const buttonItems: ButtonItemsType[] = [
-    {
-      name: "장바구니 추가",
-      size: "lg",
-      variant: "default",
-      onClick: handleCart,
-    },
-    {
-      name: "바로 구매 하기",
-      size: "lg",
-      variant: "error",
-      onClick: handleOrder,
     },
   ];
 
@@ -155,16 +134,8 @@ const InfoBox: FC<Props> = (props: Props): JSX.Element => {
             ))}
           </SelectContainer>
           <ButtonContainer>
-            {buttonItems.map((item, index) => (
-              <Button
-                key={index}
-                disabled={false}
-                size={"lg"}
-                variant={item.variant}
-                onClick={item.onClick}
-                children={item.name}
-              />
-            ))}
+            <Button onClick={() => handleCart(id, count)}>장바구니 추가</Button>
+            <Button onClick={handleOrder}>바로 구매 하기</Button>
           </ButtonContainer>
         </RightInfo>
       </div>
@@ -172,7 +143,7 @@ const InfoBox: FC<Props> = (props: Props): JSX.Element => {
   );
 };
 
-export default InfoBox;
+export default Item;
 
 const Wrapper = styled.div`
   display: flex;
@@ -255,6 +226,12 @@ const SelectContainer = styled.div`
     margin-top: 1rem;
   }
 `;
+const Button = styled.button`
+  font-size: 1.4rem;
+  padding: 16px 20px;
+  border-radius: 12px;
+`;
+
 const ButtonContainer = styled.div`
   width: 100%;
   bottom: 0;
@@ -269,6 +246,7 @@ const ButtonContainer = styled.div`
     border-radius: 0;
     &:last-child {
       border: none;
+      color: #eaeaea;
       background-color: #000;
       box-shadow: 10px 10px 16px 0 rgb(0 0 0 / 30%);
       :hover {
@@ -299,20 +277,20 @@ const Title = styled.h1`
   justify-content: left;
 `;
 
-const Item = styled.span`
+const Inner = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 1rem;
   padding-top: 1rem;
 `;
-const Likes = styled(Item)``;
-const Price = styled(Item)`
+const Likes = styled(Inner)``;
+const Price = styled(Inner)`
   text-decoration: line-through;
   text-decoration-color: rgb(255, 0, 0);
   text-decoration-style: double;
   text-decoration-thickness: 2px;
 `;
-const Discount = styled(Item)``;
-const DiscountPrice = styled(Item)``;
-const OrderPrice = styled(Item)``;
+const Discount = styled(Inner)``;
+const DiscountPrice = styled(Inner)``;
+const OrderPrice = styled(Inner)``;

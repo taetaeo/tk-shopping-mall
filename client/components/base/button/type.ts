@@ -10,6 +10,7 @@ export type ButtonType = {
   children?: React.ReactNode;
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 };
+
 export type SizeType = {
   [x: string]: FlattenSimpleInterpolation;
   xs: FlattenSimpleInterpolation;
