@@ -13,6 +13,7 @@ import {
   where,
   query,
   limit,
+  startAfter,
 } from "firebase/firestore";
 
 const getJSON = () => readDB(DBField.PRODUCTS);
@@ -47,11 +48,12 @@ const productResolver: Resolver = {
     },
     selectedProducts: async (
       parent,
-      { category_lg, category_md = "", category_sm = "" }
+      { cursor = "", category_lg, category_md = "", category_sm = "" }
     ) => {
       const products = collection(db, "products");
       const queryOptions = [orderBy("createdAt", "desc")];
-      if (!category_md && !category_sm)
+
+      if ((!category_md && !category_sm) || category_sm === "all")
         queryOptions.unshift(where("category.category_lg", "==", category_lg));
       // category_lg에 따라 men or women 분리
       else if (category_lg && category_md && category_sm) {
@@ -62,6 +64,12 @@ const productResolver: Resolver = {
         queryOptions.unshift(where("category.category_md", "==", category_md)); // category_md에 따라 top, bottom, outer 등 분리
         queryOptions.unshift(where("category.category_lg", "==", category_lg)); // category_lg에 따라 men or women 분리
       }
+
+      if (cursor) {
+        const snapshot = await getDoc(doc(db, "products", cursor));
+        queryOptions.push(startAfter(snapshot));
+      }
+
       const q = query(products, ...queryOptions, limit(PAGE_SIZE));
       const querySnapshot = await getDocs(q);
       const data: DocumentData[] = [];

@@ -1,5 +1,10 @@
-import React, { Children, FC, ReactNode } from "react";
+import { useRouter } from "next/router";
+import React, { FC, ReactNode, useEffect, useRef, useState } from "react";
+import { useInfiniteQuery } from "react-query";
 import styled from "styled-components";
+import { GET_SELECTED_PRODUCT } from "../../../graphql";
+import { useInterSection } from "../../../hook";
+import { graphQLFetcher, QueryKeys } from "../../../service";
 import { Filter, SideFilter } from "../../common";
 import List from "./list";
 
@@ -11,15 +16,71 @@ type Query = {
 type Props = {
   query: Query;
   products: any;
+
   children?: ReactNode;
 };
 
 const ShopSection: FC<Props> = (props: Props): JSX.Element => {
   const { query, products, children } = props;
-  const { category_large_code } = query;
+
+  // query에 나오는 카테고리
+  const {
+    query: { category_large_code, category_medium_code },
+  } = useRouter();
+  const [gender, categoryMD] = String(category_large_code).split("_");
+  const categoryLG = gender === "m" ? "men" : "women";
+  const [, , categorySM] = String(category_medium_code).split("_");
+
   const filterOptions = all_new_options.includes(category_large_code);
   const LIST = String(category_large_code).split("_")[0];
-  // console.log("filterOptions", filterOptions);
+
+  // 무한스크롤에 필요한 변수
+  const fetchMoreRef = useRef<HTMLDivElement>(null);
+  const intersecting = useInterSection(fetchMoreRef);
+
+  const [newProduct, setProducts] = useState([{ products }]);
+  const productsArray: ReactNode[] = [];
+
+  console.log(categoryLG, categoryMD, categorySM);
+
+  const queryFn = ({ pageParam = "" }) =>
+    graphQLFetcher(GET_SELECTED_PRODUCT, {
+      cursor: pageParam,
+      category_lg: categoryLG,
+      category_md: categoryMD,
+      category_sm: categorySM,
+    });
+  const queryOption = (lastPage, allPage) => {
+    console.log({ lastPage });
+    console.log({ allPage });
+    return lastPage.selectedProducts.at(-1)?.id;
+  };
+  const {
+    data,
+    error,
+    fetchNextPage,
+    hasNextPage,
+    isSuccess,
+    isFetchingNextPage,
+    status,
+  } = useInfiniteQuery(QueryKeys.products, queryFn, {
+    getNextPageParam: queryOption,
+  });
+
+  // 화면 맨 마지막에 도달할 시,
+  useEffect(() => {
+    if (!intersecting || !isSuccess || !hasNextPage || isFetchingNextPage) {
+      return;
+    }
+    fetchNextPage();
+  }, [intersecting]);
+
+  useEffect(() => {
+    if (!data?.pages) return;
+    // const data.params = [{messages:[....]},{messages:[....]}] => [{messages:[....]}]
+    // const mergedMsgs = data.pages.flatMap((depth) => depth.messages);
+    setProducts(data?.pages);
+  }, [data?.pages]);
 
   return (
     <Main>
@@ -31,7 +92,8 @@ const ShopSection: FC<Props> = (props: Props): JSX.Element => {
           <Filter list={LIST} category={category_large_code} />
         )}
         <ProductsContainer>
-          <List products={products} />
+          <List products={newProduct} />
+          <FetchMore ref={fetchMoreRef}></FetchMore>
         </ProductsContainer>
       </RightSection>
     </Main>
@@ -83,4 +145,10 @@ const ProductsContainer = styled.section`
   /* @media screen and (minwidth: 2000px) {
     grid-template-columns: repeat(6, 1fr);
   } */
+`;
+const FetchMore = styled.div`
+  border-color: transparent;
+  height: 1px;
+  margin-bottom: 1px;
+  padding-bottom: 1px;
 `;

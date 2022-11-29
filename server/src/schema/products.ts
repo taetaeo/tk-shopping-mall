@@ -30,8 +30,10 @@ const productSchema = gql`
     product(id: ID!): Product!
     """
     category_lg / category_md / category_sm 코드에 따라서, 상품 상세 목록들 쿼리 요청
+    cursor 값은 마지막번쨰의 아이디
     """
     selectedProducts(
+      cursor: ID
       category_lg: String!
       category_md: String
       category_sm: String

@@ -4,9 +4,6 @@ import schema from "./schema";
 import resolvers from "./resolvers";
 import { DBField, readDB } from "./dbController";
 
-const ENDPOINT = "http://localhost:3000";
-const APOLLO_STUDIO = "https://studio.apollographql.com";
-
 (async () => {
   const server = new ApolloServer({
     typeDefs: schema,

@@ -1,5 +1,22 @@
 [
   {
+    "id": "CSNyKzBT41OQFERygKEV",
+    "image_url": "https://firebasestorage.googleapis.com/v0/b/tkshop-285ec.appspot.com/o/products%2Fmen%2Ftop%2Flong%2F00014.jpg?alt=media",
+    "origin_price": 73000,
+    "createdAt": {
+      "seconds": 1669680222,
+      "nanoseconds": 50000000
+    },
+    "brand": "챈스챈스",
+    "name": "CEC MTM(Oatmeal/기모)",
+    "category": {
+      "category_lg": "men",
+      "category_md": "top",
+      "category_sm": "long"
+    },
+    "discount": 15
+  },
+  {
     "id": "7GqFrK8EvrMOsDB5GniY",
     "discount": 15,
     "image_url": "https://firebasestorage.googleapis.com/v0/b/tkshop-285ec.appspot.com/o/products%2Fmen%2Ftop%2Flong%2F00013.jpg?alt=media",

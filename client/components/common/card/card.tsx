@@ -9,7 +9,7 @@ import { SIZES, DIRECTION } from "./options";
 import { ROUTE_PATH } from "../../../utils/constants";
 
 type CardType = {
-  id: number;
+  id: string;
   size: "sm" | "md" | "lg";
   direction: "column" | "row";
   brand: string;

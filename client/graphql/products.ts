@@ -42,11 +42,13 @@ export const GET_SELECTED_PRODUCT = gql`
     $category_lg: String!
     $category_md: String
     $category_sm: String
+    $cursor: ID
   ) {
     selectedProducts(
       category_lg: $category_lg
       category_md: $category_md
       category_sm: $category_sm
+      cursor: $cursor
     ) {
       id
       brand
