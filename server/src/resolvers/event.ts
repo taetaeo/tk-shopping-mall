@@ -31,7 +31,6 @@ const eventResolver: Resolver = {
           ...d,
         });
       });
-      console.log("data", data);
       return data;
     },
     event: async (parent, { id }) => {

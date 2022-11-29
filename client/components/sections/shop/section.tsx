@@ -34,7 +34,6 @@ const ShopSection: FC<Props> = (props: Props): JSX.Element => {
   // 무한스크롤에 필요한 변수
   const fetchMoreRef = useRef<HTMLDivElement>(null);
   const intersecting = useInterSection(fetchMoreRef);
-  console.log("***********", categoryLG, categoryMD, categorySM);
 
   const queryFn = ({ pageParam = "" }) =>
     graphQLFetcher(GET_SELECTED_PRODUCT, {
@@ -77,8 +76,6 @@ const ShopSection: FC<Props> = (props: Props): JSX.Element => {
     if (!data?.pages) return;
     setProducts(data?.pages);
   }, [data?.pages]);
-
-  console.log("-----------2----------", newProduct);
 
   return (
     <Main>

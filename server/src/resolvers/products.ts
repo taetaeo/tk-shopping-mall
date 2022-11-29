@@ -55,7 +55,6 @@ const productResolver: Resolver = {
 
       // category_sm에 따라 분리
       if (category_sm && category_md && category_lg) {
-        console.log("---pass---");
         queryOptions.unshift(where("category.category_sm", "==", category_sm)); // category_sm에 따라 long, short 등 분리
         queryOptions.unshift(where("category.category_md", "==", category_md)); // category_md에 따라 top, bottom, outer 등 분리
         queryOptions.unshift(where("category.category_lg", "==", category_lg)); // category_lg에 따라 men or women 분리
@@ -66,7 +65,7 @@ const productResolver: Resolver = {
         queryOptions.unshift(where("category.category_lg", "==", category_lg)); // category_lg에 따라 men or women 분리
       }
       // category_lg에 따라 men or women 분리
-      if (category_md === "all" && category_md === "new") {
+      if (category_md === "all" || category_md === "new") {
         queryOptions.unshift(where("category.category_lg", "==", category_lg));
       }
 

@@ -23,7 +23,6 @@ const List: NextPage = ({ products, categoryLG = "" }: Props): JSX.Element => {
   [, , code] = String(category_medium_code).split("_");
 
   useEffect(() => {}, [products]);
-  console.log("-----------1----------", products);
   return (
     <>
       <Head title={`${seoTitle} | 감성적인 의류 쇼핑몰 CAFFEINE`} />
@@ -51,7 +50,6 @@ export const getServerSideProps = async (
     products = await graphQLFetcher(GET_SELECTED_PRODUCT, {
       category_lg: categoryLG,
     });
-    console.log("ssr", categoryLG);
   }
   if (!(categoryMD === "all") && !(categoryMD === "new")) {
     products = await graphQLFetcher(GET_SELECTED_PRODUCT, {
@@ -71,14 +69,6 @@ export const getServerSideProps = async (
     };
   }
 
-  console.log(
-    "categoryLG",
-    categoryLG,
-    "categoryMD",
-    categoryMD,
-    "categorySM",
-    categorySM
-  );
   return {
     props: {
       products,
