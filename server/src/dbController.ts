@@ -4,6 +4,7 @@ import { resolve } from "path";
 export enum DBField {
   EVENT = "events",
   PRODUCTS = "products",
+  CART = "cart",
 }
 
 const basePath = resolve(); // __dirname
@@ -11,6 +12,7 @@ const basePath = resolve(); // __dirname
 const fileNames = {
   [DBField.EVENT]: resolve(basePath, "./src/db/events.json"),
   [DBField.PRODUCTS]: resolve(basePath, "./src/db/products.json"),
+  [DBField.CART]: resolve(basePath, "./src/db/cart.json"),
 };
 
 export const readDB = (target: DBField) => {

@@ -8,6 +8,7 @@ export type Resolver = {
         db: {
           events: Events;
           products: Products;
+          cart: Cart;
         };
       },
       info: any
@@ -39,3 +40,10 @@ export type Product = {
   createdAt?: number;
 };
 export type Products = Product[];
+
+export type CartItem = {
+  id: string;
+  amount: number;
+  product?: Product;
+};
+export type Cart = CartItem[];

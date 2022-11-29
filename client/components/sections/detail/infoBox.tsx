@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { ICONS_NAME } from "../../../utils/constants";
 import { Button, Select, Icons } from "../../base";
 import { Category, Product } from "../../../types";
+import { graphQLFetcher } from "../../../service";
 
 export type size = "default" | "sm" | "md" | "lg" | "xs";
 export type border =
@@ -54,6 +55,8 @@ const InfoBox: FC<Props> = (props: Props): JSX.Element => {
   const { id, brand, name, image_url, origin_price, discount, category } =
     props;
   const router = useRouter();
+  // const mutationFn = (id: string) => graphQLFetcher(ADD_CART, { id });
+  // const { mutate: addCart } = useMutation(mutationFn);
 
   const handleOrder = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -224,7 +227,7 @@ const PriceContainer = styled.div`
   display: flex;
   flex-direction: row;
   color: #74747b;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 400;
   margin-top: 2rem;
   padding-bottom: 1rem;
