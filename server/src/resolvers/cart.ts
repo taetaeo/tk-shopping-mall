@@ -22,7 +22,6 @@ const setJSON = (data: Cart) => writeDB(DBField.CART, data);
 const cartResolver: Resolver = {
   CartItem: {
     product: async (cartItem, args) => {
-      console.log("-==========================", cartItem);
       const querySnapshot = await getDoc(cartItem.product);
       const data = querySnapshot.data() as any;
 
@@ -51,7 +50,7 @@ const cartResolver: Resolver = {
     },
   },
   Mutation: {
-    addCart: async (parent, { productId }) => {
+    addCart: async (parent, { productId, count = 1 }) => {
       if (!productId) throw Error("상품 아이디가 없습니다.");
       const productRef = doc(db, "products", productId);
       const cartCollection = collection(db, "cart");
@@ -65,12 +64,12 @@ const cartResolver: Resolver = {
         // 기존에 있는 것
         cartRef = doc(db, "cart", exist.id);
         await updateDoc(cartRef, {
-          amount: increment(1),
+          amount: increment(count),
         });
       } else {
         // 새로 추가된 것
         cartRef = await addDoc(cartCollection, {
-          amount: 1,
+          amount: count,
           product: productRef,
         });
       }
