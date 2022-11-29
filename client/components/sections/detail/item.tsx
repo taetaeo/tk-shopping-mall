@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useState } from "react";
+import React, { FC, ReactNode, SyntheticEvent, useState } from "react";
 import styled from "styled-components";
 import { Select, Icons } from "../../base";
 
@@ -9,6 +9,7 @@ import { graphQLFetcher } from "../../../service";
 
 import { Category, Product } from "../../../types";
 import { ICONS_NAME } from "../../../utils/constants";
+import { stringToNumber } from "../../../utils/helpers";
 
 export type size = "default" | "sm" | "md" | "lg" | "xs";
 export type border =
@@ -47,7 +48,7 @@ type Props = {
   origin_price: number;
   category: Category;
 };
-
+const ORDER_PRICE = 2500;
 const Item: FC<Props> = (props: Props): JSX.Element => {
   const { id, brand, name, image_url, origin_price, discount, category } =
     props;
@@ -61,6 +62,7 @@ const Item: FC<Props> = (props: Props): JSX.Element => {
   const handleCart = async (id: string, count: number) => {
     await confirm("선택하신 상품을 장바구니에 담으시겠습니까");
     await addCart({ id, count });
+    setCount(1);
     router.push("/");
     //router.push("/cart");
   };
@@ -69,6 +71,14 @@ const Item: FC<Props> = (props: Props): JSX.Element => {
     event.preventDefault();
     confirm("선택하신 상품을 바로 주문하시겠습니까");
     router.push("/mypage/orders");
+  };
+
+  // Handle Functions
+  const handleUpdateAmount = (event: SyntheticEvent) => {
+    const value = (event.target as HTMLInputElement).value;
+    const amount = stringToNumber(value) || 0;
+    if (amount < 1) return;
+    setCount(amount);
   };
 
   const SIZE_LIST: LIST_TYPE[] = [
@@ -116,11 +126,11 @@ const Item: FC<Props> = (props: Props): JSX.Element => {
             <Price>{origin_price} 원</Price>
             <Discount>{discount}%</Discount>
             <DiscountPrice>
-              {origin_price * (discount % 100) || 0} 원
+              {origin_price - origin_price * (discount / 100) || 0} 원
             </DiscountPrice>
           </PriceContainer>
           <OrderPriceContainer>
-            <OrderPrice>{`배송비 : 2500 원`}</OrderPrice>
+            <OrderPrice>{`배송비 : ${ORDER_PRICE} 원`}</OrderPrice>
           </OrderPriceContainer>
           <SelectContainer>
             {selectItems.map((item, index) => (
@@ -132,6 +142,19 @@ const Item: FC<Props> = (props: Props): JSX.Element => {
                 size={"lg"}
               />
             ))}
+            <UpdateInput
+              type="number"
+              min={1}
+              value={count}
+              onChange={handleUpdateAmount}
+            />
+            <TotalPrice>
+              <h1>
+                총 상품 금액 :
+                {(origin_price - origin_price * (discount / 100)) * count +
+                  ORDER_PRICE || 0}
+              </h1>
+            </TotalPrice>
           </SelectContainer>
           <ButtonContainer>
             <Button onClick={() => handleCart(id, count)}>장바구니 추가</Button>
@@ -231,7 +254,24 @@ const Button = styled.button`
   padding: 16px 20px;
   border-radius: 12px;
 `;
-
+const UpdateInput = styled.input`
+  width: 600px;
+  height: 20px;
+  margin-top: 1rem;
+  background-color: #fff;
+  font-size: 1.2rem;
+  margin-inline: 1rem;
+  padding: 2rem;
+  border: 1px solid #000;
+  border-radius: 12px;
+`;
+const TotalPrice = styled.div`
+  width: 100%;
+  font-size: 2rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: right;
+`;
 const ButtonContainer = styled.div`
   width: 100%;
   bottom: 0;
