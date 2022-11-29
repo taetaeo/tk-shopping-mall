@@ -1,27 +1,57 @@
-import type { NextPage } from "next";
-import { useRouter } from "next/router";
+import type {
+  NextPage,
+  GetStaticProps,
+  InferGetStaticPropsType,
+  GetServerSidePropsContext,
+} from "next";
+import { Head } from "../../components/base";
 import { DetailSection } from "../../components/sections";
+import { GET_PRODUCT } from "../../graphql";
+import { graphQLFetcher } from "../../service";
 
-const Detail: NextPage = () => {
-  const router = useRouter();
-  const { id } = router.query;
-
-  const URL =
-    "https://img.29cm.co.kr/next-product/2022/09/20/951c7e7f1eba4b07827b19e868c617f6_20220920113201.jpg?width=500";
-  const TITLE = `임시 상품 - ${id}`;
-  const PRICE = 50000;
-  const DISCOUNT = 8;
-  const ORDER = 2500;
+const Detail: NextPage = ({
+  product,
+}: InferGetStaticPropsType<typeof getServerSideProps>) => {
+  const {
+    product: {
+      id,
+      brand,
+      name,
+      image_url,
+      origin_price,
+      discount,
+      createdAt,
+      category,
+    },
+  } = product;
 
   return (
-    <DetailSection
-      id={id!}
-      title={TITLE}
-      image_url={URL}
-      discount={DISCOUNT}
-      price={PRICE}
-      order={ORDER}
-    />
+    <>
+      <Head title={brand} />
+      <DetailSection
+        id={id}
+        brand={brand}
+        name={name}
+        image_url={image_url}
+        discount={discount}
+        origin_price={origin_price}
+        category={category}
+      />
+    </>
   );
 };
 export default Detail;
+
+export const getServerSideProps: GetStaticProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const id = context.params.id;
+  const product = await graphQLFetcher(GET_PRODUCT, {
+    id,
+  });
+  return {
+    props: {
+      product,
+    },
+  };
+};

@@ -1,0 +1,1 @@
+export { detailIdAtoms } from "./atoms";

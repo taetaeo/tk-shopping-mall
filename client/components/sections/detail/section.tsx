@@ -1,30 +1,28 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
-import TopInfo from "./topInfo";
+import InfoBox from "./infoBox";
 import BottomInfo from "./bottomInfo";
 
-import { Product } from "../../../types";
+import { Category } from "../../../types";
 
 type Props = {
-  product: Product;
+  id: string;
+  brand: string;
+  name: string;
+  image_url: string;
+  discount: number;
+  origin_price: number;
+  category: Category;
 };
 
 const DetailSection: FC<any> = (props: any): JSX.Element => {
-  const {
-    id,
-    brand,
-    name,
-    image_url,
-    origin_price,
-    discount,
-    category,
-    createdAt,
-  } = props;
+  const { id, brand, name, image_url, origin_price, discount, category } =
+    props;
   return (
     <Main>
       <DetailContainer>
-        <TopInfo {...props} />
+        <InfoBox {...props} />
         <BottomInfo />
       </DetailContainer>
     </Main>

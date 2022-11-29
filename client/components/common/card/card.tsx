@@ -1,12 +1,9 @@
-import Link from "next/link";
 import React, { FC } from "react";
 import styled, { FlattenSimpleInterpolation } from "styled-components";
 
 import CardBody from "./cardBody";
 import CardInfo from "./cardInfo";
 import { SIZES, DIRECTION } from "./options";
-
-import { ROUTE_PATH } from "../../../utils/constants";
 
 type CardType = {
   id: string;
@@ -20,7 +17,6 @@ type CardType = {
   children?: React.ReactNode;
 };
 
-const { ROUTE_PATH_DETAIL } = ROUTE_PATH;
 const Card: FC<CardType> = (props: CardType): JSX.Element => {
   const {
     id,
@@ -35,24 +31,16 @@ const Card: FC<CardType> = (props: CardType): JSX.Element => {
   } = props;
   const sizeStyle = SIZES[size];
   const directionStyle = DIRECTION[direction];
+
   return (
     <StyledCard sizeStyle={sizeStyle} directionStyle={directionStyle}>
-      <DetailLink href={`${ROUTE_PATH_DETAIL}/${id}`} legacyBehavior>
-        <a>
-          <CardBody sizeStyle={sizeStyle} image_url={image_url} />
-        </a>
-      </DetailLink>
+      <CardBody sizeStyle={sizeStyle} image_url={image_url} id={id} />
       <CardInfo title={title} price={price} discount={discount} brand={brand} />
     </StyledCard>
   );
 };
 export default Card;
 
-const DetailLink = styled(Link)`
-  text-decoration: none;
-  display: block;
-  margin-inline: 0.5rem;
-`;
 const StyledCard = styled.div<{
   sizeStyle: FlattenSimpleInterpolation;
   directionStyle: FlattenSimpleInterpolation;

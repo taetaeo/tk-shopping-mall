@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
-import { GetServerSidePropsContext, NextPage } from "next";
+import {
+  GetServerSidePropsContext,
+  InferGetStaticPropsType,
+  NextPage,
+} from "next";
 import { useRouter } from "next/router";
 
 import NotFound from "../../../404";
@@ -15,7 +19,10 @@ type Props = {
   categorySM?: string | undefined;
 };
 
-const List: NextPage = ({ products, categoryLG = "" }: Props): JSX.Element => {
+const List: NextPage = ({
+  products,
+  categoryLG = "",
+}: InferGetStaticPropsType<typeof getServerSideProps>): JSX.Element => {
   let code;
   const seoTitle = categoryLG === "men" ? "남성의류" : "여성의류";
   const router = useRouter();
@@ -25,7 +32,7 @@ const List: NextPage = ({ products, categoryLG = "" }: Props): JSX.Element => {
   useEffect(() => {}, [products]);
   return (
     <>
-      <Head title={`${seoTitle} | 감성적인 의류 쇼핑몰 CAFFEINE`} />
+      <Head title={seoTitle} />
       <ShopSection products={products} />
     </>
   );

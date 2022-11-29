@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { ICONS_ITEMS_TYPE, IconType } from "../../../types/ui/icon";
 
 import { HiShoppingBag } from "react-icons/hi";
 import { RiLoginBoxFill } from "react-icons/ri";
@@ -9,6 +8,22 @@ import { BiCommentDetail } from "react-icons/bi";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+
+type IconType = {
+  name: string;
+  size: string;
+  color?: string;
+};
+type ICONS_ITEMS_TYPE = {
+  [x: string]: JSX.Element;
+  SHOPPING_BAG: JSX.Element;
+  LOGIN_BOX: JSX.Element;
+  LIKE_EMPTY: JSX.Element;
+  LIKE_FILL: JSX.Element;
+  LIKE_COLOR: JSX.Element;
+  USER: JSX.Element;
+  COMMENT: JSX.Element;
+};
 
 const Icons: FC<IconType> = (props: IconType): JSX.Element => {
   const { size, name, color } = props;

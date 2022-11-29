@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import { ICONS_NAME } from "../../../utils/constants";
 import { Button, Select, Icons } from "../../base";
-import { Product } from "../../../types";
+import { Category, Product } from "../../../types";
 
 export type size = "default" | "sm" | "md" | "lg" | "xs";
 export type border =
@@ -41,11 +41,18 @@ type SelectItemsType = {
 };
 
 type Props = {
-  product: Product;
+  id: string;
+  brand: string;
+  name: string;
+  image_url: string;
+  discount: number;
+  origin_price: number;
+  category: Category;
 };
 
-const TopInfo: FC<any> = (props: any): JSX.Element => {
-  const { id, title, image_url, discount, price, order } = props;
+const InfoBox: FC<Props> = (props: Props): JSX.Element => {
+  const { id, brand, name, image_url, origin_price, discount, category } =
+    props;
   const router = useRouter();
 
   const handleOrder = (event: React.MouseEvent<HTMLElement>) => {
@@ -104,65 +111,103 @@ const TopInfo: FC<any> = (props: any): JSX.Element => {
 
   return (
     <Wrapper>
-      <LeftInfo>
-        <Image src={image_url} alt={`상품의 이미지 - ${id}`} />
-      </LeftInfo>
-      <RightInfo>
-        <TitleContainer>
-          <Title>{title}</Title>
-          <FunctionContainer>
-            <Likes>{Icons({ size: "30", name: LIKE_EMPTY })}</Likes>
-          </FunctionContainer>
-        </TitleContainer>
-        <PriceContainer>
-          <Price>{price} 원</Price>
-          <Discount>{discount}%</Discount>
-          <DiscountPrice>{price * (discount % 100) || 0} 원</DiscountPrice>
-        </PriceContainer>
-        <OrderPriceContainer>
-          <OrderPrice>{`배송비 : ${order}`}</OrderPrice>
-        </OrderPriceContainer>
-        <SelectContainer>
-          {selectItems.map((item, index) => (
-            <Select
-              key={index}
-              children={item.children}
-              disabled={false}
-              border={item.border}
-              size={"lg"}
-            />
-          ))}
-        </SelectContainer>
-        <ButtonContainer>
-          {buttonItems.map((item, index) => (
-            <Button
-              key={index}
-              disabled={false}
-              size={"lg"}
-              variant={item.variant}
-              onClick={item.onClick}
-              children={item.name}
-            />
-          ))}
-        </ButtonContainer>
-      </RightInfo>
+      <TopInfo>
+        <Brand>{brand}</Brand>
+        <CategoryBox>
+          <Cate>{category.category_lg}</Cate>
+          <Cate>{category.category_md}</Cate>
+          <Cate>{category.category_sm}</Cate>
+        </CategoryBox>
+      </TopInfo>
+      <div style={{ display: "flex" }}>
+        <LeftInfo>
+          <Image src={image_url} alt={`상품의 이미지 - ${id}`} />
+        </LeftInfo>
+        <RightInfo>
+          <TitleContainer>
+            <Title>{name}</Title>
+            <FunctionContainer>
+              <Likes>{Icons({ size: "30", name: LIKE_EMPTY })}</Likes>
+            </FunctionContainer>
+          </TitleContainer>
+          <PriceContainer>
+            <Price>{origin_price} 원</Price>
+            <Discount>{discount}%</Discount>
+            <DiscountPrice>
+              {origin_price * (discount % 100) || 0} 원
+            </DiscountPrice>
+          </PriceContainer>
+          <OrderPriceContainer>
+            <OrderPrice>{`배송비 : 2500 원`}</OrderPrice>
+          </OrderPriceContainer>
+          <SelectContainer>
+            {selectItems.map((item, index) => (
+              <Select
+                key={index}
+                children={item.children}
+                disabled={false}
+                border={item.border}
+                size={"lg"}
+              />
+            ))}
+          </SelectContainer>
+          <ButtonContainer>
+            {buttonItems.map((item, index) => (
+              <Button
+                key={index}
+                disabled={false}
+                size={"lg"}
+                variant={item.variant}
+                onClick={item.onClick}
+                children={item.name}
+              />
+            ))}
+          </ButtonContainer>
+        </RightInfo>
+      </div>
     </Wrapper>
   );
 };
 
-export default TopInfo;
+export default InfoBox;
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
 `;
+
 const Info = styled.div`
   width: 50%;
   height: 600px;
   padding: 1.5rem;
 `;
+const TopInfo = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  justify-content: space-between;
+`;
+
+const Brand = styled.h1`
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+`;
+const CategoryBox = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const Cate = styled.li`
+  margin-inline: 1rem;
+  font-size: 2rem;
+`;
 const LeftInfo = styled(Info)``;
 const RightInfo = styled(Info)`
-  height: 100%;
+  height: 600px;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -198,6 +243,7 @@ const OrderPriceContainer = styled.div`
 const SelectContainer = styled.div`
   width: 100%;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -208,9 +254,11 @@ const SelectContainer = styled.div`
 `;
 const ButtonContainer = styled.div`
   width: 100%;
+  bottom: 0;
   display: flex;
+  flex: 1;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   margin-top: 3rem;
   button {
     width: 100%;
@@ -239,9 +287,13 @@ const TitleContainer = styled.div`
 `;
 const Title = styled.h1`
   width: 100%;
+  height: 80px;
   color: #292a32;
   font-size: 2rem;
   font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: left;
 `;
 
 const Item = styled.span`

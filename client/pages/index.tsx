@@ -1,42 +1,36 @@
 import React from "react";
-import { useQuery } from "react-query";
 import type {
   NextPage,
-  GetServerSideProps,
-  GetServerSidePropsContext,
+  GetStaticProps,
+  GetStaticPropsContext,
+  InferGetStaticPropsType,
 } from "next";
 
 import Head from "../components/base/head";
 import HomeSection from "../components/sections/home";
+
 import { graphQLFetcher } from "../service";
 import { GET_EVENTS } from "../graphql";
 
-const Home: NextPage = ({ events }: any) => {
+const Home: NextPage = ({
+  events,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
-      <Head title={"감성적인 의류 쇼핑몰 CAFFEINE"} />
+      <Head title={""} />
       {/* <HomeSection mainEvent={undefined} normalEvent={undefined} /> */}
     </>
   );
 };
 export default Home;
 
-export const getServerSideProps: GetServerSideProps = async (
-  context: GetServerSidePropsContext
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
 ) => {
-  // const QueryFn = () => graphQLFetcher(GET_EVENTS);
-  // const { data: products } = await useQuery(QueryKeys.products, QueryFn, {
-  //   cacheTime: 0,
-  //   staleTime: 1000,
-  // });
-
-  // const [{ events }, { products }] = await Promise.all([
-  //   graphQLFetcher(GET_EVENTS),
-  //   graphQLFetcher(GET_PRODUCTS),
-  // ]);
-
-  const events = await graphQLFetcher(GET_EVENTS);
+  const event = await graphQLFetcher(GET_EVENTS);
   return {
-    props: { events },
+    props: {
+      event,
+    },
   };
 };
