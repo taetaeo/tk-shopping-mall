@@ -12,7 +12,7 @@ import { Cart } from "../../../types";
 type Props = {
   cartItems: Cart[];
 };
-const title = "장바구니";
+const title = "나의 쇼핑목록";
 const CartList = ({ cartItems }: Props): JSX.Element => {
   const formRef = useRef<HTMLFormElement>(null);
   const handleAmount = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -72,7 +72,9 @@ const Header = styled.ul`
   margin-bottom: 0.5rem;
 `;
 
-const TableItem = styled.h3``;
+const TableItem = styled.h3`
+  font-size: 2.2rem;
+`;
 
 const List = styled.ul`
   width: 100%;
@@ -81,7 +83,8 @@ const List = styled.ul`
 `;
 
 const TotalCheckBox = styled.input`
-  width: 100%;
+  width: 13px;
+  margin: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -144,7 +144,6 @@ const CartItem = ({
             <DisCount>- {discount} %</DisCount>
             <CalculatedPrice>{discountedPrice}</CalculatedPrice>
           </PriceContainer>
-          <ItemInfoColumn>배송비 : {ORDER_PRICE}</ItemInfoColumn>
         </Right>
       </ItemInfo>
 
@@ -160,11 +159,9 @@ const CartItem = ({
           />
         )}
       </AmountInfo>
-
       <PriceInfo>
-        <TotalPrice>{discountedPrice * amount + ORDER_PRICE}</TotalPrice>
+        <TotalPrice>{discountedPrice * amount}</TotalPrice>
       </PriceInfo>
-
       <DeleteContainer>
         <Button
           disabled={false}
@@ -206,11 +203,11 @@ const PriceContainer = styled.div`
 `;
 const BrandName = styled(ItemInfoColumn)`
   color: #000;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 700;
 `;
 const ProductName = styled(ItemInfoColumn)`
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 500;
 `;
 const OriginPrice = styled(ItemInfoColumn)`

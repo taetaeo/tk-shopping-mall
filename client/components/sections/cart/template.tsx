@@ -3,9 +3,11 @@ import styled from "styled-components";
 export const Left = styled.div`
   min-width: 30%;
   display: flex;
+  box-sizing: border-box;
 `;
 export const Right = styled.div`
   min-width: 70%;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
 `;
@@ -44,12 +46,18 @@ export const CheckboxSection = styled.div`
 export const ItemInfo = styled(ItemSection)`
   padding: 0.5rem;
   border: 1px solid rgb(228, 228, 228);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const AmountInfo = styled(AmountSection)`
   padding: 0.5rem;
   justify-content: center;
   align-items: center;
   border: 1px solid rgb(228, 228, 228);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 export const PriceInfo = styled(PriceSection)`
   min-width: 10%;
