@@ -3,7 +3,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { getClient, graphQLFetcher, QueryKeys } from "../../../service";
 import { useMutation } from "react-query";
-import { UPDATE_CART } from "../../../graphql/cart";
+import { DELETE_CART, UPDATE_CART } from "../../../graphql/cart";
 
 import { AmountInfo, ItemInfo, Left, PriceInfo, Right } from "./template";
 import { Button } from "../../base";
@@ -35,8 +35,11 @@ const CartItem = ({
   // 1.Update - 1) Mutate Fn
   const updateMutationFn = ({ id, amount }: Omit<Cart, "product">) =>
     graphQLFetcher(UPDATE_CART, { id, amount });
+  // 2.Delete - 2) Mutate Fn
+  const deleteMutationFn = ({ id }: Omit<Cart, "amount" | "product">) =>
+    graphQLFetcher(DELETE_CART, { id });
 
-  // Mutate Options
+  // Mutate Options 1. Update / 2. delete
   // 1. Update - 1) onMutation Options
   const updateOnMutateOptions = async ({ id, amount }) => {
     await queryClients.cancelQueries(QueryKeys.cart);
@@ -77,18 +80,34 @@ const CartItem = ({
       queryClients.setQueryData(QueryKeys.cart, context);
     }
   };
+  // 2. Delete - 1) onSuccess Options
+  const deleteOnSuccessOptions = () => {
+    queryClients.invalidateQueries(QueryKeys.cart, {
+      exact: false,
+      refetchInactive: true,
+    });
+  };
 
+  // useMutation
   const { mutate: updateCart } = useMutation(updateMutationFn, {
     onMutate: updateOnMutateOptions,
     onSuccess: updateOnSuccessOptions,
     onError: updateOnErrorOptions,
   });
+  const { mutate: deleteCart } = useMutation(deleteMutationFn, {
+    onSuccess: deleteOnSuccessOptions,
+  });
 
   const handleUpdateAmount = (e: SyntheticEvent) => {
-    const value = (event.target as HTMLInputElement).value;
+    const value = (e.target as HTMLInputElement).value;
     const amount = stringToNumber(value) || 0;
     if (amount < 1) return;
     updateCart({ id, amount });
+  };
+
+  const handleDeleteItem = (e: SyntheticEvent) => {
+    e.preventDefault();
+    deleteCart({ id });
   };
 
   return (
@@ -152,6 +171,7 @@ const CartItem = ({
           size={"sm"}
           variant={"default_light"}
           children={"삭제하기"}
+          onClick={handleDeleteItem}
         />
       </DeleteContainer>
     </Item>

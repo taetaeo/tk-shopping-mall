@@ -104,6 +104,14 @@ const cartResolver: Resolver = {
         id: cartSnapshot.id,
       };
     },
+    deleteCart: async (parent, { cartId }) => {
+      const cartRef = doc(db, "cart", cartId);
+      if (!cartRef) throw Error("장바구니에 해당 아이템 정보가 없습니다.");
+      await deleteDoc(cartRef).then(() => {
+        console.log("성공적으로 삭제가 완료되었습니다.");
+      });
+      return cartId;
+    },
   },
 };
 export default cartResolver;
