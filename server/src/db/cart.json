@@ -1,6 +1,7 @@
 [
   {
     "id": "HhuEC2ghUbTg1XPRhMdp",
+    "amount": 5,
     "product": {
       "converter": null,
       "_key": {
@@ -55,11 +56,11 @@
           "useFetchStreams": true
         }
       }
-    },
-    "amount": 1
+    }
   },
   {
     "id": "Hwz6B5KHZwx1UdmX4S0O",
+    "amount": 11,
     "product": {
       "converter": null,
       "_key": {
@@ -114,8 +115,7 @@
           "useFetchStreams": true
         }
       }
-    },
-    "amount": 11
+    }
   },
   {
     "id": "KP8BVmuTZqVuyLgCXl9O",
@@ -178,6 +178,7 @@
   },
   {
     "id": "P7QQsuQPOlcYolLVPC8l",
+    "amount": 4,
     "product": {
       "converter": null,
       "_key": {
@@ -232,8 +233,7 @@
           "useFetchStreams": true
         }
       }
-    },
-    "amount": 4
+    }
   },
   {
     "id": "XdTy7gDyTZi6l0PRKqx2",
@@ -355,6 +355,7 @@
   },
   {
     "id": "oAazapoWMe78nEUcQoEN",
+    "amount": 1,
     "product": {
       "converter": null,
       "_key": {
@@ -409,7 +410,6 @@
           "useFetchStreams": true
         }
       }
-    },
-    "amount": 1
+    }
   }
 ]

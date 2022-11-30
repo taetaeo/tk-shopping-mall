@@ -14,7 +14,6 @@ const CartPage: NextPage = () => {
 
   if (!cartData.length) return <div>장바구니가 비었습니다.</div>;
 
-  console.log(cartData);
   return (
     <>
       <Head title={TITLE} />

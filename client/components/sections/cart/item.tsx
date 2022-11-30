@@ -1,11 +1,15 @@
 import React, { FC, SyntheticEvent } from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { getClient, graphQLFetcher, QueryKeys } from "../../../service";
+import { useMutation } from "react-query";
+import { UPDATE_CART } from "../../../graphql/cart";
+
 import { AmountInfo, ItemInfo, Left, PriceInfo, Right } from "./template";
 import { Button } from "../../base";
 import { ROUTE_PATH } from "../../../utils/constants";
-import { Cart } from "../../../types";
 import { stringToNumber } from "../../../utils/helpers";
+import { Cart } from "../../../types";
 
 const { ROUTE_PATH_DETAIL } = ROUTE_PATH;
 const ORDER_PRICE = 2500;
@@ -24,10 +28,65 @@ const CartItem = ({
     category: { category_lg, category_md, category_sm },
   },
 }: Cart): JSX.Element => {
+  const queryClients = getClient();
+  // Mutate Fn = 1. Update / 2. delete
+  // 1.Update - 1) Mutate Fn
+  const updateMutationFn = ({ id, amount }: Omit<Cart, "product">) =>
+    graphQLFetcher(UPDATE_CART, { id, amount });
+
+  // Mutate Options
+  // 1. Update - 1) onMutation Options
+  const updateOnMutateOptions = async ({ id, amount }) => {
+    await queryClients.cancelQueries(QueryKeys.cart);
+    const { cart: prevCart } = queryClients.getQueryData<{ cart: Cart[] }>(
+      QueryKeys.cart
+    ) || { cart: [] };
+    if (!prevCart) return null;
+
+    const targetIndex = prevCart.findIndex((cartItem) => cartItem.id === id);
+    if (targetIndex === undefined || targetIndex < 0) return prevCart;
+
+    const copyCart = [...prevCart];
+    copyCart.splice(targetIndex, 1, { ...copyCart[targetIndex], amount });
+    queryClients.setQueryData(QueryKeys.cart, { cart: copyCart });
+    return prevCart;
+  };
+  // 1. Update - 3) onError Options
+  const updateOnSuccessOptions = ({ updateCart }, variables, ctx) => {
+    // (data, variables, context) => Promise
+    const { cart: prevCart } = queryClients.getQueryData<{ cart: Cart[] }>(
+      QueryKeys.cart
+    ) || { cart: [] };
+    const targetIndex = prevCart.findIndex(
+      (cartItem) => cartItem.id === updateCart.id
+    );
+
+    if (!prevCart || targetIndex === undefined || targetIndex < 0) return;
+
+    const copyCart = [...prevCart];
+    copyCart.splice(targetIndex, 1, updateCart);
+    queryClients.setQueryData(QueryKeys.cart, { cart: copyCart });
+  };
+  // 3) onMutation Options - Update
+  const updateOnErrorOptions = (error, variables, context) => {
+    // (err, variables, context) => Promise
+    if (context) {
+      // error가 발생하면 onMutate에서 반환된 값으로 다시 롤백
+      queryClients.setQueryData(QueryKeys.cart, context);
+    }
+  };
+
+  const { mutate: updateCart } = useMutation(updateMutationFn, {
+    onMutate: updateOnMutateOptions,
+    onSuccess: updateOnSuccessOptions,
+    onError: updateOnErrorOptions,
+  });
+
   const handleUpdateAmount = (e: SyntheticEvent) => {
     const value = (event.target as HTMLInputElement).value;
     const amount = stringToNumber(value) || 0;
     if (amount < 1) return;
+    updateCart({ id, amount });
   };
 
   return (

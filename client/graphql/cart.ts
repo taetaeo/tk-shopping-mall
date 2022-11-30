@@ -44,3 +44,25 @@ export const ADD_CART = gql`
     }
   }
 `;
+export const UPDATE_CART = gql`
+  mutation UPDATE_CART($id: ID!, $amount: Int!) {
+    updateCart(cartId: $id, amount: $amount) {
+      id
+      amount
+      product {
+        id
+        brand
+        name
+        image_url
+        origin_price
+        discount
+        createdAt
+        category {
+          category_lg
+          category_md
+          category_sm
+        }
+      }
+    }
+  }
+`;
