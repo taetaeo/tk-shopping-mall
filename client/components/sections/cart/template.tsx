@@ -33,6 +33,13 @@ export const PriceSection = styled.div`
   padding-top: 1rem;
   padding-bottom: 1rem;
 `;
+export const CheckboxSection = styled.div`
+  min-width: 5%;
+  display: flex;
+  border-bottom: 2px solid #000;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+`;
 
 export const ItemInfo = styled(ItemSection)`
   padding: 0.5rem;

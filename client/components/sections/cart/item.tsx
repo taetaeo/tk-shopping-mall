@@ -1,49 +1,45 @@
-import React, { FC } from "react";
+import React, { FC, SyntheticEvent } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { AmountInfo, ItemInfo, Left, PriceInfo, Right } from "./template";
 import { Button } from "../../base";
 import { ROUTE_PATH } from "../../../utils/constants";
+import { Cart } from "../../../types";
+import { stringToNumber } from "../../../utils/helpers";
 
 const { ROUTE_PATH_DETAIL } = ROUTE_PATH;
+const ORDER_PRICE = 2500;
 
-type category = {
-  [key: string]: string[];
-};
-type Props = {
-  id: number;
-  brand: string;
-  name: string;
-  category: string[];
-  imageUrl: string;
-  price: number;
-  discount: number;
-  amount: number;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
-
-const CartItem: FC<Props> = (props: Props): JSX.Element => {
-  const {
-    id,
-    brand,
-    name,
-    category,
-    imageUrl,
-    amount,
-    price,
+const CartItem = ({
+  id,
+  amount,
+  product: {
+    image_url,
+    origin_price,
     discount,
-    onChange,
-  } = props;
+    name,
+    brand,
+    createdAt,
+    category: { category_lg, category_md, category_sm },
+  },
+}: Cart): JSX.Element => {
+  const handleUpdateAmount = (e: SyntheticEvent) => {
+    const value = (event.target as HTMLInputElement).value;
+    const amount = stringToNumber(value) || 0;
+    if (amount < 1) return;
+  };
 
-  const calculatePrice = (price * discount) / 100;
-  const totalPrice = calculatePrice * amount;
   return (
     <Item>
       <ItemInfo>
         <Left>
-          <CheckBox type="checkbox" />
+          <CheckBox
+            type="checkbox"
+            className="cart-item__checkbox"
+            name="select-item"
+          />
           <Link href={`${ROUTE_PATH_DETAIL}/${id}`}>
-            <Image src={imageUrl} />
+            <Image src={image_url} />
           </Link>
         </Left>
         <Right>
@@ -52,22 +48,34 @@ const CartItem: FC<Props> = (props: Props): JSX.Element => {
           </Link>
           <ProductName>{name}</ProductName>
           <CategoryName>
-            {category[0]} / {category[1]}
+            {category_lg} / {category_md} / {category_sm}
           </CategoryName>
-          <OriginPrice>{price}</OriginPrice>
-          <DisCount>{discount}</DisCount>
-          <CalculatedPrice>
-            {calculatePrice ? `${calculatePrice}원` : 0}
-          </CalculatedPrice>
+          <PriceContainer>
+            <OriginPrice>{origin_price}</OriginPrice>
+            <DisCount>- {discount} %</DisCount>
+            <CalculatedPrice>
+              {origin_price - origin_price * (discount / 100)}
+            </CalculatedPrice>
+          </PriceContainer>
+          <ItemInfoColumn>배송비 : {ORDER_PRICE}</ItemInfoColumn>
         </Right>
       </ItemInfo>
 
       <AmountInfo>
-        <UpdateInput type="number" value={amount} onChange={onChange} />
+        {!createdAt ? (
+          <div>삭제된 상품입니다.</div>
+        ) : (
+          <UpdateInput
+            type="number"
+            value={amount}
+            min={1}
+            onChange={handleUpdateAmount}
+          />
+        )}
       </AmountInfo>
 
       <PriceInfo>
-        <TotalPrice>{totalPrice ? `${totalPrice}원` : 0}</TotalPrice>
+        {/* <TotalPrice>{totalPrice ? `${totalPrice}원` : 0}</TotalPrice> */}
       </PriceInfo>
 
       <DeleteContainer>
@@ -99,11 +107,15 @@ const Image = styled.img`
   object-fit: contain;
 `;
 const ItemInfoColumn = styled.li`
+  margin-top: 1rem;
   width: 100%;
   padding: 0.3rem 1rem;
   display: flex;
   justify-content: left;
   align-items: center;
+`;
+const PriceContainer = styled.div`
+  display: flex;
 `;
 const BrandName = styled(ItemInfoColumn)`
   font-size: 1.2rem;
@@ -114,6 +126,7 @@ const ProductName = styled(ItemInfoColumn)`
   font-weight: 500;
 `;
 const OriginPrice = styled(ItemInfoColumn)`
+  width: 2rem;
   text-decoration: line-through;
   text-decoration-color: rgb(255, 0, 0);
   text-decoration-style: double;
@@ -123,10 +136,12 @@ const OriginPrice = styled(ItemInfoColumn)`
   font-weight: 700;
 `;
 const DisCount = styled(ItemInfoColumn)`
+  width: 3rem;
   font-size: 0.8rem;
   font-weight: 700;
 `;
 const CalculatedPrice = styled(ItemInfoColumn)`
+  width: 2rem;
   font-size: 1rem;
 `;
 const CategoryName = styled(ItemInfoColumn)`

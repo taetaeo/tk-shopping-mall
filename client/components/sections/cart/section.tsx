@@ -1,13 +1,16 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { Cart } from "../../../types";
 import CartList from "./list";
 
-const CartSection = (props): JSX.Element => {
-  const {} = props;
+type Props = {
+  cartItems: Cart[];
+};
+const CartSection = ({ cartItems }: Props): JSX.Element => {
   return (
     <Main>
       <Container>
-        <CartList />
+        <CartList cartItems={cartItems} />
       </Container>
     </Main>
   );

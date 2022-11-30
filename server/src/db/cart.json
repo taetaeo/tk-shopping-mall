@@ -1,66 +1,6 @@
 [
   {
-    "id": "P7QQsuQPOlcYolLVPC8l",
-    "amount": 4,
-    "product": {
-      "converter": null,
-      "_key": {
-        "path": {
-          "segments": [
-            "projects",
-            "tkshop-285ec",
-            "databases",
-            "(default)",
-            "documents",
-            "products",
-            "CSNyKzBT41OQFERygKEV"
-          ],
-          "offset": 5,
-          "len": 2
-        }
-      },
-      "type": "document",
-      "firestore": {
-        "app": {
-          "_isDeleted": false,
-          "_options": {
-            "apiKey": "AIzaSyBqhFoggYgOWlkotKBYuGBcFFh7ho-0efA",
-            "authDomain": "tkshop-285ec.firebaseapp.com",
-            "projectId": "tkshop-285ec",
-            "storageBucket": "tkshop-285ec.appspot.com",
-            "messagingSenderId": "956084608965",
-            "appId": "1:956084608965:web:6aaef5c0bfa4bb1b29f5ac"
-          },
-          "_config": {
-            "name": "[DEFAULT]",
-            "automaticDataCollectionEnabled": false
-          },
-          "_name": "[DEFAULT]",
-          "_automaticDataCollectionEnabled": false,
-          "_container": {
-            "name": "[DEFAULT]",
-            "providers": {}
-          }
-        },
-        "databaseId": {
-          "projectId": "tkshop-285ec",
-          "database": "(default)"
-        },
-        "settings": {
-          "host": "firestore.googleapis.com",
-          "ssl": true,
-          "ignoreUndefinedProperties": false,
-          "cacheSizeBytes": 41943040,
-          "experimentalForceLongPolling": false,
-          "experimentalAutoDetectLongPolling": false,
-          "useFetchStreams": true
-        }
-      }
-    }
-  },
-  {
     "id": "HhuEC2ghUbTg1XPRhMdp",
-    "amount": 5,
     "product": {
       "converter": null,
       "_key": {
@@ -115,11 +55,11 @@
           "useFetchStreams": true
         }
       }
-    }
+    },
+    "amount": 5
   },
   {
     "id": "Hwz6B5KHZwx1UdmX4S0O",
-    "amount": 11,
     "product": {
       "converter": null,
       "_key": {
@@ -174,11 +114,11 @@
           "useFetchStreams": true
         }
       }
-    }
+    },
+    "amount": 11
   },
   {
-    "id": "oAazapoWMe78nEUcQoEN",
-    "amount": 1,
+    "id": "KP8BVmuTZqVuyLgCXl9O",
     "product": {
       "converter": null,
       "_key": {
@@ -190,7 +130,7 @@
             "(default)",
             "documents",
             "products",
-            "TAcerygldLccNNH74jfq"
+            "auDMWTxb9KBdVwsnmix9"
           ],
           "offset": 5,
           "len": 2
@@ -233,11 +173,11 @@
           "useFetchStreams": true
         }
       }
-    }
+    },
+    "amount": 3
   },
   {
     "id": "P7QQsuQPOlcYolLVPC8l",
-    "amount": 1,
     "product": {
       "converter": null,
       "_key": {
@@ -292,420 +232,8 @@
           "useFetchStreams": true
         }
       }
-    }
-  },
-  {
-    "id": "Hwz6B5KHZwx1UdmX4S0O",
-    "amount": 7,
-    "product": {
-      "converter": null,
-      "_key": {
-        "path": {
-          "segments": [
-            "projects",
-            "tkshop-285ec",
-            "databases",
-            "(default)",
-            "documents",
-            "products",
-            "7GqFrK8EvrMOsDB5GniY"
-          ],
-          "offset": 5,
-          "len": 2
-        }
-      },
-      "type": "document",
-      "firestore": {
-        "app": {
-          "_isDeleted": false,
-          "_options": {
-            "apiKey": "AIzaSyBqhFoggYgOWlkotKBYuGBcFFh7ho-0efA",
-            "authDomain": "tkshop-285ec.firebaseapp.com",
-            "projectId": "tkshop-285ec",
-            "storageBucket": "tkshop-285ec.appspot.com",
-            "messagingSenderId": "956084608965",
-            "appId": "1:956084608965:web:6aaef5c0bfa4bb1b29f5ac"
-          },
-          "_config": {
-            "name": "[DEFAULT]",
-            "automaticDataCollectionEnabled": false
-          },
-          "_name": "[DEFAULT]",
-          "_automaticDataCollectionEnabled": false,
-          "_container": {
-            "name": "[DEFAULT]",
-            "providers": {}
-          }
-        },
-        "databaseId": {
-          "projectId": "tkshop-285ec",
-          "database": "(default)"
-        },
-        "settings": {
-          "host": "firestore.googleapis.com",
-          "ssl": true,
-          "ignoreUndefinedProperties": false,
-          "cacheSizeBytes": 41943040,
-          "experimentalForceLongPolling": false,
-          "experimentalAutoDetectLongPolling": false,
-          "useFetchStreams": true
-        }
-      }
-    }
-  },
-  {
-    "id": "Hwz6B5KHZwx1UdmX4S0O",
-    "amount": 7,
-    "product": {
-      "converter": null,
-      "_key": {
-        "path": {
-          "segments": [
-            "projects",
-            "tkshop-285ec",
-            "databases",
-            "(default)",
-            "documents",
-            "products",
-            "7GqFrK8EvrMOsDB5GniY"
-          ],
-          "offset": 5,
-          "len": 2
-        }
-      },
-      "type": "document",
-      "firestore": {
-        "app": {
-          "_isDeleted": false,
-          "_options": {
-            "apiKey": "AIzaSyBqhFoggYgOWlkotKBYuGBcFFh7ho-0efA",
-            "authDomain": "tkshop-285ec.firebaseapp.com",
-            "projectId": "tkshop-285ec",
-            "storageBucket": "tkshop-285ec.appspot.com",
-            "messagingSenderId": "956084608965",
-            "appId": "1:956084608965:web:6aaef5c0bfa4bb1b29f5ac"
-          },
-          "_config": {
-            "name": "[DEFAULT]",
-            "automaticDataCollectionEnabled": false
-          },
-          "_name": "[DEFAULT]",
-          "_automaticDataCollectionEnabled": false,
-          "_container": {
-            "name": "[DEFAULT]",
-            "providers": {}
-          }
-        },
-        "databaseId": {
-          "projectId": "tkshop-285ec",
-          "database": "(default)"
-        },
-        "settings": {
-          "host": "firestore.googleapis.com",
-          "ssl": true,
-          "ignoreUndefinedProperties": false,
-          "cacheSizeBytes": 41943040,
-          "experimentalForceLongPolling": false,
-          "experimentalAutoDetectLongPolling": false,
-          "useFetchStreams": true
-        }
-      }
-    }
-  },
-  {
-    "id": "Hwz6B5KHZwx1UdmX4S0O",
-    "amount": 5,
-    "product": {
-      "converter": null,
-      "_key": {
-        "path": {
-          "segments": [
-            "projects",
-            "tkshop-285ec",
-            "databases",
-            "(default)",
-            "documents",
-            "products",
-            "7GqFrK8EvrMOsDB5GniY"
-          ],
-          "offset": 5,
-          "len": 2
-        }
-      },
-      "type": "document",
-      "firestore": {
-        "app": {
-          "_isDeleted": false,
-          "_options": {
-            "apiKey": "AIzaSyBqhFoggYgOWlkotKBYuGBcFFh7ho-0efA",
-            "authDomain": "tkshop-285ec.firebaseapp.com",
-            "projectId": "tkshop-285ec",
-            "storageBucket": "tkshop-285ec.appspot.com",
-            "messagingSenderId": "956084608965",
-            "appId": "1:956084608965:web:6aaef5c0bfa4bb1b29f5ac"
-          },
-          "_config": {
-            "name": "[DEFAULT]",
-            "automaticDataCollectionEnabled": false
-          },
-          "_name": "[DEFAULT]",
-          "_automaticDataCollectionEnabled": false,
-          "_container": {
-            "name": "[DEFAULT]",
-            "providers": {}
-          }
-        },
-        "databaseId": {
-          "projectId": "tkshop-285ec",
-          "database": "(default)"
-        },
-        "settings": {
-          "host": "firestore.googleapis.com",
-          "ssl": true,
-          "ignoreUndefinedProperties": false,
-          "cacheSizeBytes": 41943040,
-          "experimentalForceLongPolling": false,
-          "experimentalAutoDetectLongPolling": false,
-          "useFetchStreams": true
-        }
-      }
-    }
-  },
-  {
-    "id": "Hwz6B5KHZwx1UdmX4S0O",
-    "amount": 5,
-    "product": {
-      "converter": null,
-      "_key": {
-        "path": {
-          "segments": [
-            "projects",
-            "tkshop-285ec",
-            "databases",
-            "(default)",
-            "documents",
-            "products",
-            "7GqFrK8EvrMOsDB5GniY"
-          ],
-          "offset": 5,
-          "len": 2
-        }
-      },
-      "type": "document",
-      "firestore": {
-        "app": {
-          "_isDeleted": false,
-          "_options": {
-            "apiKey": "AIzaSyBqhFoggYgOWlkotKBYuGBcFFh7ho-0efA",
-            "authDomain": "tkshop-285ec.firebaseapp.com",
-            "projectId": "tkshop-285ec",
-            "storageBucket": "tkshop-285ec.appspot.com",
-            "messagingSenderId": "956084608965",
-            "appId": "1:956084608965:web:6aaef5c0bfa4bb1b29f5ac"
-          },
-          "_config": {
-            "name": "[DEFAULT]",
-            "automaticDataCollectionEnabled": false
-          },
-          "_name": "[DEFAULT]",
-          "_automaticDataCollectionEnabled": false,
-          "_container": {
-            "name": "[DEFAULT]",
-            "providers": {}
-          }
-        },
-        "databaseId": {
-          "projectId": "tkshop-285ec",
-          "database": "(default)"
-        },
-        "settings": {
-          "host": "firestore.googleapis.com",
-          "ssl": true,
-          "ignoreUndefinedProperties": false,
-          "cacheSizeBytes": 41943040,
-          "experimentalForceLongPolling": false,
-          "experimentalAutoDetectLongPolling": false,
-          "useFetchStreams": true
-        }
-      }
-    }
-  },
-  {
-    "id": "Hwz6B5KHZwx1UdmX4S0O",
-    "amount": 2,
-    "product": {
-      "converter": null,
-      "_key": {
-        "path": {
-          "segments": [
-            "projects",
-            "tkshop-285ec",
-            "databases",
-            "(default)",
-            "documents",
-            "products",
-            "7GqFrK8EvrMOsDB5GniY"
-          ],
-          "offset": 5,
-          "len": 2
-        }
-      },
-      "type": "document",
-      "firestore": {
-        "app": {
-          "_isDeleted": false,
-          "_options": {
-            "apiKey": "AIzaSyBqhFoggYgOWlkotKBYuGBcFFh7ho-0efA",
-            "authDomain": "tkshop-285ec.firebaseapp.com",
-            "projectId": "tkshop-285ec",
-            "storageBucket": "tkshop-285ec.appspot.com",
-            "messagingSenderId": "956084608965",
-            "appId": "1:956084608965:web:6aaef5c0bfa4bb1b29f5ac"
-          },
-          "_config": {
-            "name": "[DEFAULT]",
-            "automaticDataCollectionEnabled": false
-          },
-          "_name": "[DEFAULT]",
-          "_automaticDataCollectionEnabled": false,
-          "_container": {
-            "name": "[DEFAULT]",
-            "providers": {}
-          }
-        },
-        "databaseId": {
-          "projectId": "tkshop-285ec",
-          "database": "(default)"
-        },
-        "settings": {
-          "host": "firestore.googleapis.com",
-          "ssl": true,
-          "ignoreUndefinedProperties": false,
-          "cacheSizeBytes": 41943040,
-          "experimentalForceLongPolling": false,
-          "experimentalAutoDetectLongPolling": false,
-          "useFetchStreams": true
-        }
-      }
-    }
-  },
-  {
-    "id": "Hwz6B5KHZwx1UdmX4S0O",
-    "amount": 2,
-    "product": {
-      "converter": null,
-      "_key": {
-        "path": {
-          "segments": [
-            "projects",
-            "tkshop-285ec",
-            "databases",
-            "(default)",
-            "documents",
-            "products",
-            "7GqFrK8EvrMOsDB5GniY"
-          ],
-          "offset": 5,
-          "len": 2
-        }
-      },
-      "type": "document",
-      "firestore": {
-        "app": {
-          "_isDeleted": false,
-          "_options": {
-            "apiKey": "AIzaSyBqhFoggYgOWlkotKBYuGBcFFh7ho-0efA",
-            "authDomain": "tkshop-285ec.firebaseapp.com",
-            "projectId": "tkshop-285ec",
-            "storageBucket": "tkshop-285ec.appspot.com",
-            "messagingSenderId": "956084608965",
-            "appId": "1:956084608965:web:6aaef5c0bfa4bb1b29f5ac"
-          },
-          "_config": {
-            "name": "[DEFAULT]",
-            "automaticDataCollectionEnabled": false
-          },
-          "_name": "[DEFAULT]",
-          "_automaticDataCollectionEnabled": false,
-          "_container": {
-            "name": "[DEFAULT]",
-            "providers": {}
-          }
-        },
-        "databaseId": {
-          "projectId": "tkshop-285ec",
-          "database": "(default)"
-        },
-        "settings": {
-          "host": "firestore.googleapis.com",
-          "ssl": true,
-          "ignoreUndefinedProperties": false,
-          "cacheSizeBytes": 41943040,
-          "experimentalForceLongPolling": false,
-          "experimentalAutoDetectLongPolling": false,
-          "useFetchStreams": true
-        }
-      }
-    }
-  },
-  {
-    "id": "Hwz6B5KHZwx1UdmX4S0O",
-    "amount": 1,
-    "product": {
-      "converter": null,
-      "_key": {
-        "path": {
-          "segments": [
-            "projects",
-            "tkshop-285ec",
-            "databases",
-            "(default)",
-            "documents",
-            "products",
-            "7GqFrK8EvrMOsDB5GniY"
-          ],
-          "offset": 5,
-          "len": 2
-        }
-      },
-      "type": "document",
-      "firestore": {
-        "app": {
-          "_isDeleted": false,
-          "_options": {
-            "apiKey": "AIzaSyBqhFoggYgOWlkotKBYuGBcFFh7ho-0efA",
-            "authDomain": "tkshop-285ec.firebaseapp.com",
-            "projectId": "tkshop-285ec",
-            "storageBucket": "tkshop-285ec.appspot.com",
-            "messagingSenderId": "956084608965",
-            "appId": "1:956084608965:web:6aaef5c0bfa4bb1b29f5ac"
-          },
-          "_config": {
-            "name": "[DEFAULT]",
-            "automaticDataCollectionEnabled": false
-          },
-          "_name": "[DEFAULT]",
-          "_automaticDataCollectionEnabled": false,
-          "_container": {
-            "name": "[DEFAULT]",
-            "providers": {}
-          }
-        },
-        "databaseId": {
-          "projectId": "tkshop-285ec",
-          "database": "(default)"
-        },
-        "settings": {
-          "host": "firestore.googleapis.com",
-          "ssl": true,
-          "ignoreUndefinedProperties": false,
-          "cacheSizeBytes": 41943040,
-          "experimentalForceLongPolling": false,
-          "experimentalAutoDetectLongPolling": false,
-          "useFetchStreams": true
-        }
-      }
-    }
+    },
+    "amount": 4
   },
   {
     "id": "XdTy7gDyTZi6l0PRKqx2",
@@ -768,7 +296,6 @@
   },
   {
     "id": "eFzYBvQ48yKzb1gUwvCs",
-    "amount": 12,
     "product": {
       "converter": null,
       "_key": {
@@ -781,6 +308,66 @@
             "documents",
             "products",
             "0QliDhTy7cH2qzKgh7pi"
+          ],
+          "offset": 5,
+          "len": 2
+        }
+      },
+      "type": "document",
+      "firestore": {
+        "app": {
+          "_isDeleted": false,
+          "_options": {
+            "apiKey": "AIzaSyBqhFoggYgOWlkotKBYuGBcFFh7ho-0efA",
+            "authDomain": "tkshop-285ec.firebaseapp.com",
+            "projectId": "tkshop-285ec",
+            "storageBucket": "tkshop-285ec.appspot.com",
+            "messagingSenderId": "956084608965",
+            "appId": "1:956084608965:web:6aaef5c0bfa4bb1b29f5ac"
+          },
+          "_config": {
+            "name": "[DEFAULT]",
+            "automaticDataCollectionEnabled": false
+          },
+          "_name": "[DEFAULT]",
+          "_automaticDataCollectionEnabled": false,
+          "_container": {
+            "name": "[DEFAULT]",
+            "providers": {}
+          }
+        },
+        "databaseId": {
+          "projectId": "tkshop-285ec",
+          "database": "(default)"
+        },
+        "settings": {
+          "host": "firestore.googleapis.com",
+          "ssl": true,
+          "ignoreUndefinedProperties": false,
+          "cacheSizeBytes": 41943040,
+          "experimentalForceLongPolling": false,
+          "experimentalAutoDetectLongPolling": false,
+          "useFetchStreams": true
+        }
+      }
+    },
+    "amount": 12
+  },
+  {
+    "id": "oAazapoWMe78nEUcQoEN",
+    "amount": 1,
+    "product": {
+      "converter": null,
+      "_key": {
+        "path": {
+          "segments": [
+            "projects",
+            "tkshop-285ec",
+            "databases",
+            "(default)",
+            "documents",
+            "products",
+            "TAcerygldLccNNH74jfq"
           ],
           "offset": 5,
           "len": 2
