@@ -91,6 +91,19 @@ const cartResolver: Resolver = {
         id: cartSnapshot.id,
       };
     },
+    updateCart: async (parent, { cartId, amount }) => {
+      if (amount < 1) throw Error("수량이 1이하로는 변경할 수 없습니다.");
+      const cartRef = doc(db, "cart", cartId);
+      if (!cartRef) throw Error("장바구니 정보가 없습니다.");
+      await updateDoc(cartRef, {
+        amount: amount,
+      });
+      const cartSnapshot = await getDoc(cartRef);
+      return {
+        ...cartSnapshot.data(),
+        id: cartSnapshot.id,
+      };
+    },
   },
 };
 export default cartResolver;

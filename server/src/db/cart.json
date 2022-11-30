@@ -56,7 +56,7 @@
         }
       }
     },
-    "amount": 5
+    "amount": 1
   },
   {
     "id": "Hwz6B5KHZwx1UdmX4S0O",
@@ -119,7 +119,6 @@
   },
   {
     "id": "KP8BVmuTZqVuyLgCXl9O",
-    "amount": 3,
     "product": {
       "converter": null,
       "_key": {
@@ -174,11 +173,11 @@
           "useFetchStreams": true
         }
       }
-    }
+    },
+    "amount": 3
   },
   {
     "id": "P7QQsuQPOlcYolLVPC8l",
-    "amount": 4,
     "product": {
       "converter": null,
       "_key": {
@@ -233,7 +232,8 @@
           "useFetchStreams": true
         }
       }
-    }
+    },
+    "amount": 4
   },
   {
     "id": "XdTy7gDyTZi6l0PRKqx2",
@@ -296,6 +296,7 @@
   },
   {
     "id": "eFzYBvQ48yKzb1gUwvCs",
+    "amount": 12,
     "product": {
       "converter": null,
       "_key": {
@@ -350,12 +351,10 @@
           "useFetchStreams": true
         }
       }
-    },
-    "amount": 12
+    }
   },
   {
     "id": "oAazapoWMe78nEUcQoEN",
-    "amount": 1,
     "product": {
       "converter": null,
       "_key": {
@@ -410,6 +409,7 @@
           "useFetchStreams": true
         }
       }
-    }
+    },
+    "amount": 1
   }
 ]
