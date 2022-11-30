@@ -1,1 +1,1 @@
-export { stringToNumber, arrToObj } from "./convert";
+export { stringToNumber, arrToObj, commaByThreeDigit } from "./convert";

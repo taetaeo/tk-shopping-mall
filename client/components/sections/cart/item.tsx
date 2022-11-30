@@ -1,4 +1,4 @@
-import React, { FC, SyntheticEvent } from "react";
+import React, { SyntheticEvent, ForwardedRef, forwardRef } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import { getClient, graphQLFetcher, QueryKeys } from "../../../service";
@@ -8,26 +8,29 @@ import { DELETE_CART, UPDATE_CART } from "../../../graphql/cart";
 import { AmountInfo, ItemInfo, Left, PriceInfo, Right } from "./template";
 import { Button } from "../../base";
 import { ROUTE_PATH } from "../../../utils/constants";
-import { stringToNumber } from "../../../utils/helpers";
+import { stringToNumber, commaByThreeDigit } from "../../../utils/helpers";
 import { Cart } from "../../../types";
 
 const { ROUTE_PATH_DETAIL } = ROUTE_PATH;
 const ORDER_PRICE = 2500;
 
-const CartItem = ({
-  id,
-  amount,
-  product: {
-    id: productId,
-    image_url,
-    origin_price,
-    discount,
-    name,
-    brand,
-    createdAt,
-    category: { category_lg, category_md, category_sm },
-  },
-}: Cart): JSX.Element => {
+const CartItem = (
+  {
+    id,
+    amount,
+    product: {
+      id: productId,
+      image_url,
+      origin_price,
+      discount,
+      name,
+      brand,
+      createdAt,
+      category: { category_lg, category_md, category_sm },
+    },
+  }: Cart,
+  ref: ForwardedRef<HTMLInputElement>
+): JSX.Element => {
   const queryClients = getClient();
 
   const discountedPrice = origin_price - origin_price * (discount / 100);
@@ -118,6 +121,9 @@ const CartItem = ({
             type="checkbox"
             className="cart-item__checkbox"
             name="select-item"
+            ref={ref}
+            data-id={id}
+            disabled={!createdAt}
           />
           <Link href={`${ROUTE_PATH_DETAIL}/${productId}`} legacyBehavior>
             <a>
@@ -140,9 +146,11 @@ const CartItem = ({
             {category_lg} / {category_md} / {category_sm}
           </CategoryName>
           <PriceContainer>
-            <OriginPrice>{origin_price}</OriginPrice>
+            <OriginPrice>{commaByThreeDigit(origin_price)}</OriginPrice>
             <DisCount>- {discount} %</DisCount>
-            <CalculatedPrice>{discountedPrice}</CalculatedPrice>
+            <CalculatedPrice>
+              {commaByThreeDigit(discountedPrice)}
+            </CalculatedPrice>
           </PriceContainer>
         </Right>
       </ItemInfo>
@@ -160,7 +168,9 @@ const CartItem = ({
         )}
       </AmountInfo>
       <PriceInfo>
-        <TotalPrice>{discountedPrice * amount}</TotalPrice>
+        <TotalPrice>
+          {commaByThreeDigit(discountedPrice * amount)} 원
+        </TotalPrice>
       </PriceInfo>
       <DeleteContainer>
         <Button
@@ -175,7 +185,7 @@ const CartItem = ({
   );
 };
 
-export default CartItem;
+export default forwardRef(CartItem);
 const Item = styled.ul`
   width: 1200px;
   height: 100%;

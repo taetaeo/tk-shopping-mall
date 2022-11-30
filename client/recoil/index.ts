@@ -1,1 +1,1 @@
-export { detailIdAtoms } from "./atoms";
+export { detailIdAtoms, checkedCartAtoms } from "./atoms";

@@ -4,6 +4,7 @@ import { CardItem } from "./options";
 
 import { Icons } from "../../base";
 import { ICONS_NAME } from "../../../utils/constants";
+import { commaByThreeDigit } from "../../../utils/helpers";
 
 const { LIKE_EMPTY, COMMENT } = ICONS_NAME;
 const DEFAULT_SIZE = "18";
@@ -21,11 +22,13 @@ const CardInfo: FC<Props> = (props: Props): JSX.Element => {
       <Brand>{brand}</Brand>
       <Title>{title}</Title>
       <OriginPrice>
-        <Price>{price}</Price>
+        <Price>{commaByThreeDigit(price)} 원</Price>
       </OriginPrice>
       <PriceContainer>
         <Discount>{discount} %</Discount>
-        <DiscountPrice>{price * (discount % 100) || 0}</DiscountPrice>
+        <DiscountPrice>
+          {commaByThreeDigit(price - price * (discount / 100)) || 0} 원
+        </DiscountPrice>
       </PriceContainer>
       {/* <FunctionContainer>
         <Likes>

@@ -1,6 +1,7 @@
 [
   {
-    "id": "JN0DmbUcZib74qcHymFM",
+    "id": "FtuenCJdIWKjWXUpSnlk",
+    "amount": 1,
     "product": {
       "converter": null,
       "_key": {
@@ -12,7 +13,7 @@
             "(default)",
             "documents",
             "products",
-            "0QliDhTy7cH2qzKgh7pi"
+            "bfdX0QCaXXThXXy93XF7"
           ],
           "offset": 5,
           "len": 2
@@ -55,8 +56,7 @@
           "useFetchStreams": true
         }
       }
-    },
-    "amount": 3
+    }
   },
   {
     "id": "vpTM67OAVjnsCK2EZgru",
@@ -115,6 +115,6 @@
         }
       }
     },
-    "amount": 2
+    "amount": 3
   }
 ]
