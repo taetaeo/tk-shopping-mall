@@ -14,6 +14,7 @@ const CartItem = ({
   id,
   amount,
   product: {
+    id: productId,
     image_url,
     origin_price,
     discount,
@@ -38,15 +39,23 @@ const CartItem = ({
             className="cart-item__checkbox"
             name="select-item"
           />
-          <Link href={`${ROUTE_PATH_DETAIL}/${id}`}>
-            <Image src={image_url} />
+          <Link href={`${ROUTE_PATH_DETAIL}/${productId}`} legacyBehavior>
+            <a>
+              <Image src={image_url} />
+            </a>
           </Link>
         </Left>
         <Right>
-          <Link href="/">
-            <BrandName>{brand}</BrandName>
+          <Link href={`${ROUTE_PATH_DETAIL}/${productId}`} legacyBehavior>
+            <a>
+              <BrandName>{brand}</BrandName>
+            </a>
           </Link>
-          <ProductName>{name}</ProductName>
+          <Link href={`${ROUTE_PATH_DETAIL}/${productId}`} legacyBehavior>
+            <a>
+              <ProductName>{name}</ProductName>
+            </a>
+          </Link>
           <CategoryName>
             {category_lg} / {category_md} / {category_sm}
           </CategoryName>
@@ -91,7 +100,6 @@ const CartItem = ({
 };
 
 export default CartItem;
-
 const Item = styled.ul`
   width: 1200px;
   height: 100%;
@@ -118,6 +126,7 @@ const PriceContainer = styled.div`
   display: flex;
 `;
 const BrandName = styled(ItemInfoColumn)`
+  color: #000;
   font-size: 1.2rem;
   font-weight: 700;
 `;

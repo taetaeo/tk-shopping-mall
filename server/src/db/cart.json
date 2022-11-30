@@ -119,6 +119,7 @@
   },
   {
     "id": "KP8BVmuTZqVuyLgCXl9O",
+    "amount": 3,
     "product": {
       "converter": null,
       "_key": {
@@ -173,11 +174,11 @@
           "useFetchStreams": true
         }
       }
-    },
-    "amount": 3
+    }
   },
   {
     "id": "P7QQsuQPOlcYolLVPC8l",
+    "amount": 4,
     "product": {
       "converter": null,
       "_key": {
@@ -232,12 +233,10 @@
           "useFetchStreams": true
         }
       }
-    },
-    "amount": 4
+    }
   },
   {
     "id": "XdTy7gDyTZi6l0PRKqx2",
-    "amount": 1,
     "product": {
       "converter": null,
       "_key": {
@@ -292,7 +291,8 @@
           "useFetchStreams": true
         }
       }
-    }
+    },
+    "amount": 1
   },
   {
     "id": "eFzYBvQ48yKzb1gUwvCs",
