@@ -29,6 +29,8 @@ const CartItem = ({
   },
 }: Cart): JSX.Element => {
   const queryClients = getClient();
+
+  const discountedPrice = origin_price - origin_price * (discount / 100);
   // Mutate Fn = 1. Update / 2. delete
   // 1.Update - 1) Mutate Fn
   const updateMutationFn = ({ id, amount }: Omit<Cart, "product">) =>
@@ -121,9 +123,7 @@ const CartItem = ({
           <PriceContainer>
             <OriginPrice>{origin_price}</OriginPrice>
             <DisCount>- {discount} %</DisCount>
-            <CalculatedPrice>
-              {origin_price - origin_price * (discount / 100)}
-            </CalculatedPrice>
+            <CalculatedPrice>{discountedPrice}</CalculatedPrice>
           </PriceContainer>
           <ItemInfoColumn>배송비 : {ORDER_PRICE}</ItemInfoColumn>
         </Right>
@@ -143,7 +143,7 @@ const CartItem = ({
       </AmountInfo>
 
       <PriceInfo>
-        {/* <TotalPrice>{totalPrice ? `${totalPrice}원` : 0}</TotalPrice> */}
+        <TotalPrice>{discountedPrice * amount + ORDER_PRICE}</TotalPrice>
       </PriceInfo>
 
       <DeleteContainer>
@@ -194,23 +194,24 @@ const ProductName = styled(ItemInfoColumn)`
   font-weight: 500;
 `;
 const OriginPrice = styled(ItemInfoColumn)`
-  width: 2rem;
+  width: 4rem;
+  font-size: 1.5rem;
+  font-weight: 700;
   text-decoration: line-through;
   text-decoration-color: rgb(255, 0, 0);
   text-decoration-style: double;
   text-decoration-thickness: 1px;
   color: rgb(255, 0, 0);
-  font-size: 1rem;
-  font-weight: 700;
 `;
 const DisCount = styled(ItemInfoColumn)`
-  width: 3rem;
-  font-size: 0.8rem;
+  width: 5rem;
+  color: rgb(255, 0, 0);
+  font-size: 1.3rem;
   font-weight: 700;
 `;
 const CalculatedPrice = styled(ItemInfoColumn)`
   width: 2rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
 `;
 const CategoryName = styled(ItemInfoColumn)`
   font-size: 0.6rem;
@@ -222,13 +223,15 @@ const CheckBox = styled.input`
 const UpdateInput = styled.input`
   width: 100%;
   height: 30px;
-  background-color: #eaeaea;
-  font-size: 1rem;
+  background-color: #f2f4f7;
+  font-size: 1.5rem;
   padding: 1rem;
+  text-align: center;
   border: none;
 `;
 const TotalPrice = styled.h3`
   width: 100%;
+  font-size: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
