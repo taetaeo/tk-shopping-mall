@@ -36,8 +36,8 @@ const DEFAULT_SIZE = "14";
 
 const Gnb = () => {
   const menuItems: MenuItemType[] = [
-    { name: LOGIN, route: ROUTE_PATH_LOGIN, icon: LOGIN_BOX },
-    { name: SIGN_UP, route: ROUTE_PATH_SIGN_UP, icon: LOGIN_BOX },
+    // { name: LOGIN, route: ROUTE_PATH_LOGIN, icon: LOGIN_BOX },
+    // { name: SIGN_UP, route: ROUTE_PATH_SIGN_UP, icon: LOGIN_BOX },
     { name: LIKES, route: ROUTE_PATH_MYPAGE_LIKES, icon: LIKE_FILL },
     { name: CART, route: ROUTE_PATH_CART, icon: SHOPPING_BAG },
     // { name: MY_PAGE, route: ROUTE_PATH_MY_PAGE, icon: USER },
@@ -56,30 +56,18 @@ const Gnb = () => {
           </LogoMenu>
         </Left>
         <Right>
-          {menuItems.map((item: MenuItemType, index: React.Key) => (
-            <Menu key={index}>
-              <Link href={item.route} legacyBehavior>
-                <a>
-                  {Icons({ size: DEFAULT_SIZE, name: item.icon })}
-                  {item.name === LOGOUT ? (
-                    <Button
-                      disabled={false}
-                      size={SMALL}
-                      variant={DEFAULT}
-                      children={item.name}
-                    />
-                  ) : (
-                    <Button
-                      disabled={false}
-                      size={SMALL}
-                      variant={DEFAULT}
-                      children={item.name}
-                    />
-                  )}
-                </a>
-              </Link>
-            </Menu>
-          ))}
+          {menuItems.map(
+            ({ name, route, icon }: MenuItemType, index: React.Key) => (
+              <Menu key={index}>
+                <Link href={route} legacyBehavior>
+                  <Anchor>
+                    {Icons({ size: DEFAULT_SIZE, name: icon })}
+                    <Text>{name}</Text>
+                  </Anchor>
+                </Link>
+              </Menu>
+            )
+          )}
         </Right>
       </MenuList>
     </MenuListWrapper>
@@ -94,9 +82,11 @@ const MenuList = styled.ul`
   width: 100%;
   padding: 0;
   display: flex;
+  box-sizing: border-box;
   justify-content: space-between;
   align-items: center;
   margin: 0.5rem auto;
+  padding: 1rem;
 `;
 const ButtonContainer = styled.a`
   width: 100%;
@@ -107,4 +97,12 @@ const ButtonContainer = styled.a`
   button {
     width: 100%;
   }
+`;
+const Anchor = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const Text = styled.h3`
+  font-size: 1.2rem;
 `;

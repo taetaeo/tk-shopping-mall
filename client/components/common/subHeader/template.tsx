@@ -17,6 +17,19 @@ export const LogoMenu = styled.div`
   color: #464ea3;
 `;
 export const Menu = styled.li`
+  width: 100px;
   height: 100%;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  button {
+    justify-content: center;
+    align-items: center;
+  }
+  h1 {
+    justify-content: center;
+    align-items: center;
+  }
 `;
