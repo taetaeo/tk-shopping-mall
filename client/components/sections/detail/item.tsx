@@ -9,7 +9,7 @@ import { graphQLFetcher } from "../../../service";
 
 import { Category, Product } from "../../../types";
 import { ICONS_NAME } from "../../../utils/constants";
-import { stringToNumber } from "../../../utils/helpers";
+import { commaByThreeDigit, stringToNumber } from "../../../utils/helpers";
 
 export type size = "default" | "sm" | "md" | "lg" | "xs";
 export type border =
@@ -153,8 +153,11 @@ const Item: FC<Props> = (props: Props): JSX.Element => {
             <TotalPrice>
               <h1>
                 총 상품 금액 :
-                {(origin_price - origin_price * (discount / 100)) * count +
-                  ORDER_PRICE || 0}
+                {commaByThreeDigit(
+                  (origin_price - origin_price * (discount / 100)) * count +
+                    ORDER_PRICE
+                ) || 0}{" "}
+                원
               </h1>
             </TotalPrice>
           </SelectContainer>

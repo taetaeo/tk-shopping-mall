@@ -5,6 +5,7 @@ import React, {
   useState,
   useEffect,
 } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { checkedCartAtoms } from "../../../recoil";
@@ -16,11 +17,14 @@ import {
 } from "./template";
 import CartItem from "./item";
 import { Cart } from "../../../types";
+import { WillPay } from "..";
 
 type Props = {
   cartItems: Cart[];
 };
 const CartList = ({ cartItems }: Props): JSX.Element => {
+  const router = useRouter();
+
   const [checkedCartData, setCheckedCartData] =
     useRecoilState(checkedCartAtoms);
   const [formData, setFormData] = useState<FormData>();
@@ -60,7 +64,14 @@ const CartList = ({ cartItems }: Props): JSX.Element => {
     const data = new FormData(formRef.current);
     setFormData(data);
   };
-  // const handleSubmit = ()
+
+  const handleSubmit = () => {
+    if (checkedCartData.length) {
+      router.push("/payment");
+    } else {
+      alert("결제할 상품이 없습니다.");
+    }
+  };
   useEffect(() => {
     checkedCartData.forEach((item) => {
       const itemRef = checkboxRef.find(
@@ -70,6 +81,14 @@ const CartList = ({ cartItems }: Props): JSX.Element => {
     });
     handleCheckboxChanged(null);
   }, []);
+
+  useEffect(() => {
+    const checkedItems = checkboxRef.reduce<Cart[]>((res, ref, i) => {
+      if (ref.current!.checked) res.push(cartItems[i]);
+      return res;
+    }, []);
+    setCheckedCartData(checkedItems as Cart[]);
+  }, [cartItems, formData]);
 
   console.log(checkedCartData);
   return (
@@ -99,6 +118,7 @@ const CartList = ({ cartItems }: Props): JSX.Element => {
           ))}
         </List>
       </form>
+      <WillPay handleSubmit={handleSubmit} submitTitle={"결제창으로"} />
     </Wrapper>
   );
 };
