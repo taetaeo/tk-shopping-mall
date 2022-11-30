@@ -179,7 +179,7 @@ export default CartItem;
 const Item = styled.ul`
   width: 1200px;
   height: 100%;
-  margin-inline: 1rem;
+  margin-inline: 0.3rem;
   display: flex;
   margin: auto;
   margin-bottom: 0.5rem;
@@ -193,7 +193,7 @@ const Image = styled.img`
 const ItemInfoColumn = styled.li`
   margin-top: 1rem;
   width: 100%;
-  padding: 0.3rem 1rem;
+  padding: 0.3rem 0.5rem;
   display: flex;
   justify-content: left;
   align-items: center;
@@ -231,7 +231,7 @@ const CalculatedPrice = styled(ItemInfoColumn)`
   font-size: 1.5rem;
 `;
 const CategoryName = styled(ItemInfoColumn)`
-  font-size: 0.6rem;
+  font-size: 1.3rem;
 `;
 const CheckBox = styled.input`
   margin: 1rem;

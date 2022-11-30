@@ -12,19 +12,14 @@ import { Cart } from "../../../types";
 type Props = {
   cartItems: Cart[];
 };
-const title = "나의 쇼핑목록";
 const CartList = ({ cartItems }: Props): JSX.Element => {
   const formRef = useRef<HTMLFormElement>(null);
-  const handleAmount = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    alert("수량이 추가 되었습니다. ");
-  };
 
   const handleCheckboxChanged = (event?: SyntheticEvent) => {
     if (!formRef.current) return;
   };
   return (
     <Wrapper>
-      <Title>{title}</Title>
       <form ref={formRef} onChange={handleCheckboxChanged}>
         <Header>
           <CheckboxSection>
@@ -58,12 +53,6 @@ export default CartList;
 
 const Wrapper = styled.section`
   width: 100%;
-`;
-const Title = styled.h1`
-  font-size: 2rem;
-  font-weight: 700;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 `;
 const Header = styled.ul`
   width: 1200px;
