@@ -14,6 +14,7 @@ import {
   query,
   limit,
   startAfter,
+  updateDoc,
 } from "firebase/firestore";
 
 const getJSON = () => readDB(DBField.PRODUCTS);
@@ -126,6 +127,21 @@ const productResolver: Resolver = {
       return {
         ...querySnapshot.data(),
         id: querySnapshot.id,
+      };
+    },
+    updateProduct: async (parent, updatedProduct) => {
+      const { id, ...data } = updatedProduct;
+      const productRef = doc(db, "products", id);
+      if (!productRef) throw Error("상품이 없습니다.");
+      await updateDoc(productRef, {
+        ...data,
+        createdAt: serverTimestamp(),
+      });
+      const querySnapshot = await getDoc(productRef);
+
+      return {
+        id: querySnapshot.id,
+        ...querySnapshot.data(),
       };
     },
   },
