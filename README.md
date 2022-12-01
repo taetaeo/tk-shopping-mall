@@ -36,9 +36,6 @@ chore: 코드 수정 (JSON 데이터 포맷 변경 / scss 변경 등)
 #### 1) client
 
 ```
-컴포넌트: 대문자(리액트에서 소문자는 DOM태그로 인식)
-소문자: index 파일의 nav역할(대문자로할시에, 인식의 오류가 발생)
-
 base : 프로젝트에서 제공하는 기본이 되는 UI를 담당.
 common : 프로젝트의 바탕이 되는 공통으로 사용하는 컴포넌트를 담당.
 layouts : 프로젝트에서 공통으로 사용하는 레이아웃을 담당.
@@ -116,7 +113,10 @@ resolvers : graphql resolver 담당
 
 - 폴더 구조 세분화
 - 리팩토링을 염두하면서, 클린 코딩을 초점으로 둔다.
-- 재사용성을 고려하여 자주 쓰이는 기능들은 커스텀 또는 따로 폴더 구조를 만들어서 관리에 용이하도록 한다. - [바로가기](https://github.com/shop-caffeine/caffeine_fo/issues/8)
+- 재사용성을 고려하여 자주 쓰이는 기능들은 커스텀 또는 따로 폴더 구조를 만들어서 관리에 용이하도록 한다. - [바로가기](https://github.com/ohtaekwon/shoppingmall/issues/1)
+- 상품페이지 카테고리를 대분류, 중분류, 소분류로 나누어 동적라우팅 구성한 상품 데이터 패칭 - [코드보기](https://github.com/ohtaekwon/shoppingmall/blob/main/client/pages/shop/category/list/index.tsx)
+- 무한스크롤 훅을 통한 상품페이지 / 검색 결과 페이지에서 상품 적용 - [코드보기](https://github.com/ohtaekwon/shoppingmall/blob/main/client/hook/useInterSection.ts)
+- react-query 낙관적업데이트를 적용한 장바구니 추가 및 수량 업데이트 - [코드 보기](https://github.com/ohtaekwon/shoppingmall/blob/main/client/components/sections/cart/item.tsx)
 
 <br/>
 
@@ -160,6 +160,13 @@ yarn run dev
 yarn
 yarn run dev
 ```
+
+## 구현 현황
+
+![image](https://user-images.githubusercontent.com/75871005/204991310-bcfb0630-dd9b-47cf-ba58-c12f4d983148.png)
+![image](https://user-images.githubusercontent.com/75871005/204991374-8985c456-12eb-4f36-8497-975431fde4f2.png)
+![image](https://user-images.githubusercontent.com/75871005/204991454-76696363-5239-4160-962e-02b7eebff334.png)
+![image](https://user-images.githubusercontent.com/75871005/204991542-7c3ea58a-4b35-40ce-ad13-107a6648d064.png)
 
 ## 참고
 
