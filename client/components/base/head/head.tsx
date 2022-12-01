@@ -14,7 +14,7 @@ const Head = ({ title }) => {
         content="width=device-width, initial-scale=1"
       />
       <meta name="description" content={`${SHOP_NAME} Project`} />
-      <link rel="icon" href="/images/favicon.ico" />
+      <link rel="icon" href="/favicon.ico" />
       <title>{newTitle}</title>
     </Seo>
   );
