@@ -72,7 +72,6 @@ const Main = styled.main`
 `;
 const Container = styled.div`
   padding: 0.5rem 0;
-  margin-top: 10rem;
 `;
 const Search = styled.h1`
   font-size: 3.5rem;
@@ -93,7 +92,7 @@ const ProductsContainer = styled.section`
   max-width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   row-gap: 5rem;
   column-gap: 2rem;
   margin-top: 1rem;
