@@ -1,14 +1,13 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
-import "./modal.css";
 import { CustomPortal } from "..";
 
-interface Props {
+type Props = {
   children: ReactNode;
   isOpen: boolean;
   selector?: string;
   onClose: () => void;
-}
+};
 const CustomModal = (props: Props) => {
   const { children, isOpen, onClose, selector = "#modal-root" } = props;
 

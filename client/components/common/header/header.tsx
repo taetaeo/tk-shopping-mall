@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Gnb from "./gnb";
@@ -6,7 +6,7 @@ import { Button, Icons } from "../../base";
 
 const DEFAULT_SIZE = "40";
 
-const Header: FC = (): JSX.Element => {
+const Header = (): JSX.Element => {
   const router = useRouter();
 
   const handleGoSearch = () => {
