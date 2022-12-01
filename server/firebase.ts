@@ -1,6 +1,9 @@
+import firebase from "firebase/compat/app";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+
 import "dotenv/config";
+import "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,3 +20,5 @@ const app = initializeApp(firebaseConfig);
 export default app;
 
 export const db = getFirestore(app);
+
+export const authService = firebase.auth();

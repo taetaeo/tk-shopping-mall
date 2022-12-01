@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { Hydrate } from "react-query/hydration";
@@ -6,9 +6,11 @@ import { RecoilRoot } from "recoil";
 import { Layout } from "../components/layouts";
 import { getClient } from "../service";
 import { GlobalStyle } from "../styles/globalStyles";
+// import { authService } from "../../server/firebase";
 
 const CustomApp = ({ Component, pageProps }) => {
   const queryClient = getClient();
+  // const [isLoggedIn, setIsLoggedIn] = useState(authService.currentUser);
 
   return (
     <RecoilRoot>
