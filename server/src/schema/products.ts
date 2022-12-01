@@ -50,6 +50,18 @@ const productSchema = gql`
       category_md: String!
       category_sm: String!
     ): Product!
+
+    updateProduct(
+      id: ID!
+      brand: String!
+      name: String!
+      image_url: String!
+      origin_price: Int!
+      discount: Int!
+      category_lg: String!
+      category_md: String!
+      category_sm: String!
+    ): Product!
   }
 `;
 
