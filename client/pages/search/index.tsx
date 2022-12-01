@@ -17,13 +17,16 @@ const SearchPage: NextPage = () => {
 
   const handleOnChange = async (e: SyntheticEvent) => {
     const newKeyword = (e.target as HTMLInputElement)?.value;
+    setKeyword(newKeyword);
     const data = await graphQLFetcher(GET_SEARCH_BRAND, {
       keyword: newKeyword,
     });
     await setRelationKeyword(data);
-    relationKeyword?.searchBrand.map((item) =>
-      item.includes(keyword) ? setKeyword(item) : setKeyword(newKeyword)
-    );
+    relationKeyword?.searchBrand.map((item) => {
+      if (item.includes(keyword)) {
+        setKeyword(item);
+      }
+    });
   };
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();

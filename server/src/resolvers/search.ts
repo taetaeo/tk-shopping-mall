@@ -41,10 +41,12 @@ const searchResolver: Resolver = {
           newData.push(d);
         }
       }
-
-      for (const d of newData) {
-        queryOptions.unshift(where("brand", "==", d));
+      if (newData) {
+        for (const d of newData) {
+          queryOptions.unshift(where("brand", "==", d));
+        }
       }
+
       if (cursor) {
         const snapshot = await getDoc(doc(db, "products", cursor));
         queryOptions.push(startAfter(snapshot));
