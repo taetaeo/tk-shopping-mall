@@ -28,7 +28,7 @@ const Home: NextPage = ({
     <>
       <Head title={""} />
       <button onClick={signIn}>로그인</button>
-      {/* <HomeSection mainEvent={undefined} normalEvent={undefined} /> */}
+      <HomeSection events={events.events} />
     </>
   );
 };
@@ -37,10 +37,10 @@ export default Home;
 export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
 ) => {
-  const event = await graphQLFetcher(GET_EVENTS);
+  const events = await graphQLFetcher(GET_EVENTS);
   return {
     props: {
-      event,
+      events,
     },
   };
 };

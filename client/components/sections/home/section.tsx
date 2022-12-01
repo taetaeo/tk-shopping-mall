@@ -3,20 +3,14 @@ import styled from "styled-components";
 import Item from "./item";
 // import { MainEvent, NormalEvent } from "../../../../types/data/mockData";
 import Slider from "../../common/slider";
+import { Events } from "../../../types";
 
 type Props = {
-  mainEvent: any;
-  normalEvent: any;
+  events: Events;
 };
-const HomeSection: FC<{
-  mainEvent: any;
-  normalEvent: any;
-}> = (props): JSX.Element => {
-  const { mainEvent, normalEvent } = props;
+const HomeSection = ({ events }: Props): JSX.Element => {
   const mockList = [];
-  mainEvent.map((item: { image_url_main: any }) =>
-    mockList.push(item.image_url_main)
-  );
+
   const section = ["left", "middle", "right"];
   return (
     <Main>
@@ -28,12 +22,12 @@ const HomeSection: FC<{
         direction="row"
         height={1000}
       >
-        {mainEvent.map((item, index) => (
-          <Image src={item.image_url_main} key={index} />
+        {events.map((item, index) => (
+          <Image src={item.image_main} key={index} />
         ))}
       </Slider>
       <Wrapper>
-        {normalEvent.map((item, index) => (
+        {events.map((item, index) => (
           <Item key={index} section={section[index]} {...item} />
         ))}
       </Wrapper>

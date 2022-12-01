@@ -3,22 +3,22 @@ import React, { FC, ReactNode } from "react";
 import styled from "styled-components";
 
 type section = "left" | "right" | "middle";
-type ItemType = {
-  id: number;
-  brand: string;
-  name: string;
-  image_url_lg: string;
-  image_url_thumb: string;
+type Props = {
+  id: string;
+  image_main: string;
+  image_lg: string;
+  image_md: string;
+  image_thumb: string;
   section: section | any;
 };
-const Item: FC<ItemType> = (props: ItemType): JSX.Element => {
-  const { id, brand, name, image_url_lg, section, image_url_thumb } = props;
+const Item = (props: Props): JSX.Element => {
+  const { id, image_lg, image_main, image_md, image_thumb, section } = props;
 
   return (
     <>
       <Section section={section}>
         <Link href={`/event/${id}`}>
-          <Image src={image_url_lg} />
+          <Image src={image_lg} />
         </Link>
       </Section>
     </>

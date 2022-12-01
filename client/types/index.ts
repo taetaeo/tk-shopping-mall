@@ -1,5 +1,6 @@
 export type { Product, Category } from "./data/products";
 export type { Cart, GetCart, AddCart } from "./data/cart";
+export type { Event, Events } from "./data/events";
 export type {
   direction,
   transitionTime,
