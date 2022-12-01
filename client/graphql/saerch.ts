@@ -1,8 +1,8 @@
 import { gql } from "graphql-tag";
 
 export const GET_SEARCH_ITEMS = gql`
-  query GET_SEARCH_ITEMS($keyword: String!) {
-    searchItems(keyword: $keyword) {
+  query GET_SEARCH_ITEMS($keyword: String!, $cursor: ID) {
+    searchItems(keyword: $keyword, cursor: $cursor) {
       id
       brand
       name

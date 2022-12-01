@@ -7,7 +7,7 @@ const searchSchema = gql`
   }
 
   extend type Query {
-    searchItems(keyword: String!): [Product!]
+    searchItems(keyword: String!, cursor: ID): [Product!]
     searchBrand(keyword: String!): [String]
   }
 `;

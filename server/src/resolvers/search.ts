@@ -11,6 +11,8 @@ import {
   orderBy,
   where,
   query,
+  startAfter,
+  limit,
 } from "firebase/firestore";
 
 // 기본 형식
@@ -18,7 +20,7 @@ import {
 
 const searchResolver: Resolver = {
   Query: {
-    searchItems: async (parent, { keyword = "" }) => {
+    searchItems: async (parent, { cursor = "", keyword = "" }) => {
       if (!keyword) throw Error("검색한 브랜드 정보가 없습니다.");
       const newKeyword = keyword.replace(/\s/g, "");
       const queryOptions = [orderBy("createdAt", "desc")];
@@ -43,8 +45,12 @@ const searchResolver: Resolver = {
       for (const d of newData) {
         queryOptions.unshift(where("brand", "==", d));
       }
+      if (cursor) {
+        const snapshot = await getDoc(doc(db, "products", cursor));
+        queryOptions.push(startAfter(snapshot));
+      }
 
-      const q = query(searchBrand, ...queryOptions);
+      const q = query(searchBrand, ...queryOptions, limit(15));
       const searchSnapshot = await getDocs(q);
       const searchData: DocumentData[] = [];
       searchSnapshot.forEach((doc: DocumentData) => {

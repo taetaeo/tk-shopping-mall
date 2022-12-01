@@ -10,6 +10,6 @@ export const arrToObj = (arr: [string, any][]) => {
   }, {});
 };
 export const commaByThreeDigit = (number: number) => {
-  const result = number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  return result;
+  if (typeof number !== "number") throw Error("타입이 맞지 않습니다.");
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 };
