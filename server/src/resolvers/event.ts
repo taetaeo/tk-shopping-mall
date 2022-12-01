@@ -10,6 +10,7 @@ import {
   doc,
   addDoc,
   serverTimestamp,
+  updateDoc,
 } from "firebase/firestore";
 
 // 기본 형식
@@ -59,6 +60,20 @@ const eventResolver: Resolver = {
       return {
         ...querySnapshot.data(),
         id: querySnapshot.id,
+      };
+    },
+    updateEvent: async (parent, updatedEvent) => {
+      const { id, ...data } = updatedEvent;
+      const eventRef = doc(db, "events", id);
+      if (!eventRef) throw Error("상품이 없습니다.");
+      await updateDoc(eventRef, {
+        ...data,
+        createdAt: serverTimestamp(),
+      });
+      const querySnapshot = await getDoc(eventRef);
+      return {
+        id: querySnapshot.id,
+        ...querySnapshot.data(),
       };
     },
   },

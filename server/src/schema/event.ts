@@ -21,6 +21,13 @@ const eventSchema = gql`
       image_md: String
       image_thumb: String
     ): Event!
+    updateEvent(
+      id: ID!
+      image_main: String
+      image_lg: String
+      image_md: String
+      image_thumb: String
+    ): Event!
   }
 `;
 
