@@ -13,7 +13,7 @@ export default SubHeader;
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 30px;
+  height: 40px;
   top: 0;
   left: 0;
   z-index: 9;

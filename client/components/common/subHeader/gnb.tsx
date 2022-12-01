@@ -8,7 +8,7 @@ import {
   ICONS_NAME,
 } from "../../../utils/constants";
 import { SIZE, VARIANTS_NAME } from "../../../utils/constants/common";
-import { Button, Icons } from "../../base";
+import { Button, Icons, Logo } from "../../base";
 import { Left, LogoMenu, Menu, Right } from "./template";
 
 type MenuItemType = {
@@ -50,7 +50,7 @@ const Gnb = () => {
           <LogoMenu>
             <Link href={ROUTE_PATH_HOME} legacyBehavior>
               <a>
-                <h1>로고</h1>
+                <Logo />
               </a>
             </Link>
           </LogoMenu>

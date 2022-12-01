@@ -1,7 +1,6 @@
 [
   {
     "id": "1ZSiHGffKdLbWtTtv0l5",
-    "amount": 6,
     "product": {
       "converter": null,
       "_key": {
@@ -56,6 +55,7 @@
           "useFetchStreams": true
         }
       }
-    }
+    },
+    "amount": 6
   }
 ]
