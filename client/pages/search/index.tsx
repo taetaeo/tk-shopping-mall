@@ -5,6 +5,7 @@ import { graphQLFetcher } from "../../service";
 import { GET_SEARCH_BRAND } from "../../graphql";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { Head } from "../../components/base";
 
 const DEFAULT_STRING = "";
 const SearchPage: NextPage = () => {
@@ -26,6 +27,7 @@ const SearchPage: NextPage = () => {
   };
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
+    console.log(keyword);
     router.push({
       pathname: `/search/${keyword}`,
       query: {
@@ -36,26 +38,29 @@ const SearchPage: NextPage = () => {
     setKeyword(DEFAULT_STRING);
   };
   return (
-    <Main>
-      <Container>
-        <Form onSubmit={handleSubmit}>
-          <Input
-            type="text"
-            onChange={handleOnChange}
-            placeholder="찾으시는 브랜드명을 입력하세요."
-          />
-        </Form>
-        <SearchResultList>
-          {relationKeyword?.searchBrand.map((searchItem, index) => (
-            <Link key={index} href={`/search/${searchItem}`} legacyBehavior>
-              <a>
-                <SearchResultListItem>{searchItem}</SearchResultListItem>
-              </a>
-            </Link>
-          ))}
-        </SearchResultList>
-      </Container>
-    </Main>
+    <>
+      <Head title={"브랜드를 검색해주세요"} />
+      <Main>
+        <Container>
+          <Form onSubmit={handleSubmit}>
+            <Input
+              type="text"
+              onChange={handleOnChange}
+              placeholder="찾으시는 브랜드명을 입력하세요."
+            />
+          </Form>
+          <SearchResultList>
+            {relationKeyword?.searchBrand.map((searchItem, index) => (
+              <Link key={index} href={`/search/${searchItem}`} legacyBehavior>
+                <a>
+                  <SearchResultListItem>{searchItem}</SearchResultListItem>
+                </a>
+              </Link>
+            ))}
+          </SearchResultList>
+        </Container>
+      </Main>
+    </>
   );
 };
 export default SearchPage;
