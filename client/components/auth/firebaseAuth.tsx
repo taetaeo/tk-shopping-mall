@@ -1,12 +1,12 @@
 import { initFirebase, setUserCookie, mapUserData } from "../../lib/firebase";
 import { useEffect, useState } from "react";
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import StyledFirebaseAuth from "react-firebaseui/dist/StyledFirebaseAuth";
 import {
+  EmailAuthProvider,
   getAuth,
+  GithubAuthProvider,
   GoogleAuthProvider,
   TwitterAuthProvider,
-  GithubAuthProvider,
-  EmailAuthProvider,
 } from "firebase/auth";
 
 initFirebase();

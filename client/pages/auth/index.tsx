@@ -1,6 +1,12 @@
 import React from "react";
 import type { NextPage } from "next";
-import { FirebaseAuth } from "../../components/auth";
+import dynamic from "next/dynamic";
+const FirebaseAuth = dynamic(
+  () => import("../../components/auth/firebaseAuth"),
+  {
+    ssr: false,
+  }
+);
 
 const AuthPage: NextPage = () => {
   return (
