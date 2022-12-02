@@ -1,12 +1,8 @@
 import { atom } from "recoil";
 import { Cart } from "../types";
-
-export const detailIdAtoms = atom<string>({
-  key: "DETAIL/ID",
-  default: "",
-});
+import { v4 } from "uuid";
 
 export const checkedCartAtoms = atom<Cart[]>({
-  key: "CART/CHECKED",
+  key: `CART/CHECKED/${v4()}`,
   default: [],
 });
