@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
 import { Hydrate } from "react-query/hydration";
 import { RecoilRoot } from "recoil";
 import { Layout } from "../components/layouts";
