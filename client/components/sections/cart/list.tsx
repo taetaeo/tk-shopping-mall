@@ -90,7 +90,6 @@ const CartList = ({ cartItems }: Props): JSX.Element => {
     setCheckedCartData(checkedItems as Cart[]);
   }, [cartItems, formData]);
 
-  console.log(checkedCartData);
   return (
     <Wrapper>
       <form ref={formRef} onChange={handleCheckboxChanged}>

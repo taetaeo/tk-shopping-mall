@@ -47,7 +47,6 @@ const SearchResult = ({ products, title, searchKeyword }: Props) => {
     setProducts(data?.pages);
   }, [data?.pages]);
 
-  console.log(newProduct);
   return (
     <Main>
       <Container>

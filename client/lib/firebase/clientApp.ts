@@ -17,7 +17,6 @@ const clientCredentials = {
 export const initFirebase = () => {
   if (!firebase.apps.length) {
     firebase.initializeApp(clientCredentials);
-    console.log(firebase.apps);
     console.log("😀 Firebase was successfully init");
   }
 };

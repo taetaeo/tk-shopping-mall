@@ -27,7 +27,5 @@ import { DBField, readDB } from "./dbController";
     },
   });
   await app.listen({ port: 8000 });
-  // console.log("resolvers", resolvers);
-  // console.log("schema", schema);
   console.log("server is listening on port 8000....");
 })();

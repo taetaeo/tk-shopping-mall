@@ -1,7 +1,6 @@
 import React from "react";
 import type { NextPage } from "next";
 import dynamic from "next/dynamic";
-import { useUser } from "../../lib/firebase/useUser";
 import { Head } from "../../components/base";
 
 const FirebaseAuth = dynamic(
@@ -12,10 +11,6 @@ const FirebaseAuth = dynamic(
 );
 
 const AuthPage: NextPage = () => {
-  const { user, logout } = useUser();
-
-  console.log(user);
-
   return (
     <>
       <Head title={"로그인"} />

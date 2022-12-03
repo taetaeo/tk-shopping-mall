@@ -17,7 +17,7 @@ const DEFAULT_USER_DATA = {
 };
 
 export const userDataAtom = atom<UserData>({
-  key: "USER/DATA",
+  key: `USER/DATA/${v4()}`,
   default: DEFAULT_USER_DATA,
 });
 
