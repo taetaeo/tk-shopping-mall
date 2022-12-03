@@ -49,7 +49,10 @@ const useUser = () => {
     });
 
     const userFromCookie = getUserFromCookie();
-    if (!userFromCookie) {
+
+    console.log("userFromCookie", userFromCookie);
+    if (userFromCookie && router.route === "/auth") {
+      // 쿠키가 없을시에 리다이렉트
       router.push("/");
       return;
     }

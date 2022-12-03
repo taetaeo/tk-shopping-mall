@@ -20,7 +20,7 @@ type MenuItemType = {
 
 const {
   ROUTE_PATH_HOME,
-  ROUTE_PATH_LOGIN,
+  ROUTE_PATH_AUTH,
   ROUTE_PATH_CART,
   ROUTE_PATH_SIGN_UP,
   ROUTE_PATH_MY_PAGE,
@@ -36,7 +36,7 @@ const DEFAULT_SIZE = "14";
 
 const Gnb = () => {
   const menuItems: MenuItemType[] = [
-    // { name: LOGIN, route: ROUTE_PATH_LOGIN, icon: LOGIN_BOX },
+    { name: LOGIN, route: ROUTE_PATH_AUTH, icon: LOGIN_BOX },
     // { name: SIGN_UP, route: ROUTE_PATH_SIGN_UP, icon: LOGIN_BOX },
     { name: LIKES, route: ROUTE_PATH_MYPAGE_LIKES, icon: LIKE_FILL },
     { name: CART, route: ROUTE_PATH_CART, icon: SHOPPING_BAG },

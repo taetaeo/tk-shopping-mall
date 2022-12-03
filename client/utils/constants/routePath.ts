@@ -5,7 +5,7 @@ export const ROUTE_PATH = {
   ROUTE_PATH_DRESS: "/dress",
   ROUTE_PATH_QNA: "/qna",
   ROUTE_PATH_EVENT: "/event",
-  ROUTE_PATH_LOGIN: "/signin",
+  ROUTE_PATH_AUTH: "/auth",
   ROUTE_PATH_SIGN_UP: "/signup",
   ROUTE_PATH_MY_PAGE: "/mypage",
   ROUTE_PATH_CART: "/cart",

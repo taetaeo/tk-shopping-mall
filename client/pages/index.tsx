@@ -10,10 +10,13 @@ import Head from "../components/base/head";
 import HomeSection from "../components/sections/home";
 import { graphQLFetcher } from "../service";
 import { GET_EVENTS } from "../graphql";
+import { useUser } from "../lib/firebase/useUser";
 
 const Home: NextPage = ({
   events,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { user, logout } = useUser();
+
   return (
     <>
       <Head title={""} />

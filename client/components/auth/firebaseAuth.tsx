@@ -8,6 +8,7 @@ import {
   GoogleAuthProvider,
   TwitterAuthProvider,
 } from "firebase/auth";
+import styled from "styled-components";
 
 initFirebase();
 const auth = getAuth();
@@ -44,11 +45,33 @@ const FirebaseAuth = () => {
     }
   }, []);
   return (
-    <div>
+    <Wrapper>
       {renderAuth ? (
         <StyledFirebaseAuth uiConfig={firebaseAuthConfig} firebaseAuth={auth} />
       ) : null}
-    </div>
+    </Wrapper>
   );
 };
 export default FirebaseAuth;
+
+const Wrapper = styled.div`
+  /* width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  box-sizing: border-box;
+  div {
+    width: 100%;
+  }
+  form {
+    width: 1200px;
+  }
+  ul {
+    width: 100%;
+    display: flex;
+  }
+  li {
+    width: 200px;
+  } */
+`;
