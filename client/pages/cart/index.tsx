@@ -6,14 +6,18 @@ import { GET_CARTS } from "../../graphql";
 import { graphQLFetcher, QueryKeys, cartOptions } from "../../service";
 import { CartList } from "../../components/sections";
 import { Cart } from "../../types";
+import { useUser } from "../../lib/firebase/useUser";
+import { useRecoilValue } from "recoil";
+import { userDataAtom } from "../../recoil";
 
 const TITLE = "장바구니 페이지";
 const NONE_CART_MESSAGE = "장바구니가 비어있습니다.";
 const PAGE_TITLE = "나의 쇼핑목록";
 
 const CartPage: NextPage = () => {
-  const QueryFn = () => graphQLFetcher(GET_CARTS);
-  const { data } = useQuery(QueryKeys.cart, QueryFn, cartOptions);
+  const { id } = useRecoilValue(userDataAtom);
+  const QueryFn = () => graphQLFetcher(GET_CARTS, { uid: id });
+  const { data } = useQuery([QueryKeys.cart, id], QueryFn, cartOptions);
   const cartData = (data?.cart || []) as Cart[];
 
   return (

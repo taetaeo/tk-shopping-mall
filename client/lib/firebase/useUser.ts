@@ -31,6 +31,7 @@ const useUser = () => {
     try {
       await auth.signOut();
       removeUserCookie();
+      setUserData({ id: null, email: null, token: null, name: null });
       router.push("/auth");
     } catch (e) {
       console.log(e.message);
@@ -54,7 +55,6 @@ const useUser = () => {
         });
       } else {
         removeUserCookie();
-        setUserData(null);
         // setUser(null);
       }
     });

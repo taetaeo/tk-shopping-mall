@@ -10,6 +10,8 @@ import { graphQLFetcher } from "../../../service";
 import { Category, Product } from "../../../types";
 import { ICONS_NAME } from "../../../utils/constants";
 import { commaByThreeDigit, stringToNumber } from "../../../utils/helpers";
+import { useRecoilValue } from "recoil";
+import { userDataAtom } from "../../../recoil";
 
 export type size = "default" | "sm" | "md" | "lg" | "xs";
 export type border =
@@ -54,17 +56,18 @@ const Item: FC<Props> = (props: Props): JSX.Element => {
     props;
   const router = useRouter();
   const [count, setCount] = useState(1);
+  const { id: uid } = useRecoilValue(userDataAtom);
 
+  console.log("uid", typeof uid);
   const mutationFn = ({ id, count }: { id: string; count: number }) =>
-    graphQLFetcher(ADD_CART, { id, count });
+    graphQLFetcher(ADD_CART, { id, count, uid });
   const { mutate: addCart } = useMutation(mutationFn);
 
   const handleCart = async (id: string, count: number) => {
     await confirm("선택하신 상품을 장바구니에 담으시겠습니까");
     await addCart({ id, count });
     setCount(1);
-    router.push("/");
-    //router.push("/cart");
+    router.push("/cart");
   };
 
   const handleOrder = (event: React.MouseEvent<HTMLElement>) => {

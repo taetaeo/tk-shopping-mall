@@ -7,8 +7,10 @@ import {
   getDoc,
   getDocs,
   increment,
+  orderBy,
   query,
   QueryDocumentSnapshot,
+  serverTimestamp,
   updateDoc,
   where,
 } from "firebase/firestore";
@@ -32,10 +34,16 @@ const cartResolver: Resolver = {
     },
   },
   Query: {
-    cart: async (parent, args) => {
+    cart: async (parent, { uid }) => {
       const cart = collection(db, "cart");
-      const querySnapshot = await getDocs(cart);
+      const queryOptions = [orderBy("createdAt", "desc")];
+      if (!uid) throw Error("장바구니 정보가 없습니다.");
+
+      queryOptions.unshift(where("uid", "==", uid)); // category_sm에 따라 long, short 등 분리
+
       const data: DocumentData[] = [];
+      const q = query(cart, ...queryOptions);
+      const querySnapshot = await getDocs(q);
 
       querySnapshot.forEach((doc) => {
         const d = doc.data();
@@ -50,7 +58,8 @@ const cartResolver: Resolver = {
     },
   },
   Mutation: {
-    addCart: async (parent, { productId, count = 1 }) => {
+    addCart: async (parent, { productId, uid, count = 1 }) => {
+      console.log("================", uid);
       if (!productId) throw Error("상품 아이디가 없습니다.");
       const productRef = doc(db, "products", productId);
       const cartCollection = collection(db, "cart");
@@ -71,6 +80,8 @@ const cartResolver: Resolver = {
         cartRef = await addDoc(cartCollection, {
           amount: count,
           product: productRef,
+          uid: uid,
+          createdAt: serverTimestamp(),
         });
       }
 
@@ -89,6 +100,7 @@ const cartResolver: Resolver = {
         ...cartSnapshot.data(),
         product: productRef,
         id: cartSnapshot.id,
+        uid: uid,
       };
     },
     updateCart: async (parent, { cartId, amount }) => {

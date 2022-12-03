@@ -37,11 +37,11 @@ const SubHeader = ({ userData }: Props) => {
   const { logout } = useUser();
 
   let menuItems: MenuItemType[] = [];
-  if (!userData) {
+  if (userData.id === null) {
     menuItems = [
       { name: LOGIN, route: ROUTE_PATH_AUTH, icon: LOGIN_BOX },
-      { name: LIKES, route: ROUTE_PATH_MYPAGE_LIKES, icon: LIKE_FILL },
-      { name: CART, route: ROUTE_PATH_CART, icon: SHOPPING_BAG },
+      // { name: LIKES, route: ROUTE_PATH_MYPAGE_LIKES, icon: LIKE_FILL },
+      // { name: CART, route: ROUTE_PATH_CART, icon: SHOPPING_BAG },
     ];
   } else {
     menuItems = [
@@ -51,6 +51,7 @@ const SubHeader = ({ userData }: Props) => {
       { name: ROUTE_PATH_MY_PAGE, route: ROUTE_PATH_MY_PAGE, icon: USER },
     ];
   }
+  console.log(userData);
 
   return (
     <Wrapper>

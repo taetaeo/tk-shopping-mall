@@ -1,10 +1,12 @@
 import { gql } from "graphql-tag";
 
 export const GET_CARTS = gql`
-  query GET_CARTS {
-    cart {
+  query GET_CARTS($uid: String!) {
+    cart(uid: $uid) {
       id
       amount
+      uid
+      createdAt
       product {
         id
         brand
@@ -23,10 +25,12 @@ export const GET_CARTS = gql`
   }
 `;
 export const ADD_CART = gql`
-  mutation ADD_CART($id: ID!, $count: Int) {
-    addCart(productId: $id, count: $count) {
+  mutation ADD_CART($id: ID!, $count: Int, $uid: String!) {
+    addCart(productId: $id, count: $count, uid: $uid) {
       id
       amount
+      uid
+      createdAt
       product {
         id
         brand
@@ -49,6 +53,8 @@ export const UPDATE_CART = gql`
     updateCart(cartId: $id, amount: $amount) {
       id
       amount
+      uid
+      createdAt
       product {
         id
         brand

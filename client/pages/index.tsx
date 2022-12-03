@@ -9,14 +9,16 @@ import type {
 import Head from "../components/base/head";
 import HomeSection from "../components/sections/home";
 import { graphQLFetcher } from "../service";
-import { GET_EVENTS } from "../graphql";
+import { GET_CARTS, GET_EVENTS } from "../graphql";
 import { useUser } from "../lib/firebase/useUser";
 
 const Home: NextPage = ({
   events,
+  cart,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { user, logout } = useUser();
 
+  console.log(cart);
   return (
     <>
       <Head title={""} />
@@ -31,9 +33,13 @@ export const getStaticProps: GetStaticProps = async (
   context: GetStaticPropsContext
 ) => {
   const events = await graphQLFetcher(GET_EVENTS);
+  const cart = await graphQLFetcher(GET_CARTS, {
+    uid: "qefQizN3lkNwJ5tmMayVAD12KHl2",
+  });
   return {
     props: {
       events,
+      cart,
     },
   };
 };

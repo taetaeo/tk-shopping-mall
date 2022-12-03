@@ -2,6 +2,7 @@ import { Product } from "./products";
 
 export type Cart = {
   id: string;
+  uid?: string;
   amount: number;
   product: Product;
 };

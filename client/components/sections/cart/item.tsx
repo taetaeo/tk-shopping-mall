@@ -10,6 +10,8 @@ import { Button } from "../../base";
 import { ROUTE_PATH } from "../../../utils/constants";
 import { stringToNumber, commaByThreeDigit } from "../../../utils/helpers";
 import { Cart } from "../../../types";
+import { useRecoilValue } from "recoil";
+import { userDataAtom } from "../../../recoil";
 
 const { ROUTE_PATH_DETAIL } = ROUTE_PATH;
 const ORDER_PRICE = 2500;
@@ -32,6 +34,10 @@ const CartItem = (
   ref: ForwardedRef<HTMLInputElement>
 ): JSX.Element => {
   const queryClients = getClient();
+  const { id: uid } = useRecoilValue(userDataAtom);
+  console.log(uid);
+  // QueryKey
+  const QueryKey = [QueryKeys.cart, uid];
 
   const discountedPrice = origin_price - origin_price * (discount / 100);
   // Mutate Fn = 1. Update / 2. delete
@@ -45,9 +51,9 @@ const CartItem = (
   // Mutate Options 1. Update / 2. delete
   // 1. Update - 1) onMutation Options
   const updateOnMutateOptions = async ({ id, amount }) => {
-    await queryClients.cancelQueries(QueryKeys.cart);
+    await queryClients.cancelQueries(QueryKey);
     const { cart: prevCart } = queryClients.getQueryData<{ cart: Cart[] }>(
-      QueryKeys.cart
+      QueryKey
     ) || { cart: [] };
     if (!prevCart) return null;
 
@@ -56,14 +62,14 @@ const CartItem = (
 
     const copyCart = [...prevCart];
     copyCart.splice(targetIndex, 1, { ...copyCart[targetIndex], amount });
-    queryClients.setQueryData(QueryKeys.cart, { cart: copyCart });
+    queryClients.setQueryData(QueryKey, { cart: copyCart });
     return prevCart;
   };
   // 1. Update - 3) onError Options
   const updateOnSuccessOptions = ({ updateCart }, variables, ctx) => {
     // (data, variables, context) => Promise
     const { cart: prevCart } = queryClients.getQueryData<{ cart: Cart[] }>(
-      QueryKeys.cart
+      QueryKey
     ) || { cart: [] };
     const targetIndex = prevCart.findIndex(
       (cartItem) => cartItem.id === updateCart.id
@@ -73,19 +79,19 @@ const CartItem = (
 
     const copyCart = [...prevCart];
     copyCart.splice(targetIndex, 1, updateCart);
-    queryClients.setQueryData(QueryKeys.cart, { cart: copyCart });
+    queryClients.setQueryData(QueryKey, { cart: copyCart });
   };
   // 3) onMutation Options - Update
   const updateOnErrorOptions = (error, variables, context) => {
     // (err, variables, context) => Promise
     if (context) {
       // error가 발생하면 onMutate에서 반환된 값으로 다시 롤백
-      queryClients.setQueryData(QueryKeys.cart, context);
+      queryClients.setQueryData(QueryKey, context);
     }
   };
   // 2. Delete - 1) onSuccess Options
   const deleteOnSuccessOptions = () => {
-    queryClients.invalidateQueries(QueryKeys.cart, {
+    queryClients.invalidateQueries(QueryKey, {
       exact: false,
       refetchInactive: true,
     });
