@@ -1,3 +1,4 @@
+import { getAuth } from "firebase/auth";
 import React, { ReactNode } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";

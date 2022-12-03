@@ -17,7 +17,7 @@ export const LogoMenu = styled.div`
   color: #464ea3;
 `;
 export const Menu = styled.li`
-  width: 100px;
+  width: 80px;
   height: 100%;
   flex-shrink: 0;
   display: flex;

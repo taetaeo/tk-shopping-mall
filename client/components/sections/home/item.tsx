@@ -33,6 +33,7 @@ const Section = styled.section<{ section: "left" | "right" | "middle" }>`
   height: 100%;
   object-fit: cover;
   padding: 1rem;
+  box-sizing: border-box;
 `;
 
 const Image = styled.img`

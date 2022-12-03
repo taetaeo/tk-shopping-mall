@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { useUser } from "../../lib/firebase/useUser";
 import { Head } from "../../components/base";
-import { useRouter } from "next/router";
 
 const FirebaseAuth = dynamic(
   () => import("../../components/auth/firebaseAuth"),
@@ -22,10 +21,6 @@ const AuthPage: NextPage = () => {
       <Head title={"로그인"} />
       <div>
         <FirebaseAuth />
-        <p>
-          <a href="/">Go Home</a>
-        </p>
-        <button onClick={logout}>로그아웃</button>
       </div>
     </>
   );
