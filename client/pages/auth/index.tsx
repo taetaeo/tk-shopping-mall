@@ -14,7 +14,6 @@ const FirebaseAuth = dynamic(
 
 const AuthPage: NextPage = () => {
   const { user, logout } = useUser();
-  const router = useRouter();
 
   console.log(user);
 

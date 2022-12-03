@@ -1,15 +1,18 @@
 import React, { ReactNode } from "react";
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import css from "styled-jsx/css";
+import { userDataAtom } from "../../recoil";
 import { Header, SubHeader } from "../common";
 
 const Layout = ({ children }: { children: ReactNode }) => {
+  const userData = useRecoilValue(userDataAtom);
   return (
     <>
       <div className="layout">
         <Wrapper>
           <SubNavigation>
-            <SubHeader />
+            <SubHeader userData={userData} />
           </SubNavigation>
           <Header />
         </Wrapper>

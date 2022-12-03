@@ -1,15 +1,11 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import {
-  HEADER_MENU,
-  ROUTE_PATH,
-  SUB_HEADER_MENU,
-  ICONS_NAME,
-} from "../../../utils/constants";
-import { SIZE, VARIANTS_NAME } from "../../../utils/constants/common";
+import { ROUTE_PATH } from "../../../utils/constants";
 import { Button, Icons, Logo } from "../../base";
 import { Left, LogoMenu, Menu, Right } from "./template";
+
+const DEFAULT_SIZE = "14";
 
 type MenuItemType = {
   [x: string]: string;
@@ -18,37 +14,17 @@ type MenuItemType = {
   icon: string;
 };
 
-const {
-  ROUTE_PATH_HOME,
-  ROUTE_PATH_AUTH,
-  ROUTE_PATH_CART,
-  ROUTE_PATH_SIGN_UP,
-  ROUTE_PATH_MY_PAGE,
-  ROUTE_PATH_MYPAGE_LIKES,
-} = ROUTE_PATH;
-const { LOGO_TITLE } = HEADER_MENU;
-const { LOGIN, LOGOUT, SIGN_UP, CART, MY_PAGE, LIKES } = SUB_HEADER_MENU;
-const { SMALL, MIDDLE, LARGE } = SIZE;
-const { DEFAULT } = VARIANTS_NAME;
-const { LOGIN_BOX, LIKE_FILL, SHOPPING_BAG, USER } = ICONS_NAME;
-
-const DEFAULT_SIZE = "14";
-
-const Gnb = () => {
-  const menuItems: MenuItemType[] = [
-    { name: LOGIN, route: ROUTE_PATH_AUTH, icon: LOGIN_BOX },
-    // { name: SIGN_UP, route: ROUTE_PATH_SIGN_UP, icon: LOGIN_BOX },
-    { name: LIKES, route: ROUTE_PATH_MYPAGE_LIKES, icon: LIKE_FILL },
-    { name: CART, route: ROUTE_PATH_CART, icon: SHOPPING_BAG },
-    // { name: MY_PAGE, route: ROUTE_PATH_MY_PAGE, icon: USER },
-  ];
-
+type Props = {
+  menuItems: MenuItemType[];
+  logout: () => Promise<void>;
+};
+const Gnb = ({ menuItems, logout }: Props) => {
   return (
     <MenuListWrapper>
       <MenuList>
         <Left>
           <LogoMenu>
-            <Link href={ROUTE_PATH_HOME} legacyBehavior>
+            <Link href="/" legacyBehavior>
               <a>
                 <Logo />
               </a>
@@ -56,13 +32,17 @@ const Gnb = () => {
           </LogoMenu>
         </Left>
         <Right>
-          {menuItems.map(
+          {menuItems?.map(
             ({ name, route, icon }: MenuItemType, index: React.Key) => (
               <Menu key={index}>
                 <Link href={route} legacyBehavior>
                   <Anchor>
                     {Icons({ size: DEFAULT_SIZE, name: icon })}
-                    <Text>{name}</Text>
+                    {name === "Logout" ? (
+                      <button onClick={logout}>{name}</button>
+                    ) : (
+                      <Text>{name}</Text>
+                    )}
                   </Anchor>
                 </Link>
               </Menu>

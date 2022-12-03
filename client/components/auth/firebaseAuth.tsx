@@ -38,7 +38,6 @@ const firebaseAuthConfig: firebaseui.auth.Config | any = {
 const FirebaseAuth = () => {
   // SSR에서는 firebase UI는 안됨
   const [renderAuth, setRenderAuth] = useState(false);
-
   useEffect(() => {
     if (typeof window !== "undefined") {
       setRenderAuth(true);

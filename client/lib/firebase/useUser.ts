@@ -8,6 +8,8 @@ import {
   getUserFromCookie,
   mapUserData,
 } from ".";
+import { useRecoilState } from "recoil";
+import { userDataAtom } from "../../recoil";
 
 initFirebase();
 
@@ -18,7 +20,9 @@ type User = {
   name: any;
   profilePic: any;
 };
+
 const useUser = () => {
+  const [_, setUserData] = useRecoilState(userDataAtom);
   const [user, setUser] = useState<User>();
   const router = useRouter();
   const auth = getAuth();
@@ -42,8 +46,15 @@ const useUser = () => {
         const userData = mapUserData(user);
         setUserCookie(userData);
         setUser(userData);
+        setUserData({
+          id: userData.id,
+          email: userData.email,
+          name: userData.name,
+          token: userData.token,
+        });
       } else {
         removeUserCookie();
+        setUserData(null);
         // setUser(null);
       }
     });

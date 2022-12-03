@@ -21,6 +21,7 @@ const Home: NextPage = ({
     <>
       <Head title={""} />
       <HomeSection events={events.events} />
+      <button onClick={logout}>로그아웃</button>
     </>
   );
 };
