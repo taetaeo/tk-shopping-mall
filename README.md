@@ -74,6 +74,8 @@ resolvers : graphql resolver 담당
 
 ### 2.3. 프로젝트 요약
 
+![](https://user-images.githubusercontent.com/75871005/205483482-4c3ca001-1776-49cd-afcb-b97efc7bd26b.png)
+
 #### 2.3.1. 기술 스택
 
 - Language : React.js, Typescript
