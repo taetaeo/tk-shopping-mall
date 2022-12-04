@@ -21,9 +21,7 @@ const Filter: FC<FilerType> = (props: FilerType): JSX.Element => {
     (filterItem) => category === filterItem.name
   );
   const filterOptions = list === "m" ? menOptions : womenOptions;
-  const handleSelect = (e: any) => {
-    // console.log(e.target.value);
-  };
+  const handleSelect = (e: any) => {};
   return (
     <Wrapper>
       <ItemsContainer>

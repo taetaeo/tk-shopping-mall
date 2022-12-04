@@ -59,7 +59,6 @@ const cartResolver: Resolver = {
   },
   Mutation: {
     addCart: async (parent, { productId, uid, count = 1 }) => {
-      console.log("================", uid);
       if (!productId) throw Error("상품 아이디가 없습니다.");
       const productRef = doc(db, "products", productId);
       const cartCollection = collection(db, "cart");

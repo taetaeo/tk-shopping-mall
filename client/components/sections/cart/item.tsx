@@ -35,7 +35,6 @@ const CartItem = (
 ): JSX.Element => {
   const queryClients = getClient();
   const { id: uid } = useRecoilValue(userDataAtom);
-  console.log(uid);
   // QueryKey
   const QueryKey = [QueryKeys.cart, uid];
 

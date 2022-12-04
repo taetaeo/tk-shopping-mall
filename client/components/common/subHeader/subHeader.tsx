@@ -51,7 +51,6 @@ const SubHeader = ({ userData }: Props) => {
       { name: ROUTE_PATH_MY_PAGE, route: ROUTE_PATH_MY_PAGE, icon: USER },
     ];
   }
-  console.log(userData);
 
   return (
     <Wrapper>

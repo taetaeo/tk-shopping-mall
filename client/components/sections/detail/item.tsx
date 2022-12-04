@@ -58,7 +58,6 @@ const Item: FC<Props> = (props: Props): JSX.Element => {
   const [count, setCount] = useState(1);
   const { id: uid } = useRecoilValue(userDataAtom);
 
-  console.log("uid", typeof uid);
   const mutationFn = ({ id, count }: { id: string; count: number }) =>
     graphQLFetcher(ADD_CART, { id, count, uid });
   const { mutate: addCart } = useMutation(mutationFn);

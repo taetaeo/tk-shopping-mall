@@ -30,7 +30,6 @@ const SearchPage: NextPage = () => {
   };
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    console.log(keyword);
     router.push({
       pathname: `/search/${keyword}`,
       query: {

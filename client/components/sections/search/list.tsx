@@ -6,7 +6,6 @@ type Props = {
   products: { searchItems: Product[] }[] | any;
 };
 const List: FC<Props> = ({ products }): JSX.Element => {
-  console.log(products);
   return (
     <>
       {products?.map((page) =>

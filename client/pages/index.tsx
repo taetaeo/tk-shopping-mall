@@ -18,7 +18,6 @@ const Home: NextPage = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { user, logout } = useUser();
 
-  console.log(cart);
   return (
     <>
       <Head title={""} />

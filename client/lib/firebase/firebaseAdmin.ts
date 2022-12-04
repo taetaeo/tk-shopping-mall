@@ -1,5 +1,7 @@
 import * as admin from "firebase-admin";
 
+const serviceAccount = require("path/to/serviceAccountKey.json");
+
 export const verifyIdToken = (token) => {
   const firebasePrivateKey = process.env.FIREBASE_PRIVATE_KEY;
 

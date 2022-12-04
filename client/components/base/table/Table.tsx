@@ -31,8 +31,6 @@ const Table: FC<TableType> = (props: TableType): JSX.Element => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
 
-  // console.log("table-rows", rows);
-
   return (
     <StyledTable {...getTableProps()}>
       <TableHead>
