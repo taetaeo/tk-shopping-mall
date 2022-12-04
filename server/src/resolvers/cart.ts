@@ -39,7 +39,7 @@ const cartResolver: Resolver = {
       const queryOptions = [orderBy("createdAt", "desc")];
       if (!uid) throw Error("장바구니 정보가 없습니다.");
 
-      queryOptions.unshift(where("uid", "==", uid)); // category_sm에 따라 long, short 등 분리
+      queryOptions.unshift(where("uid", "==", uid)); // 해당 uid값이 있는 cart정보를 select
 
       const data: DocumentData[] = [];
       const q = query(cart, ...queryOptions);
@@ -59,6 +59,8 @@ const cartResolver: Resolver = {
   },
   Mutation: {
     addCart: async (parent, { productId, uid, count = 1 }) => {
+      console.log("======================", uid);
+      if (!uid) throw Error("uid가 존재하지 않습니다.");
       if (!productId) throw Error("상품 아이디가 없습니다.");
       const productRef = doc(db, "products", productId);
       const cartCollection = collection(db, "cart");
