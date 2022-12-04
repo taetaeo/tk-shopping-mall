@@ -420,12 +420,12 @@ yarn run dev
 
 ### 1. Home 페이지
 
-![](https://user-images.githubusercontent.com/75871005/205481928-920b67c6-b51a-4258-afc1-5c4955b05bd8.mp4)
+[](https://user-images.githubusercontent.com/75871005/205481928-920b67c6-b51a-4258-afc1-5c4955b05bd8.mp4)
 
 ### 2. 로그인
 
-![](https://user-images.githubusercontent.com/75871005/205481931-ef9a1cd2-d2eb-42a6-b164-659dc80ba546.mp4)
+[](https://user-images.githubusercontent.com/75871005/205481931-ef9a1cd2-d2eb-42a6-b164-659dc80ba546.mp4)
 
 ### 3. 장바구니 추가
 
-![](https://user-images.githubusercontent.com/75871005/205481937-5f1e103c-93f9-4b01-8c66-bcccb3103b16.mp4)
+[](https://user-images.githubusercontent.com/75871005/205481937-5f1e103c-93f9-4b01-8c66-bcccb3103b16.mp4)
