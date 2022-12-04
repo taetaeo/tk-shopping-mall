@@ -190,11 +190,11 @@ _**카테고리**_
 3. `image_thumb` : `/event` 페이지에 들어갈 썸네일 이미지 URL
 4. `image_lg` : `/evnet:id` 페이지에 들어갈 이미지 URL
 
-2.3.4. 데이터 스키마 - server
+<br/>
 
 #### 2.4.2. client
 
-##### 1) Product GrphQL
+##### 1) Product Schema
 
 ```typescript
 query GET_PRODUCTS {
@@ -306,7 +306,7 @@ query GET_PRODUCTS {
 - 상품 데이터 추가 요청을 위한 mutation graphql
 - `Product` 스키마에 들어갈 데이터를 전해준다.
 
-#### 2) Cart GrphQL
+##### 2) Cart Schema
 
 ```ty
   mutation ADD_CART($id: ID!, $count: Int, $uid: String!) {
@@ -333,7 +333,31 @@ query GET_PRODUCTS {
   }
 ```
 
-- Firebase Auth에서 제공하는 user의 data에 있는 고유의 `uid` 값을 전달하여, 장바구니 페이지에서 cart 데이터를 호출할 시, `uid`에 맞는 데이터를 불러오기 위함
+- Firebase Auth에서 제공하는 user의 data에 있는 고유의 `uid` 값을 전달하여, 장바구니 페이지에서 cart 데이터를 호출할 시, `uid`에 맞는 데이터를 불러오기 위함이다
+
+##### 3) Search Schema
+
+```typescript
+  query GET_SEARCH_ITEMS($keyword: String!, $cursor: ID) {
+    searchItems(keyword: $keyword, cursor: $cursor) {
+      id
+      brand
+      name
+      image_url
+      origin_price
+      discount
+      createdAt
+      category {
+        category_lg
+        category_md
+        category_sm
+      }
+    }
+  }
+```
+
+- `keyword`를 받게 되면, `Product` 데이터를 호출한다.
+- `cursor` : 검색 결과 페이지 `/search/:id` 에 무한 스크롤을 적용하도록 하기 위한 아규먼트이다.
 
 <br/>
 
@@ -345,6 +369,12 @@ query GET_PRODUCTS {
 - 상품페이지 카테고리를 대분류, 중분류, 소분류로 나누어 동적라우팅 구성한 상품 데이터 패칭 - [코드보기](https://github.com/ohtaekwon/shoppingmall/blob/main/client/pages/shop/category/list/index.tsx)
 - 무한스크롤 훅을 통한 상품페이지 / 검색 결과 페이지에서 상품 적용 - [코드보기](https://github.com/ohtaekwon/shoppingmall/blob/main/client/hook/useInterSection.ts)
 - react-query 낙관적업데이트를 적용한 장바구니 추가 및 수량 업데이트 - [코드 보기](https://github.com/ohtaekwon/shoppingmall/blob/main/client/components/sections/cart/item.tsx)
+
+### 3.1. 미구현 사항
+
+#### 1) Firebase-Admin
+
+- 로그인 아이디에 따라서, admin과 client를 구분하기 위해, firebase-admin으로 admin에 맞는 페이지 구현
 
 <br/>
 
