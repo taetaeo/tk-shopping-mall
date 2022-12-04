@@ -6,6 +6,7 @@ const userSchema = gql`
     email: String
     uid: String
     cartId: [String]
+    likes: [String]
   }
   extend type Query {
     user: [User!]
