@@ -416,11 +416,16 @@ yarn
 yarn run dev
 ```
 
-####
-
 ## 구현 현황
 
-![image](https://user-images.githubusercontent.com/75871005/204991310-bcfb0630-dd9b-47cf-ba58-c12f4d983148.png)
-![image](https://user-images.githubusercontent.com/75871005/204991374-8985c456-12eb-4f36-8497-975431fde4f2.png)
-![image](https://user-images.githubusercontent.com/75871005/204991454-76696363-5239-4160-962e-02b7eebff334.png)
-![image](https://user-images.githubusercontent.com/75871005/204991542-7c3ea58a-4b35-40ce-ad13-107a6648d064.png)
+### 1. Home 페이지
+
+![](https://user-images.githubusercontent.com/75871005/205481928-920b67c6-b51a-4258-afc1-5c4955b05bd8.mp4)
+
+### 2. 로그인
+
+![](https://user-images.githubusercontent.com/75871005/205481931-ef9a1cd2-d2eb-42a6-b164-659dc80ba546.mp4)
+
+### 3. 장바구니 추가
+
+![](https://user-images.githubusercontent.com/75871005/205481937-5f1e103c-93f9-4b01-8c66-bcccb3103b16.mp4)

@@ -66,7 +66,7 @@ const Item: FC<Props> = (props: Props): JSX.Element => {
     await confirm("선택하신 상품을 장바구니에 담으시겠습니까");
     await addCart({ id, count });
     setCount(1);
-    router.push("/cart");
+    // router.push("/cart");
   };
 
   const handleOrder = (event: React.MouseEvent<HTMLElement>) => {

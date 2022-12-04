@@ -17,10 +17,20 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
-const messagesResolver: Resolver = {
+const PAGE_SIZE = 15;
+
+const qnaMessagesResolver: Resolver = {
   Query: {
-    messages: async (parent, args) => {
-      const {} = args;
+    messages: async (parent, { cursor = "" }) => {
+      const messages = collection(db, "messages");
+      const queryOptions = [orderBy("createdAt", "desc")];
+      const data: DocumentData[] = [];
+
+      if (cursor) {
+        const snapshot = await getDoc(doc(db, "messages", cursor));
+        queryOptions.push(startAfter(snapshot));
+      }
+      const q = query(messages, ...queryOptions, limit(PAGE_SIZE));
     },
   },
   Mutation: {},

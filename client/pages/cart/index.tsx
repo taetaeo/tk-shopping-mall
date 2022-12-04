@@ -19,7 +19,7 @@ const CartPage: NextPage = () => {
   const QueryFn = () => graphQLFetcher(GET_CARTS, { uid: id });
   const { data } = useQuery([QueryKeys.cart, id], QueryFn, cartOptions);
   const cartData = (data?.cart || []) as Cart[];
-
+  console.log(cartData);
   return (
     <>
       <Head title={TITLE} />
