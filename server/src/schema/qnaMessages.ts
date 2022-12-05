@@ -21,7 +21,12 @@ const qnaMessagesSchema = gql`
     qnaMessage(id: ID!): Message! # get Message
   }
   extend type Mutation {
-    createMessage(text: String!, userId: ID!): Message!
+    createMessage(
+      password: String!
+      qnaType: String
+      text: String!
+      userId: ID!
+    ): Message!
     updateMessage(id: ID!, text: String, userId: ID!): Message!
     deleteMessage(id: ID!, userId: ID!): ID!
   }
