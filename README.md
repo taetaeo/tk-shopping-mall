@@ -1,12 +1,10 @@
-## Intro
+## INTRO
 
 > 개요 : 개인 프로젝트
 >
-> 주제 : 온라인 의류 쇼핑몰 프로젝트 - FE
+> 주제 : 온라인 의류 쇼핑몰 프로젝트
 >
-> 참여 : 2022.11.21
->
-> [더 찾아보기](https://velog.io/@taetae-5/%EB%82%98%EC%9D%98-%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80-ch1.-Next.js-%EC%84%A0%ED%83%9D)
+> 참여 : 2022.11.21 ~ 진행중
 
 <br/>
 
@@ -66,7 +64,6 @@ resolvers : graphql resolver 담당
 ### 2.1. 프로젝트 WBS
 
 - [바로가기](https://docs.google.com/spreadsheets/d/1XaWRekIx5GMchi2f3PrSywzf7jBCQiZEsGKb7RUZp00/edit#gid=1644897215)
-- 작업단위를 세분화에 초점을 두어서 진행
 
 ### 2.2. 프로젝트 설계
 
@@ -74,17 +71,17 @@ resolvers : graphql resolver 담당
 
 ### 2.3. 프로젝트 요약
 
-![](https://user-images.githubusercontent.com/75871005/205483544-119d090f-368b-45f2-a1be-3989bbc8d639.png)
-
 #### 2.3.1. 기술 스택
 
 - Language : React.js, Typescript
 - FrameWork : Next.js
-- server-state : React-Query(CRUD), GraphQL
+- Server-state : React-Query(CRUD), GraphQL
 - Database : Firebase
 - style : CSS in JS (styled-components)
 
 #### 2.3.2. 프로젝트 흐름도
+
+![](https://user-images.githubusercontent.com/75871005/205483544-119d090f-368b-45f2-a1be-3989bbc8d639.png)
 
 #### 2.3.3. 페이지 구성
 
@@ -383,15 +380,13 @@ query GET_PRODUCTS {
 ## 4. 개발 회고 및 정리
 
 |     |                                                          |                                                                                                                                                                                                                                                                               |
-| --- | :------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| --- | -------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1.  | React의 **SSR** 프레임워크인 Next.js 를 선택하게 된 이유 | 1) [베로그 바로가기](https://velog.io/@taetae-5/%EB%82%98%EC%9D%98-%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80-ch1.-Next.js-%EC%84%A0%ED%83%9D)                                                                                                                                      |
 | 2.  | Next.js의 데이터 패칭 방식                               | 1) [벨로그 바로가기](https://velog.io/@taetae-5/%EB%82%98%EC%9D%98-%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80-2.-Next.js%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%8C%A8%EC%B9%AD-%EB%B0%A9%EC%8B%9D)<br />2) [이슈 바로가기](https://github.com/shop-caffeine/caffeine_fo/issues/29) |
 | 3.  | graphql & firebase 연동                                  | 1) [벨로그 바로가기](https://velog.io/@taetae-5/%EC%87%BC%ED%95%91%EB%AA%B0-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-1-graphql-firebase)                                                                                                                                          |
-| 4   | 무한 스크롤                                              |                                                                                                                                                                                                                                                                               |
-| 5   | Firebase Auth                                            |                                                                                                                                                                                                                                                                               |
-| 6   | 장바구니 추가                                            |                                                                                                                                                                                                                                                                               |
-| 7   |                                                          |                                                                                                                                                                                                                                                                               |
-| 8   |                                                          |                                                                                                                                                                                                                                                                               |
+| 4   | 무한 스크롤                                              | 업로드 예정                                                                                                                                                                                                                                                                   |
+| 5   | Firebase Auth                                            | 업로드 예정                                                                                                                                                                                                                                                                   |
+| 6   | 장바구니 추가                                            | 업로드 예정                                                                                                                                                                                                                                                                   |
 
 <br/>
 
