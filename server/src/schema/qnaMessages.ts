@@ -18,7 +18,7 @@ const qnaMessagesSchema = gql`
     cursor값에 따라, 페이지당 보여질 개수
     """
     qnaMessages(cursor: ID): [Message!]! # get Messages
-    qnaMessage(id: ID!): Message! # get Message
+    qnaMessage(id: ID!, password: String!): Message! # get Message
   }
   extend type Mutation {
     createMessage(

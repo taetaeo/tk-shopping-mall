@@ -31,9 +31,19 @@ const qnaMessagesResolver: Resolver = {
         queryOptions.push(startAfter(snapshot));
       }
       const q = query(qnaMessages, ...queryOptions, limit(PAGE_SIZE));
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        const d = doc.data();
+        data.push({
+          id: doc.id,
+          ...d,
+        });
+      });
+      return data;
     },
-    qnaMessage: async (parent, { id }) => {
+    qnaMessage: async (parent, { id, password }) => {
       const querySnapshot = await getDoc(doc(db, "qnaMessages", id));
+
       return {
         ...querySnapshot.data(),
         id: querySnapshot.id,
