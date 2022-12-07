@@ -47,7 +47,7 @@
 
 ### 2. 로그인
 
-[](https://user-images.githubusercontent.com/75871005/205482288-7f937f47-5d40-47f7-b76a-9c485ea9bd11.mp4)
+[](https://user-images.githubusercontent.com/75871005/206083080-a407c9c0-7a77-4489-9927-8fd43fe6e7b7.mp4)
 
 ### 3. 장바구니 추가
 
