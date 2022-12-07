@@ -48,7 +48,7 @@ const SubHeader = ({ userData }: Props) => {
       { name: LOGOUT, route: "/", icon: LOGIN_BOX },
       { name: LIKES, route: ROUTE_PATH_MYPAGE_LIKES, icon: LIKE_FILL },
       { name: CART, route: ROUTE_PATH_CART, icon: SHOPPING_BAG },
-      { name: ROUTE_PATH_MY_PAGE, route: ROUTE_PATH_MY_PAGE, icon: USER },
+      { name: MY_PAGE, route: ROUTE_PATH_MY_PAGE, icon: USER },
     ];
   }
 
