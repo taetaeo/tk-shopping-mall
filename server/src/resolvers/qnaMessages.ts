@@ -70,5 +70,19 @@ const qnaMessagesResolver: Resolver = {
         id: querySnapshot.id,
       };
     },
+    updateMessage: async (parent, updatedQna) => {
+      const { id, ...data } = updatedQna;
+      const qnaRef = doc(db, "qnaMessages", id);
+      if (!qnaRef) throw Error("QNA 메시지가 없습니다.");
+      await updateDoc(qnaRef, {
+        ...data,
+        createdAt: serverTimestamp(),
+      });
+      const querySnapshot = await getDoc(qnaRef);
+      return {
+        id: querySnapshot.id,
+        ...querySnapshot.data(),
+      };
+    },
   },
 };

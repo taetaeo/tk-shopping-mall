@@ -16,17 +16,17 @@ import { db } from "../../firebase";
 import { Cart, Resolver } from "./type";
 
 const cartResolver: Resolver = {
-  User: {
-    product: async (user, args) => {
-      const querySnapshot = await getDoc(user.cartId);
-      const data = querySnapshot.data() as any;
+  // User: {
+  //   product: async (user, args) => {
+  //     const querySnapshot = await getDoc(user.cartId);
+  //     const data = querySnapshot.data() as any;
 
-      return {
-        ...data,
-        id: querySnapshot.id,
-      };
-    },
-  },
+  //     return {
+  //       ...data,
+  //       id: querySnapshot.id,
+  //     };
+  //   },
+  // },
   Query: {
     user: async (parent, args) => {
       const user = collection(db, "user");
