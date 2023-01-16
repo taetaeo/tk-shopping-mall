@@ -1,5 +1,5 @@
 {
-  "name": "next-boilerplate",
+  "name": "shoppingmall",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -9,8 +9,8 @@
     "server"
   ],
   "scripts": {
-    "client": "yarn workspace client start",
-    "server": "yarn workspace server start",
+    "client": "yarn workspace client dev",
+    "server": "yarn workspace server dev",
     "start": "cd server && npm run serve"
   }
 }
