@@ -43,6 +43,8 @@
 
 ## :hammer_and_pick: 구현 결과
 
+[영상 보러가기](https://www.youtube.com/watch?v=_-1TfbpfQdY)
+
 ### 1. Home 페이지
 
 [](https://user-images.githubusercontent.com/75871005/205482297-436cb3a8-c303-4915-916b-c0a6956da5db.mp4)
