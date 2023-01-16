@@ -125,13 +125,15 @@ const CartList = ({ cartItems }: Props): JSX.Element => {
 export default CartList;
 
 const Wrapper = styled.section`
-  width: 100%;
+  width: 1200px;
+  box-sizing: border-box;
 `;
 const Header = styled.ul`
   width: 1200px;
   display: flex;
   margin: auto;
   margin-bottom: 0.5rem;
+  box-sizing: border-box;
 `;
 
 const TableItem = styled.h3`

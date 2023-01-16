@@ -198,12 +198,14 @@ const Item = styled.ul`
   display: flex;
   margin: auto;
   margin-bottom: 0.5rem;
+  box-sizing: border-box;
 `;
 
 const Image = styled.img`
   width: 170px;
   height: 170px;
   object-fit: contain;
+  box-sizing: border-box;
 `;
 const ItemInfoColumn = styled.li`
   margin-top: 1rem;
@@ -212,6 +214,7 @@ const ItemInfoColumn = styled.li`
   display: flex;
   justify-content: left;
   align-items: center;
+  box-sizing: border-box;
 `;
 const PriceContainer = styled.div`
   display: flex;
@@ -260,6 +263,7 @@ const UpdateInput = styled.input`
   padding: 1rem;
   text-align: center;
   border: none;
+  box-sizing: border-box;
 `;
 const TotalPrice = styled.h3`
   width: 100%;
@@ -275,4 +279,5 @@ const DeleteContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 `;
