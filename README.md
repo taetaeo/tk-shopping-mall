@@ -4,9 +4,9 @@
 
 **온라인 의류 쇼핑몰 웹사이트입니다.** 평소 이커머스와 프론트엔드에 관심이 많았고, 저와 같은 관심사를 가진 사람들에게 도움이 되었으면 하는 마음으로 개발하였습니다.
 
-혼자서 구현했기에, 부족한 BackEnd를 Firebase 서비스를 통해서 프로토타입으로서 보완하였습니다. Firebase를 처음 사용하면서, Storeage, Firebase Auth 등의 개념을 깊게 다질수 있었고 NoSQL를 실제로 사용하면서 초기에 빠르게 FE만으로 프로토타입을 만드는게 더욱 의미가 있었습니다.
+혼자서 구현했기에, 부족한 Back-End를 Firebase 서비스를 통해서 프로토타입으로서 보완하였습니다. Firebase를 처음 사용하면서, Storeage, Firebase Auth 등의 개념을 깊게 다질수 있었고 NoSQL를 실제로 사용하면서 개발 초기에 빠르게 `FE`만으로 프로토타입을 만드는게 더욱 의미가 있었습니다.
 
-최근에 RestApi에서 GraphQL을 사용이 점점 늘어나면서, 처음으로 사용해보며 Rest api를 하는것과는 다르게, URL을 통해 요청하는 방식이 아닌, 하나의 엔드포인트에 요청하는 쿼리에 따라 다른 응답을 받으면서 원하는 응답값만 받을 수 있다는 장점을 알게 되었습니다. HTTP 요청 횟수를 줄이고, 응답사이즈를 줄이면서 보다 유용성을 느낄 수 있었습니다.
+최근에 RestApi에서 GraphQL을 사용이 점점 늘어나면서, 처음으로 사용해보며 REST API를 하는것과는 다르게, URL을 통해 요청하는 방식이 아닌, 하나의 엔드포인트에 요청하는 쿼리에 따라 다른 응답을 받으면서 원하는 응답값만 받을 수 있다는 장점을 알게 되었습니다. HTTP 요청 횟수를 줄이고, 응답사이즈를 줄이면서 보다 유용성을 느낄 수 있었습니다.
 
 #### \* 주요 기능
 
@@ -14,14 +14,16 @@
 - :white_check_mark: 상품 데이터 추가 / 업데이트 / 삭제 기능
 - :white_check_mark: 장바구니 추가 / 업데이트 / 삭제 기능
 - :white_check_mark: 상품 데이터 검색 기능
-- :white_check_mark: 무한 스크롤 기능
+- :white_check_mark: 상품 데이터 무한 스크롤 기능
 - :white_check_mark: Firebase Auth를 통한 로그인 기능
 
 <br/>
 
-## 🤔 Background
+## :mountain: Background
 
-평소 `29cm` 라는 의류쇼핑몰을 즐겨 찾아봅니다. 다른 의류 쇼핑몰과 비교했을 때, 상품 품목들의 카테고리를 구분하는 것에 신기하게 느꼈고, 무수히 많은 카테고리를 구분하여 상품을 요청 쿼리를 다루고 큰 기능이라 할 수 없지만, 유저마다 장바구니 기능을 구현할 수 있다면 BE에 대한 기본적인 이해도 될 수 있다고 생각하여 이 프로젝트를 구상하게 되었습니다. 이것이 바로 이 프로젝트를 개발하게 된 배경입니다.
+원래 사이드 프로젝트로 BE 2명 / FE 1명으로 구성한 쇼핑몰 프로젝트를 시행했습니다. 협업 과정에서 BE의 작업 속도에 따라서 데이터를 받아야하는 FE입장에서는 진행함에 있어서 수동적으로 request에만 의존해야 했던 문제를 발견하였습니다. 이를 통해, 단순 FE단에서 먼저 구현해보고 BE와 나중에 추가적으로 병합할 수 있으면 작업 속도와 효율성이 좋을 것이라 판단하였습니다. 그렇게 FE단에서도 BE의 흉내를 낼 수 있는 `Firebase`를 사용해보고 프로젝트를 만들어낼 때, 프로토타입으로 적용하기에 큰 이점이 될 수 있다는 것을 알게 되었습니다.
+
+쇼핑몰의 컨셉으로는 평소 `www.29cm.com` 라는 의류쇼핑몰을 즐겨 찾아봅니다. 심플하면서도 감각적이고 모던한 분위기를 느끼게 하여 매력적이라 생각하였습니다. 큰 기능이라 할 수 없지만, 유저마다 상품 추가, 장바구니 등을 구현할 수 있다면 기본적인 BE에 대한 이해도 될 수 있다고 생각하여 이 프로젝트를 구상하였습니다. 이것이 바로, 이 프로젝트를 개발하게 된 배경입니다.
 
 <br/>
 
@@ -59,19 +61,28 @@
 
 <br/>
 
+## :thinking: 개발 일지 및 회고
+
+|     | 제목                                                     |                                                                                                                                                                                                                                                                               |
+| --- | -------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.  | React의 **SSR** 프레임워크인 Next.js 를 선택하게 된 이유 | 1) [블로그 바로가기](https://velog.io/@taetae-5/%EB%82%98%EC%9D%98-%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80-ch1.-Next.js-%EC%84%A0%ED%83%9D)                                                                                                                                      |
+| 2.  | Next.js의 SSR                                            | 1) [블로그 바로가기](https://velog.io/@taetae-5/%EB%82%98%EC%9D%98-%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80-2.-Next.js%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%8C%A8%EC%B9%AD-%EB%B0%A9%EC%8B%9D)<br />2) [이슈 바로가기](https://github.com/shop-caffeine/caffeine_fo/issues/29) |
+| 3.  | graphql & firebase 연동                                  | 1) [블로그 바로가기](https://velog.io/@taetae-5/%EC%87%BC%ED%95%91%EB%AA%B0-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-1-graphql-firebase)                                                                                                                                          |
+| 4   | Firebase 색인                                            | 1) [블로그 바로가기](https://velog.io/@taetae-5/쇼핑몰-프로젝트-2-firebase-색인)                                                                                                                                                                                              |
+| 5   | Firebase Auth                                            | 1) [블로그 바로가기](https://velog.io/@taetae-5/%EC%87%BC%ED%95%91%EB%AA%B0-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-5.-Firebase-Auth%EB%A1%9C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0)                                               |
+|     |                                                          |                                                                                                                                                                                                                                                                               |
+
+<br/>
+
 ---
 
 <br/>
 
 ## :diamond_shape_with_a_dot_inside: 프로젝트 소개
 
-### INTRO
-
 > 개요 : 개인 프로젝트
 >
 > 주제 : 온라인 의류 쇼핑몰 프로젝트
->
-> 참여 : 2022.11.21 ~ 진행중
 
 <br/>
 
@@ -138,13 +149,13 @@ resolvers : graphql resolver 담당
 
 ### 2.3. 프로젝트 요약
 
-#### 2.3.1. 기술 스택
+#### 2.3.1. 사용 기술
 
 - Language : React.js, Typescript
 - FrameWork : Next.js
-- Server-state : React-Query(CRUD), GraphQL
+- Libraries: React-Query(server staste), GraphQL, Recoil(전역 상태 관리)
 - Database : Firebase
-- style : CSS in JS (styled-components)
+- Style : CSS in JS (styled-components)
 
 #### 2.3.2. 프로젝트 흐름도
 
@@ -436,39 +447,20 @@ query GET_PRODUCTS {
 - 무한스크롤 훅을 통한 상품페이지 / 검색 결과 페이지에서 상품 적용 - [코드보기](https://github.com/ohtaekwon/shoppingmall/blob/main/client/hook/useInterSection.ts)
 - react-query 낙관적업데이트를 적용한 장바구니 추가 및 수량 업데이트 - [코드 보기](https://github.com/ohtaekwon/shoppingmall/blob/main/client/components/sections/cart/item.tsx)
 
-### 3.1. 미구현 사항
-
-#### 1) Firebase-Admin
-
-- 로그인 아이디에 따라서, admin과 client를 구분하기 위해, firebase-admin으로 admin에 맞는 페이지 구현
-
 <br/>
 
-## 4. 개발 회고 및 정리
+## 4. 실행 방법
 
-|     |                                                          |                                                                                                                                                                                                                                                                               |
-| --- | -------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1.  | React의 **SSR** 프레임워크인 Next.js 를 선택하게 된 이유 | 1) [베로그 바로가기](https://velog.io/@taetae-5/%EB%82%98%EC%9D%98-%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80-ch1.-Next.js-%EC%84%A0%ED%83%9D)                                                                                                                                      |
-| 2.  | Next.js의 데이터 패칭 방식                               | 1) [벨로그 바로가기](https://velog.io/@taetae-5/%EB%82%98%EC%9D%98-%EA%B0%9C%EB%B0%9C%EC%9D%BC%EC%A7%80-2.-Next.js%EC%9D%98-%EB%8D%B0%EC%9D%B4%ED%84%B0%ED%8C%A8%EC%B9%AD-%EB%B0%A9%EC%8B%9D)<br />2) [이슈 바로가기](https://github.com/shop-caffeine/caffeine_fo/issues/29) |
-| 3.  | graphql & firebase 연동                                  | 1) [벨로그 바로가기](https://velog.io/@taetae-5/%EC%87%BC%ED%95%91%EB%AA%B0-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-1-graphql-firebase)                                                                                                                                          |
-| 4   | 무한 스크롤                                              | 업로드 예정                                                                                                                                                                                                                                                                   |
-| 5   | Firebase Auth                                            | 업로드 예정                                                                                                                                                                                                                                                                   |
-| 6   | 장바구니 추가                                            | 업로드 예정                                                                                                                                                                                                                                                                   |
-
-<br/>
-
-## 5. 실행 방법
-
-#### 1) 설치
+#### 4.1. 설치
 
 ```bash
 npm i 또는 npm install
 yarn
 ```
 
-#### 2) 실행
+#### 4.2. 실행
 
-```bash
+```bash# :shirt: 온라인 의류 쇼핑몰 프로젝트
 # 1. client
 cd client
 yarn
