@@ -65,9 +65,16 @@ const cartResolver: Resolver = {
       const productRef = doc(db, "products", productId);
       const cartCollection = collection(db, "cart");
 
+      // product에 해당 아이디가 존재하는것
       const exist = (
-        await getDocs(query(cartCollection, where("product", "==", productRef)))
-      ).docs[0]; // product에 해당 아이디가 존재하는것
+        await getDocs(
+          query(
+            cartCollection,
+            where("product", "==", productRef),
+            where("cart", "==", uid)
+          )
+        )
+      ).docs[0];
 
       let cartRef;
       if (exist) {
