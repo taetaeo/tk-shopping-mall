@@ -5,6 +5,8 @@ import resolvers from "./resolvers";
 import { DBField, readDB } from "./dbController";
 
 (async () => {
+  const clientUrl = process.env.ClIENT_URL as string;
+
   const server = new ApolloServer({
     typeDefs: schema,
     resolvers: resolvers,
@@ -22,7 +24,7 @@ import { DBField, readDB } from "./dbController";
     app,
     path: "/graphql",
     cors: {
-      origin: ["http://localhost:3000", "https://studio.apollographql.com"],
+      origin: ["localhost:3000", "https://studio.apollographql.com"],
       credentials: true,
     },
   });
