@@ -6,6 +6,7 @@ import { DBField, readDB } from "./dbController";
 
 (async () => {
   const clientUrl = process.env.ClIENT_URL as string;
+  const port = process.env.PORT || 8000;
 
   const server = new ApolloServer({
     typeDefs: schema,
@@ -28,6 +29,6 @@ import { DBField, readDB } from "./dbController";
       credentials: true,
     },
   });
-  await app.listen({ port: 8000 });
+  await app.listen({ port: port || 8000 });
   console.log("server is listening on port 8000....");
 })();
