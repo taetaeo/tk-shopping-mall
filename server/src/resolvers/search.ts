@@ -1,5 +1,5 @@
 import { Resolver } from "./type";
-import { db } from "../../firebase";
+import { db } from "../firebase";
 import {
   collection,
   getDoc,

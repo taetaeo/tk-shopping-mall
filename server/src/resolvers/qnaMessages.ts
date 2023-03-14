@@ -1,6 +1,6 @@
 import { Products, Resolver } from "./type";
 import { DBField, writeDB, readDB } from "../dbController";
-import { db } from "../../firebase";
+import { db } from "../firebase";
 import {
   collection,
   getDoc,

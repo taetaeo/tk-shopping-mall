@@ -1,7 +1,7 @@
 import { Resolver } from "./type";
 import { DBField, writeDB } from "../dbController";
 import { Events } from "./type";
-import { db } from "../../firebase";
+import { db } from "../firebase";
 import {
   collection,
   getDoc,

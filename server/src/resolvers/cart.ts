@@ -14,7 +14,7 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "../firebase";
 import { DBField, writeDB, readDB } from "../dbController";
 import { Cart, Resolver } from "./type";
 

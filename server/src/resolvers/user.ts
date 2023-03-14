@@ -12,7 +12,7 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "../firebase";
 import { Cart, Resolver } from "./type";
 
 const cartResolver: Resolver = {

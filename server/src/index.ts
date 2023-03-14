@@ -29,6 +29,6 @@ import { DBField, readDB } from "./dbController";
       credentials: true,
     },
   });
-  await app.listen({ port: port || 8000 });
+  await app.listen({ port: port });
   console.log("server is listening on port 8000....");
 })();
