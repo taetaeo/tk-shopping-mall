@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@netlify/plugin-nextjs": "^4.32.1",
     "@types/react": "^18.0.25",
     "@types/styled-components": "^5.1.26",
     "add": "^2.0.6",
