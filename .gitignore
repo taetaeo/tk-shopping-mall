@@ -13,14 +13,4 @@ dist-ssr
 *.local
 .env
 .env.*
-.next
-/.next/
-
-# client
-client/.next/
-client/node_modules/
-
-# server
-server/node_modules/
-
 client/screat.json
