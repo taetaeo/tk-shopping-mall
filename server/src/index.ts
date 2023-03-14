@@ -3,10 +3,11 @@ import { ApolloServer } from "apollo-server-express";
 import schema from "./schema";
 import resolvers from "./resolvers";
 import { DBField, readDB } from "./dbController";
+import env from "./envLoader";
 
 (async () => {
-  const clientUrl = process.env.ClIENT_URL as string;
-  const port = process.env.PORT || 8000;
+  const clientUrl = env.ClIENT_URL as string;
+  const port = env.PORT || 8000;
 
   const server = new ApolloServer({
     typeDefs: schema,
@@ -25,7 +26,7 @@ import { DBField, readDB } from "./dbController";
     app,
     path: "/graphql",
     cors: {
-      origin: ["localhost:3000", "https://studio.apollographql.com"],
+      origin: [clientUrl, "https://studio.apollographql.com"],
       credentials: true,
     },
   });
