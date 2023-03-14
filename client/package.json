@@ -36,8 +36,9 @@
     "webpack": "^5.75.0"
   },
   "scripts": {
-    "dev": "next",
+    "dev": "next dev",
     "build": "tsc && next build",
-    "preview": "next preview"
+    "preview": "next preview",
+    "start": "next start"
   }
 }
